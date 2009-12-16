@@ -1,0 +1,60 @@
+
+Import
+======================
+
+Beim Import von Daten aus E-Teaching.org sind programmatisch einige Dinge zu beachten:
+
+ - Der Zugriff soll per URL auf den Feed erfolgen
+ - Per SimpleXML wird in PHP ein Array aus dem Feed erzeugt
+ - Dieses wird durchwandert und für jedes Object geprüft
+	- ist das Object schon in der Datenbank
+		- dann setze aktuelle ImportId
+		- prüfe auf Änderungen bzw. Änderungsdatum (Welche Version ist neuer)
+	- ist noch nicht in der Datenbank
+		- Füge es neu ein und setze aktuelle ImportId
+ - Import eigener Datensätze in den Folder mit PID ownDataFolder
+ - Import anderer Datensätze in den Folder mit PID etoDataFolder
+ - Ein Import mehrerer Datenbestände wird _nicht_ unterstützt: Alle Objekte existiern exact 1mal! Die Pids sind also nicht so entscheidend für die Suchen!
+ - Das Array wird ein zweites Mal durchwandert und für jedes Objekt die Verknüpfungen/Relations aktualisiert/gesetzt
+	getFeedRelations
+	getDatabaseRelations
+	Compare
+		deleteAllRelationsInDBnotInFeed
+		AddAllNewRelationsInFeed
+
+
+ImportId
+=======================
+
+
+Die ImportId ist ein Counter, welche für jeden gestarteten Importvorgan hochgezählt wird. Dazu muss vor und nach einem erfolgreichen Datenimport die ID in eine Konfigurationsdatenbank geschrieben werden:
+
+	id 	timestampStart 	   timestampEnd	    status
+
+	status: started, finish (correct), abborted, finished with failure
+
+
+
+Löschroutine für Objekte
+========================
+
+	Regeln definieren in Code:
+		- Datenaustausch findet einmal täglich statt
+		- Wenn ein Datensatz 5 mal nicht übermittelt wurde dann lösche ihn
+			D.h. die letzte erfolgreiche ImportID ist bsp. 234
+			Import 230 und 232 sind fehlgeschlagen
+			Dann sollen nach dieser Regel alle Elemente gelöscht werden, welche 227 und weniger haben
+			234 - 2 - 5 = 227 =>   Select * from importStatus where status = success Limit by 6
+			Damit die 6 letzten erfolgreichen Importe. Die ID des 6.letzten kann also gelöscht werden
+
+
+	Löschen
+		- Prüfe nochmal im Feed, dass die ObjektId nicht existiert (Optional)
+		- Prüfe ob dieses Objekt, welches gelöscht wird, von eigenen/anderen Daten referenziert wird
+			- ja: Lösche Referenzen eingehend und ausgehend!
+		- Lösche das Objekt
+
+
+
+Übersetzungen zwischen T3-Uids und ETO-UUids per Code / Queries notwendig
+

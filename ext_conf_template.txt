@@ -1,0 +1,29 @@
+# cat=basic; type=String; label= Feed url: Enter the url of the import feed here.
+feed1 =
+
+# cat=basic; type=int; label= Id own data sysfolder: Id of TYPO3 sysfolder wirth own data.
+ownPid =
+
+# cat=basic; type=int; label= Id eto data sysfolder: ID of TYPO3 sysfolder with Eteaching.org data.
+etoPid =
+
+# cat=basic; type=options[utf-8,iso-8859-1]; label= Feed encoding: Encoding of incomming feed
+encodingFeeds = utf-8
+
+# cat=basic; type=options[utf-8,iso-8859-1]; label= TYPO3 encoding: Encoding of of typo3 database
+encodingTypo3 = iso-8859-1
+
+# cat=basic; type=int; label= Löschlücke - For each sync an counting id is written to each object. If an object has a syncId lower then "actSyncId minus this option value" it will be deleted.
+deleteAfterSyncIdGap =
+
+# cat=basic; type=boolean; label= Force allow new options: For some options it is possible to create new ones in database.
+forceAllowNewOptions = 0
+
+# cat=basic; type=String; label= Own Data Id Prefix: Each university has its own uid prefix. This must be inserted here.
+ownDataETOUid = 
+
+# cat=basic; type=int; label= Id own university: TYPO3 uid of own university entry.
+ownUniversityId =
+
+# cat=basic; type=options[off,normal,medium,high]; label= Loglevel CLI Import: Set loglevel.
+cliLoglevel = normal
