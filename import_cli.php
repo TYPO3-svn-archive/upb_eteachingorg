@@ -125,9 +125,10 @@ class importEtoFeed{
 				$data = $this->getObjectData($child,$objectconf);
 
 				if($name == 'tool-portrait'){
+					//TODO
 
-					echo "XNU8";
-					print_r($child);
+					// echo "XNU8";
+					// print_r($child);
 				}
 
 
@@ -154,7 +155,7 @@ class importEtoFeed{
 					// allways the current data.
 
 					if(!$this->isOwnObject($objectId) || ($object->processedImportData['tstamp'] > $object->getFieldValue('tstamp')) ){
-						$msg = 'Updating '.$objectSourceType.' object '.$castName.' with objectid '.$objectId;
+						$msg = "\n".'Updating '.$objectSourceType.' object '.$castName.' with objectid '.$objectId."\n";
 						$this->writeLog($msg,1);	
 						$object->setData($object->processedImportData,'update');
 						$this->writeMMOptions($object);
@@ -351,16 +352,7 @@ class importEtoFeed{
 
                                         $obj->loadByUuid($valueObj);
 
-
-                                        echo "2Tool UIIIDS";
-                                        echo $objChild->getFieldValue('uid')."\n";
-                                        echo $obj->getFieldValue('uid');
-                                        echo "2Tool KKKSKK";
-
-                                        // $mmTable = $obj->fields['mmData'][$childName]['mmTable'];
-					 $mmTable = 'tx_upbeteachingorg_university_tools_mm';
-
-                                      echo "MM TABLE $mmTable";
+					$mmTable = 'tx_upbeteachingorg_university_tools_mm';
 
                                         $this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
 
@@ -386,15 +378,7 @@ class importEtoFeed{
 
                                         $obj->loadByUuid($valueObj);
 
-
-                                        echo "UIIIDS";
-                                        echo $objChild->getFieldValue('uid')."\n";
-                                        echo $obj->getFieldValue('uid');
-                                        echo "KKKSKK";
-
                                         $mmTable = $obj->fields['mmData'][$childName]['mmTable'];
-
-//                                      echo "MM TABLE $mmTable";
 
                                         $this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
 
@@ -427,7 +411,7 @@ class importEtoFeed{
 
                                         $obj = new university('new','',0,1);
 
-                                        print_r($parent);
+                                        // print_r($parent);
 
                                         $valueObj = $parent->attributes()->uid;
 
@@ -466,23 +450,13 @@ class importEtoFeed{
 
                                         $obj = new $objCastName('new','',0,1);
 
-					print_r($xmlObj);
-
                                         $valueObj = $xmlObj->attributes()->uid;
 
                                         echo "OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
 
                                         $obj->loadByUuid($valueObj);
 
-
-                                        echo "UIIIDS";
-                                        echo $objChild->getFieldValue('uid')."\n";
-                                        echo $obj->getFieldValue('uid');
-                                        echo "KKKSKK";
-
                                         $mmTable = $obj->fields['mmData'][$childName]['mmTable'];
-
-//                                      echo "MM TABLE $mmTable";
 
                                         $this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
 
@@ -493,9 +467,9 @@ class importEtoFeed{
 			if($parent){
 
 				if($prevParent){
-					echo "XMLOBJ $name ::  - PARENT: ".$parent->getName().'PREPARENT'.$prevParent->getName().'child: '.$child->getName()."\n\n";
+					// echo "XMLOBJ $name ::  - PARENT: ".$parent->getName().'PREPARENT'.$prevParent->getName().'child: '.$child->getName()."\n\n";
 				}else{
-					echo "XMLOBJ $name ::  - PARENT: ".$parent->getName().'child: '.$child->getName()."\n\n";
+					// echo "XMLOBJ $name ::  - PARENT: ".$parent->getName().'child: '.$child->getName()."\n\n";
 				}
 
 
@@ -533,7 +507,7 @@ class importEtoFeed{
 				foreach((array)$options as $optionKey => $optionname)
 
 	
-					echo "KEY $key and OPT $optionname";					
+					// echo "KEY $key and OPT $optionname";					
 
 					$object->addMMOption($key,$optionname);
 				

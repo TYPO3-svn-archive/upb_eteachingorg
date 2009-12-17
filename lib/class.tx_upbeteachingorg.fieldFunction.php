@@ -160,9 +160,6 @@ class fieldFunction {
                 $conf = $obj->fields['import'][$fieldname];
                 $selectedOptions = $obj->getImportFieldValue($obj->getInternalFieldname($fieldname));
 
-		echo "FIELDFUNC DEBUG";
-		print_r($value);
-
 		$options = $conf['options'];
 
 		$return = '';

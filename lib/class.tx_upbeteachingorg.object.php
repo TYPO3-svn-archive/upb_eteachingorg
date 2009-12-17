@@ -716,8 +716,6 @@ abstract class object{
 
                 $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 
-		echo "ADDMMOPTION FIEDL $field -> $value";
-                
                 if(!is_array($row)){
                 	
                 	if($objConf['allowNewElements'] || $this->extConf['forceAllowNewOptions']){
@@ -751,10 +749,8 @@ abstract class object{
 			$fieldArray['uid_foreign'] = $uid;
 			$GLOBALS['TYPO3_DB']->exec_INSERTquery($conf['mmTable'],$fieldArray);
 
-			$deb = $GLOBALS['TYPO3_DB']->INSERTquery($conf['mmTable'],$fieldArray);
+			// $deb = $GLOBALS['TYPO3_DB']->INSERTquery($conf['mmTable'],$fieldArray);
 
-			echo "RTZ";
-			print_r($deb);
                 	
                 }
 		
