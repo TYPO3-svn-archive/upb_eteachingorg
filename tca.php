@@ -206,7 +206,7 @@ $TCA['tx_upbeteachingorg_university'] = array (
                                 'size' => 15,
                                 'minitems' => 0,
                                 'maxitems' => 50,
-                                "MM" => "tx_upbeteachingorg_university_tools_mm",
+                                "MM" => "tx_upbeteachingorg_university_toolportraits_mm",
                         )
                 ),
 

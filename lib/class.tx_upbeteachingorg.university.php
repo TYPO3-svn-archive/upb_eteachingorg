@@ -131,229 +131,6 @@ class university extends object{
                                         'objectFieldname' => 'newsfeedurl',
                                 ),
 			),
-		
-			'insert' => array ( 
-
-				'pid' => array(
-					'objectfield' => true,
-                                        'objectFunction' => 'getETOPid',
-                                ),
-				'tstamp' => array(
-                                        'objectfield' => true,
-                                        'objectFunction' => 'getCurrentTimestamp',
-                                ),
-				'crdate' => array(
-                                        'objectfield' => true,
-                                        'objectFunction' => 'getCurrentTimestamp',
-                                ),
-				'cruser_id' => array(
-                                        'objectfield' => true,
-                                        'objectFunction' => 'setValue',
-					'objectFunctionParam' => $BE_USER->user['uid'],
-                                ),
-				'deleted' => array(
-                                        'objectfield' => true,
-                                        'objectFunction' => 'setValue',
-					'objectFunctionParam' => 0,
-                                ),
-				'hidden' => array(
-                                        'objectfield' => true,
-                                        'objectFunction' => 'setValue',
-                                        'objectFunctionParam' => 0,
-                                ),
-				'uid' => array(
-					'isAttribute' => true,
-                                        'required' => true,
-                                        'validate' => 'objectid',
-                                        'objectFieldname' => 'objectid',
-                                        'objectFunction' => 'passAttribute',
-                                ),
-				'title' => array(
-                                        'required' => true,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'title',
-                                        'objectFunction' => 'textonly',
-                                ),
-				'summary' => array(
-					'required' => true,
-					'validate' => 'text',
-					'objectFieldname' => 'summary',
-					'objectFunction' => 'textonly',
-				),
-				'description' => array(
-                                        'required' => true,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'description',
-                                        'objectFunction' => 'textonly',
-                                ),
-				'url' => array(
-                                        'required' => true,
-                                        'validate' => 'url',
-                                        'objectFieldname' => 'url',
-                                        'objectFunction' => 'textonly',
-                                ),
-				'project-state' => array(
-                                        'required' => true,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'state',
-                                        'objectFunction' => 'textonly',
-                                ),
-				'dtend' => array(
-                                        'required' => false,
-                                        'validate' => 'isETODate',
-                                        'objectFieldname' => 'dtend',
-                                        'objectFunction' => 'convertETODateToTimestamp',
-                                ),
-				'project-responsibility' => array(
-                                        'required' => false,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'type',
-                                        'objectFunction' => 'textonly',
-                                ),
-				'project-resources' => array(
-                                        'required' => false,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'resource',
-                                        'objectFunction' => 'textonly',
-                                ),
-				'item-tags' => array(
-                                        'required' => false,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'tags',
-                                        'objectFunction' => 'textonly',
-                                ),
-				'project-partner' => array(
-                                        'required' => false,
-                                        'validate' => 'isETODate',
-                                        'objectFieldname' => 'partners',
-                                        'objectFunction' => 'pass',
-                                ),
-				'contact' => array(
-                                        'required' => false,
-					'validate' => 'isValideETOUuid',
-					'mm_option' => false,
-					'optionTable' => 'tx_upbeteachingorg_projectdepartment',
-                                        'mmTable' => 'tx_upbeteachingorg_project_department_mm',
-                                        'allowNewOptions' => false,
-                                        'objectFieldname' => 'department',
-                                        'objectFieldname' => 'contacts',
-                                        'objectFunction' => 'pass',
-					'execMM' => 'setMMOptionContact',
-                                ),
-				'category' => array(
-                                        'required' => false,
-                                        'validate' => 'isETODate',
-                                        'objectFieldname' => 'dtend',
-                                        'objectFunction' => 'convertETODateToTimestamp',
-                                ),
-				'sub-unit' => array(
-                                        'required' => false,
-                                        'validate' => 'optionValide',
-					'mm_option' => true,
-					'optionTable' => 'tx_upbeteachingorg_projectdepartment',
-					'optionTableWhereField' => 'title',
-					'mmTable' => 'tx_upbeteachingorg_project_department_mm',
-					'allowNewOptions' => true,
-                                        'objectFieldname' => 'department',
-                                        'objectFunction' => 'countOptions',
-					'execMM' => 'setMMOptionDepartment',
-                                ),
-
-			),
-			'update' => array (
-				'title' => array(
-                                        'required' => true,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'title',
-                                        'objectFunction' => 'textonly',
-                                ),
-                                'summary' => array(
-                                        'required' => true,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'summary',
-                                        'objectFunction' => 'textonly',
-                                ),
-                                'description' => array(
-                                        'required' => true,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'description',
-                                        'objectFunction' => 'textonly',
-                                ),
-                                'url' => array(
-                                        'required' => true,
-                                        'validate' => 'url',
-                                        'objectFieldname' => 'url',
-                                        'objectFunction' => 'textonly',
-                                ),
-                                'project-state' => array(
-                                        'required' => true,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'state',
-                                        'objectFunction' => 'getOptionSingle',
-                                ),
-                                'dtend' => array(
-                                        'required' => false,
-                                        'validate' => 'isETODate',
-                                        'objectFieldname' => 'dtend',
-                                        'objectFunction' => 'convertETODateToTimestamp',
-                                ),
-                                'project-responsibility' => array(
-                                        'required' => false,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'type',
-                                        'objectFunction' => 'textonly',
-                                ),
-                                'project-resources' => array(
-                                        'required' => false,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'resource',
-                                        'objectFunction' => 'textonly',
-                                ),
-                                'item-tags' => array(
-                                        'required' => false,
-                                        'validate' => 'text',
-                                        'objectFieldname' => 'tags',
-                                        'objectFunction' => 'textonly',
-                                ),
-                                'project-partner' => array(
-                                        'required' => false,
-                                        'validate' => 'isETODate',
-                                        'objectFieldname' => 'partners',
-                                        'objectFunction' => 'pass',
-                                ),
-				'contact' => array(
-                                        'required' => false,
-                                        'validate' => 'isValideETOUuid',
-                                        'mm_option' => false,
-                                        'optionTable' => 'tx_upbeteachingorg_projectdepartment',
-                                        'mmTable' => 'tx_upbeteachingorg_project_department_mm',
-                                        'allowNewOptions' => false,
-                                        'objectFieldname' => 'department',
-                                        'objectFieldname' => 'contacts',
-                                        'objectFunction' => 'pass',
-                                        'execMM' => 'setMMOptionContact',
-                                ),
-                                'category' => array(
-                                        'required' => false,
-                                        'validate' => 'isCategoryToDo',
-                                        'objectFieldname' => 'category',
-                                        'objectFunction' => 'getOptionList',
-                                ),
-                                'sub-unit' => array(
-                                        'required' => false,
-                                        'validate' => 'optionValide',
-                                        'mm_option' => true,
-                                        'optionTable' => 'tx_upbeteachingorg_projectdepartment',
-                                        'optionTableWhereField' => 'title',
-                                        'mmTable' => 'tx_upbeteachingorg_project_department_mm',
-                                        'allowNewOptions' => true,
-                                        'objectFieldname' => 'department',
-                                        'objectFunction' => 'countOptions',
-                                        'execMM' => 'setMMOptionDepartment',
-                                ),
-
-
-                        ),
 			'load' => array (
                                 'title' => array(
                                         'required' => true,
@@ -573,9 +350,6 @@ class university extends object{
                                         'validate' => 'text',
                                         'objectFieldname' => 'toolportraitids',
                                         'objectFunction' => 'XMLfieldFunc_writeObjectPortraitId',
-					'objectParams' => array(
-                                                'light' => true,
-                                        ),
                                 ),
                         ),
 			'mmData' => array(
@@ -595,7 +369,7 @@ class university extends object{
                                         'loadDataFunction' => 'getMMObjectsLight',
                                         'loadDataParams' => '',
                                         'mm_option' => true,
-                                        'optionTable' => ' tx_upbeteachingorg_university_tools_mm',
+                                        'optionTable' => ' tx_upbeteachingorg_tool',
                                         'optionTableWhereField' => 'title',
                                         'mmTable' => 'tx_upbeteachingorg_university_tools_mm',
                                         'objectFieldname' => 'toolids',
@@ -632,104 +406,63 @@ class university extends object{
 
 	}
 
+
+	/**
+	*	Creates the XML code for one object type for all existing entries
+	*
+	*	@param object $obj
+	*	@param string $fieldname
+	*	@return string
+	*
+	*/
 	function getObjectCode($obj,$fieldname){
 
+		// get object config
 		$conf = fieldFunction::getFieldConf($obj,$fieldname);
 		
+		// what kind of object 
 		$objectname = $conf['castObject'];
-
 		$select_fields = "uid";
 		$tmpObj = new $objectname();
 
                 $from_table =  $tmpObj->objectTable;
-		//TODO PID!
-                $where_clause = ' pid = 21965 AND deleted=0';
+		$pid = intval($this->extConf['ownPid']);
+                $where_clause = ' pid = '.$pid.' AND deleted=0';
                 $resultArray = array();
                 $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
                 $deb = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
-//		t3lib_div::debug($deb,"QUERY IN UNI");
-
                 $numRows = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
-
-//		t3lib_div::debug($numRows,"NUM ROWS IN UNI");
-
                 $returnData = array();
-
-//		$tmpObj = new $objectname();
-//		$tmpObj->getObjectTemplate('xml');
 		$objectTemplate = $tmpObj->getObjectTemplate('xml');
-//		t3lib_div::debug($objectTemplate,"OBJ TEMPLATE IN GET OBJ CODE");
 		unset($tmpObj);
+
+
+		// if there are rows create objects for each, parse data and parse them into template
 
                 if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) >= 1){
                         while($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)){
-				if(isset($object))
-				print_r("IST NOCH GESETZT");
-
-
-//				 t3lib_div::debug($data,"DATA IN UNI");
 
 				$oId = $data['uid'];
 
 				$object = new $objectname('uid',$oId);
-
-//				t3lib_div::debug($object,"OBJ IN GETOBJ CODE");
-
-				
         			$object->setProcessMode('loadxml',$objectTemplate);
         			$object->processFields();
 
-//				if($objectname == 'contact')
-//				t3lib_div::debug($object,"OBJ contact");
-
-				
-
         			$markerArray = $object->getMarkerArray();
-
-//				if($objectname == 'contact')
-  //                              t3lib_div::debug($markerArray,"MARKERARRAY Ctact");
-
 			        $objXMLCode = t3lib_parsehtml::getSubpart($objectTemplate, "###TEMPLATE_LIST###");
 				$code = t3lib_parsehtml::substituteMarkerArray($objXMLCode,$markerArray,'',0);
+
 			        $content .= $code;
 				unset($object);	
 
 			}
 
-//			t3lib_div::debug($content,"CONTENT");
-
 			return $content;
 
+		}else{
+
+			return "";
 		}
-
-	}
-
-	function getXMLCode(){
-
-//		t3lib_div::debug($this->data,"THIS DASTE");
-
-
-		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n\r";
-                $content .= '<!DOCTYPE eteaching-import SYSTEM "eteaching-import.dtd" >'."\n\r";
-                $content .= '<eteaching-import>'."\n\r";
-                $content .= '<university id="'.$universityData['objectid'].'" key="6576565465465606">'."\n\r";
-
-                $content .= '   <university-info><![CDATA['.$this->data['info'].']]></university-info>'."\n\r";
-                $content .= '   <university-news><![CDATA['.$this->data['news'].']]></university-news>'."\n\r";
-
-
-//		foreach($this->objects as $key => $objectname){
-//			$content .= $this->getObjectCode($objectname);
-
-			 $content .= $this->getObjectCode('project');
-
-//		}
-//		$content = '123';	
-
-//		t3lib_div::debug($content,"CONTENT in GET XML CODE");
-
-		return $content;
-
 
 	}
 

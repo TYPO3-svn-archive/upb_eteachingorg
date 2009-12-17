@@ -13,13 +13,6 @@
 class fieldFunction {
 
 
-	function getTest($test){
-
-		
-		return "oooo".$test."jjjj";
-
-	}
-
 	function fieldFunc_textonly($obj,$fieldname){
 
 

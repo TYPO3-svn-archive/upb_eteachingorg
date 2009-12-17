@@ -174,7 +174,7 @@ abstract class object{
                 }elseif($count > 1){
                         throw new Exception('Object '.$from_table.' with dublicated Uid in Database',200);
                 }elseif($count == 0){
-                        throw new Exception('No object '.$from_table.' with this uid in database',100);
+                        throw new Exception('No object '.$from_table.' with uid '.$uid.'in database',100);
                 }
 
 
