@@ -30,38 +30,8 @@ class fieldFunction {
 
 		$extConf = $obj->extConf;
 
-		if($extConf['encodingFeeds'] != $extConf['encodingTypo3']){
 
-                        switch($extConf['encodingFeeds']){
-
-                                case 'utf-8': $encodingFeed = 'utf-8';
-                                        break;
-                                case 'iso-8859-1': $encodingFeed = 'iso-8859-1';
-                                        break;
-                                default: $encodingFeed = 'utf-8';
-
-                        }
-
-                        switch($extConf['encodingTypo3']){
-
-                                case 'utf-8': $encodingTypo3 = 'utf-8';
-                                        break;
-                                case 'iso-8859-1': $encodingTypo3 = 'iso-8859-1';
-                                        break;
-                                default: $encodingTypo3 = 'iso-8859-1';
-
-                        }
-
-                        return iconv($encodingTypo3,$encodingFeed, $obj->getFieldValue($obj->getInternalFieldname($fieldname)) );
-
-                }else{
-
-                        return $obj->getFieldValue($obj->getInternalFieldname($fieldname));
-
-                }
-
-
-//		return $obj->getFieldValue($obj->getInternalFieldname($fieldname));
+		return $obj->getFieldValue($obj->getInternalFieldname($fieldname));
 
 
         }
