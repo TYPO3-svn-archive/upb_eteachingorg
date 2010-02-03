@@ -257,8 +257,12 @@ class fieldFunction {
 
         function XMLfieldFunc_writeLink($obj,$fieldname){
 
-		return $obj->getFieldValue($obj->getInternalFieldname($fieldname));
+		$url = $obj->getFieldValue($obj->getInternalFieldname($fieldname));
 
+                if ((substr($url,0,7) === 'http://') || (substr($url,0,8) === 'https://'))
+                        return $url;
+                else
+                        return 'http://'.$url;
 
         }
 
