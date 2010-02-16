@@ -246,9 +246,9 @@ class fieldFunction {
 		$url = $obj->getFieldValue($obj->getInternalFieldname($fieldname));
 
 		if ((substr($url,0,7) === 'http://') || (substr($url,0,8) === 'https://'))
-			return '<img src="'.$url.'" />';
+			return '<img src="'.$url.'" style="height: 100px;" />';
 		elseif($url != '') 
-	                return '<img src="http://'.$url.'" />';
+	                return '<img src="http://'.$url.'" style="height: 100px;" />';
 		else
 			return '';
 
@@ -891,4 +891,9 @@ class fieldFunction {
 
 
 }
+
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.fieldFunction.php'])    {
+    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.fieldFunction.php']);
+}
+
 ?>

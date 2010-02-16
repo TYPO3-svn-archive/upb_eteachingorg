@@ -198,7 +198,7 @@ $TCA['tx_upbeteachingorg_university'] = array (
 
 		 'toolportraits' => array (
                         'exclude' => 0,
-                        'label' => 'Werkzeugportrait von E-Teaching.org',
+                        'label' => 'Werkzeugsteckbrief von E-Teaching.org',
                         'config' => array (
                                 'type' => 'select',
                                 'foreign_table' => 'tx_upbeteachingorg_toolportraiteto',
@@ -1044,21 +1044,18 @@ $TCA['tx_upbeteachingorg_service'] = array (
 				),
 			)
 		),
-		'contacts' => array (		
-			'exclude' => 0,		
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.contacts',		
-			'config' => array (
-				'type' => 'select',
-				'items' => array (
-					array('',0),
-				 ),
-				'foreign_table' => 'tx_upbeteachingorg_contact',	
-				'foreign_table_where' => 'AND tx_upbeteachingorg_contact.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_contact.uid',	
-				'size' => 1,	
-				'minitems' => 0,
-				'maxitems' => 1,	
-				"MM" => "tx_upbeteachingorg_service_contacts_mm",
-				'wizards' => array(
+		'contacts' => array (
+                        'exclude' => 0,
+                        'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.contacts',
+                        'config' => array (
+                                'type' => 'select',
+                                'foreign_table' => 'tx_upbeteachingorg_contact',
+                                'foreign_table_where' => 'AND tx_upbeteachingorg_contact.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_contact.familyname',
+                                'size' => 15,
+                                'minitems' => 0,
+                                'maxitems' => 50,
+                                "MM" => "tx_upbeteachingorg_service_contacts_mm",
+                                'wizards' => array(
                                         '_PADDING'  => 2,
                                         '_VERTICAL' => 1,
                                         'add' => array(
@@ -1078,7 +1075,7 @@ $TCA['tx_upbeteachingorg_service'] = array (
 		
                 'tool' => array (
                         'exclude' => 0,
-                        'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.tools',
+                        'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.tool',
                         'config' => array (
                                 'type' => 'select',
                                 'foreign_table' => 'tx_upbeteachingorg_tool',

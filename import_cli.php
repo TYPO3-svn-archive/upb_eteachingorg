@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 
 // *****************************************
@@ -11,19 +12,21 @@ define('TYPO3_cliMode', TRUE);
 // This will work as long as the script is called by it's absolute path!
 define("PATH_thisScript", $_ENV['_'] ? $_ENV['_'] : $_SERVER['_']);
 
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.fieldFunction.php');
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.event.php');
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.project.php');
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.contact.php');
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.training.php');
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.service.php');
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.toolportraiteto.php');
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.tool.php');
-require_once(dirname(PATH_thisScript).'/../typo3conf/ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.university.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.fieldFunction.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.event.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.project.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.contact.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.training.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.service.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.toolportraiteto.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.tool.php');
+require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.university.php');
 
-
+    // Include configuration file:
+    require(dirname(PATH_thisScript).'/conf.php');
+    
     // Include init file:
-    require_once(dirname(PATH_thisScript).'/'.'init.php');
+    require_once(dirname(PATH_thisScript).'/'.$BACK_PATH.'init.php');
 
     # HERE you run your application!
     GLOBAL $BE_USER;
@@ -108,7 +111,6 @@ class importEtoFeed{
 			'hs-contacts' => '##SUB##',
 		);
 		
-	
 		foreach($xmlObj->children() as $key => $child) {
 			$name = $child->getName();
 			$castName = $objectList[$name];
@@ -571,8 +573,9 @@ class importEtoFeed{
         */
         function setFeedData(){
 
-                $this->xml = simplexml_load_file($this->feedUrl,null, LIBXML_NOCDATA);
-                
+                $this->xml = simplexml_load_file($this->feedUrl, 'SimpleXMLElement', LIBXML_NOCDATA);
+                echo $this->feedUrl."\n";
+                print_r($this->xml);
 
         }
         
@@ -580,7 +583,6 @@ class importEtoFeed{
         *       getFeedData: Fetch file and return simpleXML-Object
         */
         function getFeedData(){
-
 
 		return $this->xml;
 
@@ -899,5 +901,9 @@ class importEtoFeed{
 
 
 	echo "\n Import script finished! \n";
-
+	
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/import_cli.php'])    {
+    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/import_cli.php']);
+}
+	
 ?>

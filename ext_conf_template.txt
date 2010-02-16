@@ -13,7 +13,11 @@ encodingFeeds = utf-8
 # cat=basic; type=options[utf-8,iso-8859-1]; label= TYPO3 encoding: Encoding of of typo3 database
 encodingTypo3 = iso-8859-1
 
-# cat=basic; type=int; label= Löschlücke - For each sync an counting id is written to each object. If an object has a syncId lower then "actSyncId minus this option value" it will be deleted.
+# cat=basic; type=int; label= Height: The height of the Images in the contact-list
+contactImgListHeight = 100
+
+
+# cat=basic; type=int; label= LÃ¶schlÃ¼cke - For each sync an counting id is written to each object. If an object has a syncId lower then "actSyncId minus this option value" it will be deleted.
 deleteAfterSyncIdGap =
 
 # cat=basic; type=boolean; label= Force allow new options: For some options it is possible to create new ones in database.

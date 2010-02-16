@@ -1,22 +1,130 @@
 <!-- ###TEMPLATE_LIST### begin -->
+<style type="text/css">
+
+
+.trainingstitel {
+width: 90%;
+margin-left: 3px;
+margin-bottom: 5px;
+font: bold 18px arial, sans-serif;
+}
+
+.trainingsdescription {
+width: 90%;
+margin-left: 5px;
+margin-bottom: 5px;
+font: 12px arial, sans-serif;
+text-align: justify;
+}
+
+.trainingsurl {
+width: 90%;
+margin-left: 5px;
+font: 12px arial, sans-serif;
+}
+
+.trainingslocation {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingsdt {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+margin-left: 5px;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingscertificate {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingsdue {
+background-color: #d4dfeb;
+width: 30%;
+border: 1px solid white;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingscontact {
+background-color: #d4dfeb;
+border: 1px solid white;
+width: 30%;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingscategory {
+background-color: #d4dfeb;
+border: 1px solid white;
+width: 30%;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingstargetgroup {
+background-color: #d4dfeb;
+border: 1px solid white;
+margin-left: 5px;
+width: 30%;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingsprice {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingscontent {
+background-color: #d4dfeb;
+border: 1px solid white;
+width: 30%;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingshr {
+border: none;
+margin-top: 10px;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+} 
+
+</style>
+
 <div id="eto-listelement">
 
-	<h3>###SUMMARY###</h3>
-
-	Description: ###DESCRIPTION### <br/>
-	Location: ###LOCATION### <br/>
-	Url: ###URL### <br/>
-	DTSTART: ###DTSTART### <br/>
-	DTEND: ###DTEND### <br />
-	Anmeldung bis zum ###DUE### <br/>
-	Kontakte: ###CONTACTS### <br/>
-	Zertifikat: ###CERTIFICATE### <br/>
-	Kategorie: ###CATEGORY### <br/>
-	Voll-Datum: ###DATE### <br/>
-	Zielgruppe: ###TARGETGROUP### <br/>
-	Preis: ###PRICE### <br/>
-	Inhalt: ###CONTENT### <br/>
-	Mehr: ###MORELINK###
-
+<div class="trainingstitel">###SUMMARY###</div>
+<div class="trainingsdescription">###DESCRIPTION###...###MORELINK###</div>
+<div class="trainingsurl"><b>Website:</b> ###URL###</div><br/>
+<div class="trainingsdt"><b>Beginn:</b> ###DTSTART###</div>
+<div class="trainingslocation"><b>Ort:</b> ###LOCATION###</div>
+<div class="trainingscertificate"><b>Zertifikat:</b> ###CERTIFICATE###</div>
+<div class="trainingsdt"><b>Ende:</b> ###DTEND###</div>
+<div class="trainingscategory"><b>Kategorie:</b> ###CATEGORY###</div>
+<div class="trainingsdue"><b>Anmeldung bis:</b> ###DUE###</div>
+<div class="trainingstargetgroup"><b>Zielgruppe:</b> ###TARGETGROUP###</div>
+<div class="trainingsprice"><b>Preis:</b> ###PRICE###</div>
+<div class="trainingscontent"><b>Inhalt:</b> ###CONTENT###</div><br/>
+<div class="trainingshr"></div>
 </div>
 <!-- ###TEMPLATE_LIST### end -->
+

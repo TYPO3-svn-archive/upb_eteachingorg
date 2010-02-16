@@ -43,7 +43,7 @@ class contact extends object{
 
 			required		needed to be set in feed
 			validate		feed data musst be valid against this function
-			objectFieldname		mapping between feed an object/database
+			objectFieldname		mapping between feed and object/database
 			objectFunction		function to transform feed data into database date
 						for ex. date musst be transformed to timestamp
 			
@@ -145,10 +145,10 @@ class contact extends object{
                                 
                                 
                                 'academic-degree' => array(
-                                	'update'	=> false,
-					'insert'	=> true,
-					'fieldFunction' => 'ImportfieldFunc_textonly',
-                                	'objectFieldname' => 'honorific_suffix',
+                                'update'	=> false,
+								'insert'	=> true,
+								'fieldFunction' => 'ImportfieldFunc_textonly',
+                                'objectFieldname' => 'honorific_suffix',
                                 ),
 				'given-name' => array(
                                 	
@@ -592,4 +592,9 @@ class contact extends object{
 
 
 }
+	
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.contact.php'])    {
+    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/lib/class.tx_upbeteachingorg.contact.php']);
+}
+
 ?>

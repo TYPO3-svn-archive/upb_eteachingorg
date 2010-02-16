@@ -1,22 +1,104 @@
 <!-- ###TEMPLATE_LIST### begin -->
+<style type="text/css">
+
+.projecttitle {
+margin-left: 5px;
+margin-bottom: 5px;
+float: left;
+width: 90%;
+font: bold 18px arial, sans-serif;
+}
+
+.projectsummary {
+margin-left: 5px;
+text-align: justify;
+float: left;
+width: 90%;
+font: 12px arial, sans-serif;
+}
+
+.projecttags {
+margin-left: 5px;
+float: left;
+width: 90%;
+font: 12px arial, sans-serif;
+}
+
+.projectdtstart {
+margin-left: 5px;
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projectdtend {
+margin-left: 5px;
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projectstate {
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projectcontacts {
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projecturl {
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projectcategory {
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+margin-bottom: 10px;
+}
+
+.projecthr {
+border: none;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+} 
+</style>
+
 <div id="eto-listelement">
-
-	<h3>###TITLE###</h3>
-
-	Summary: ###SUMMARY### <br/>
-	Tags: ###TAGS###  <br/>
-	Description: ###DESCRIPTION### <br/>
-	Recourcce: ###RESOURCE### <br/>
-	Type: ###TYPE### <br/>
-	State: ###STATE### <br/>
-	DTEND: ###DTEND### <br />
-	Partners: ###PARTNERS### <br />
-	Kontakte: ###CONTACTS### <br/>
-	Department: ###DEPARTMENT### <br/>
-	Url: ###URL### <br/>	
-	Kategorie: ###CATEGORY### <br/>
-
-	Mehr: ###MORELINK###
+<div class="projecttitle">###TITLE###</div>
+<div class="projectsummary">###SUMMARY###...###MORELINK###<br /></div>
+<div class="projecttags"><b>Tags:</b> ###TAGS###</div>
+<div class="projectdtstart"><b>Projektstart:</b> ###DTSTART###</div>
+<div class="projectstate"><b>Status:</b> ###STATE###</div>
+<div class="projectcontacts"><b>Kontakt:</b> ###CONTACTS###</div>
+<div class="projectdtend"><b>Projektende:</b> ###DTEND###</div>
+<div class="projecturl"><b>Url:</b> ###URL###</div>	
+<div class="projectcategory"><b>Kategorie:</b> ###CATEGORY###</div>
+<div class="projecthr"></div>
 
 </div>
+
+
 <!-- ###TEMPLATE_LIST### end -->

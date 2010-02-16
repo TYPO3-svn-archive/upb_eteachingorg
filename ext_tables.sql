@@ -58,7 +58,7 @@ CREATE TABLE tx_upbeteachingorg_university (
 	elearningurl tinytext,
 	newsfeedurl tinytext,
 	contacts int(11) DEFAULT '0' NOT NULL,
-        tools int(11) DEFAULT '0' NOT NULL,
+       tools int(11) DEFAULT '0' NOT NULL,
 	toolportraits int(11) DEFAULT '0' NOT NULL,
 	syncid int(11) DEFAULT '0' NOT NULL,	
 	PRIMARY KEY (uid),

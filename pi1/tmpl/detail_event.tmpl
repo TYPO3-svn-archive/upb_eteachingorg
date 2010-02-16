@@ -1,15 +1,75 @@
 <!-- ###TEMPLATE_LIST### begin -->
+<style type="text/css">
+
+.eventsummary {
+margin-left: 3px;
+margin-bottom: 5px;
+font: bold 18px arial, sans-serif;
+width: 90%;
+}
+
+.eventdescription {
+margin-left: 5px;
+margin-bottom: 5px;
+font: 12px arial, sans-serif;
+width: 90%;
+text-align: justify;
+}
+
+.eventdtstart {
+margin-left: 5px;
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+}
+
+.eventlocation {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+}
+
+.eventurl {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+}
+
+.eventdtend {
+margin-left: 5px;
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+}
+
+.eventhr {
+border: none;
+margin-top: 5px;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+} 
+
+</style>
+
 <div id="eto-listelement">
-
-	<h3>###SUMMARY###</h3>
-
-	Description: ###DESCRIPTION### <br/>
-	Location: ###LOCATION### <br/>
-	Url: ###URL### <br/>
-	DtStart: ###DTSTART### <br/>
-	DTEND: ###DTEND### <br />
-	Full Date: ###DATE### <br/>
-
-
+<div class="eventsummary">###SUMMARY###</div>
+<div class="eventdescription">###DESCRIPTION###</div>
+<div class="eventdtstart"><b>Beginn:</b> ###DTSTART###</div>
+<div class="eventlocation"><b>Ort:</b> ###LOCATION###</div>
+<div class="eventurl"><b>Url:</b> ###URL###</div>
+<div class="eventdtend"><b>Ende:</b> ###DTEND###</div>
+<div class="eventhr"></div>
 </div>
 <!-- ###TEMPLATE_LIST### end -->

@@ -1,18 +1,79 @@
 <!-- ###TEMPLATE_LIST### begin -->
+<style type="text/css">
+
+.contactname {
+margin-top: 5px;
+font: 16px arial, sans-serif;
+}
+
+.contactimage {
+display: block;
+overflow: hidden;
+float: left;
+border: 1px solid black;
+margin-top: 3px;
+margin-bottom: 10px;
+margin-right: 5px;
+}
+
+.contactrole {
+font: italic 14px arial, sans-serif;
+margin-bottom: 2px;
+}
+
+.contactemail {
+margin-bottom: 2px;
+font: 12px arial, sans-serif;
+}
+
+.contactphone {
+margin-bottom: 2px;
+font: 12px arial, sans-serif;
+}
+
+.contacttools {
+float: left;
+width: 20%;
+margin-bottom: 2px;
+font: 12px arial, sans-serif;
+}
+
+.contacttoolportraits {
+margin-bottom: 2px;
+font: 12px arial, sans-serif;
+}
+
+.contacturl {
+margin-bottom: 2px;
+font: 12px arial, sans-serif;
+}
+
+.floatstop {
+clear:both;
+}
+
+.contacthr {
+border: none;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+}
+
+</style>
 <div id="eto-listelement">
 
-	<h3>###HONORIFIC_SUFFIX### ###GIVENNAME### ###FAMILYNAME###</h3>
-
-        Email: ###EMAIL### <br/>
-        Telefon: ###PHONE###  <br/>
-        Web: ###URL### <br/>
-        Rolle: ###ROLE### <br/>
-
-        Image: ###PHOTOURL### <br/>
-
-        Tools: ###TOOLS### <br/>
-        Toolportraits: ###PORTRAITS### <br/>
-
-
+<div class="contactimage">###PHOTOURL###</div>
+<div class="contactname"><b>###HONORIFIC_SUFFIX### ###GIVENNAME### ###FAMILYNAME###</b></div>
+<div class="contactrole">###ROLE###</div>
+<div class="contactphone"><b>Telefon:</b> ###PHONE### </div>
+<div class="contactemail"><b>E-Mail:</b> ###EMAIL### </div>
+<div class="contacturl"><b>Web: ###URL### </div><br />
+<div class="contacttools"><b>Werkzeuge:</b> ###TOOLS### </div>
+<div class="contacttoolportraits"><b>Werkzeugsteckbriefe:</b> ###PORTRAITS### </div>
 </div>
+
+
 <!-- ###TEMPLATE_LIST### end -->
