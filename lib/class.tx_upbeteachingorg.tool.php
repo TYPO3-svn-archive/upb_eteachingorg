@@ -527,17 +527,12 @@ class tool extends object {
 	}
 
 	public function getObjectOptionList() {
-
 		return $this->staticOptions;
-
 	}
 
 
 	public function getData() {
-
 		return $this->data;
-
-
 	}
 
 	public function getObjectTable() {
@@ -548,30 +543,20 @@ class tool extends object {
 	public function updateMMOptionsData($fields_values) {
 
 		$where = " objectid = '".$this->data['objectid']."'";
-
 		$debug = $GLOBALS['TYPO3_DB']->UPDATEquery($this->objectTable,$where,$fields_values);
 		$GLOBALS['TYPO3_DB']->exec_UPDATEquery($this->objectTable,$where,$fields_values);
-
 		if($GLOBALS['TYPO3_DB']->sql_error()) {
-
 			throw new Exception('Database Query Error in UpdateMMOptionsData',203);
-
 		}
 
 		foreach($fields_values as $field => $value) {
 			$this->data[$field] = $value;
 		}
-
 	}
-
 
 	public function setRealations() {
-
 		// Alle DB Operationen um die Beziehungen zwischen den Objekten korrekt zu speichern / mm und co
-
 	}
-
-
 
 }
 

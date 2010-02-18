@@ -395,15 +395,8 @@ class university extends object {
 
 	}
 
-
-//		$this->objects = array('event','training','contact','service','project','tool','toolportrait');
-
-
 	public function writeCode() {
-
 		//	return $this->getXMLCode();
-
-
 	}
 
 
@@ -467,10 +460,7 @@ class university extends object {
 	}
 
 	public function getData() {
-
 		return $this->data;
-
-
 	}
 
 
@@ -480,9 +470,6 @@ class university extends object {
 
 
 	public function setRealations() {
-
-		// Alle DB Operationen um die Beziehungen zwischen den Objekten korrekt zu speichern / mm und co
-
 	}
 
 }

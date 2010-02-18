@@ -397,58 +397,16 @@ class event extends object {
 
 	}
 
-
-
-
-
-	/*
-        protected function loadByUuid($uuid){
-
-		$select_fields = '*';
-                $from_table = $this->objectTable;
-                $objectId = $GLOBALS['TYPO3_DB']->fullQuoteStr($uuid,$from_table);
-                $where_clause = " objectid = $objectId AND deleted != 1 AND hidden != 1";
-                $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
-                $debug = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
-                t3lib_div::debug($debug, "DEBUG QUERY");
-
-
-                $count = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
-
-
-		if($count == 1){
-			$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
-			$this->data = $row;
-		}elseif($count > 1){
-			throw new Exception('Object with dublicated UUid in Database',200);
-		}elseif($count == 0){
-			throw new Exception('No object with this uuid in database',100);
-		}
-
-
-
-        }
-
-	*/
-
 	public function getData() {
-
 		return $this->data;
-
-
 	}
 
 	public function getFieldValue($field) {
-
-
 		return $this->data[$field];
-
 	}
 
 	public function getObjectOptionList() {
-
 		return $this->staticOptions;
-
 	}
 
 	public function getObjectTable() {
@@ -457,11 +415,8 @@ class event extends object {
 
 
 	public function setRealations() {
-
 		// Alle DB Operationen um die Beziehungen zwischen den Objekten korrekt zu speichern / mm und co
-
 	}
-
 
 }
 

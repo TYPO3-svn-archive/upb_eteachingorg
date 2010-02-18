@@ -241,17 +241,12 @@ class toolportrait extends object {
 	}
 
 	public function getObjectOptionList() {
-
 		return $this->staticOptions;
-
 	}
 
 
 	public function getData() {
-
 		return $this->data;
-
-
 	}
 
 	public function getObjectTable() {
@@ -262,11 +257,6 @@ class toolportrait extends object {
 	public function setData($fields_values,$mode) {
 		GLOBAL $BE_USER;
 
-
-//		print_r("SET DATA ALL");
-
-//		print_r($this);
-
 		if($mode == 'insert') {
 			//Insert
 			$debug = $GLOBALS['TYPO3_DB']->INSERTquery($this->objectTable,$fields_values['fields']);
@@ -276,17 +266,6 @@ class toolportrait extends object {
 
 			$debug = $GLOBALS['TYPO3_DB']->sql_error();
 
-//			echo "DEBUG ERROR MYSQL";
-//			print_r($debug);
-//			echo "END ERROR MYSQL INSERT";
-
-
-//			$this->writeMMOptions('insert');
-
-			//$this->loadByUuid($fields_values['objectid']);
-
-
-
 		}else {
 			//Update
 			echo "setData-Func";
@@ -294,55 +273,28 @@ class toolportrait extends object {
 			$where = " objectid = '".$this->data['objectid']."'";
 			$debug = $GLOBALS['TYPO3_DB']->UPDATEquery($this->objectTable,$where,$fields_values['fields']);
 			$GLOBALS['TYPO3_DB']->exec_UPDATEquery($this->objectTable,$where,$fields_values['fields']);
-
-//			print_r($debug);
-
-//			$debug = $GLOBALS['TYPO3_DB']->sql_error();
-
-			//                       echo "DEBUG ERROR UPDATE MYSQL";
-			//                     print_r($debug);
-			//                   echo "END ERROR MYSQL UPDATE";
-
-
-
-//			echo $debug;
-
-//			$this->writeMMOptions('update');
-
-
 		}
-
-
-
 	}
 
 	public function updateMMOptionsData($fields_values) {
 
 		$where = " objectid = '".$this->data['objectid']."'";
-
 		$debug = $GLOBALS['TYPO3_DB']->UPDATEquery($this->objectTable,$where,$fields_values);
 		$GLOBALS['TYPO3_DB']->exec_UPDATEquery($this->objectTable,$where,$fields_values);
 
 		if($GLOBALS['TYPO3_DB']->sql_error()) {
-
 			throw new Exception('Database Query Error in UpdateMMOptionsData',203);
-
 		}
 
 		foreach($fields_values as $field => $value) {
 			$this->data[$field] = $value;
 		}
-
 	}
 
 
 	public function setRealations() {
-
 		// Alle DB Operationen um die Beziehungen zwischen den Objekten korrekt zu speichern / mm und co
-
 	}
-
-
 
 }
 

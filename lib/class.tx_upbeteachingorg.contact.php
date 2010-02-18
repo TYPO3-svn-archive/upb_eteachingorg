@@ -419,129 +419,6 @@ class contact extends object {
 		return $this->objectTable;
 	}
 
-
-
-
-	/*
-	private function writeMMOptions($mode){
-
-		echo "writeMMOptions";
-
-		if($mode == 'insert')
-			$mode = 'insert';
-		elseif($mode == 'update')
-			$mode = 'update';
-		else
-			$mode = '';
-
-		if ($mode == '')
-			return false;
-
-		$tmpConf = $this->getCalculatedConf("mm_option",true,$mode);
-		$data = $this->getData();
-
-
-		foreach($tmpConf as $key => $conf){
-
-			echo "DATA IN PROJECT MM OPTIONS";
-			print_r($data);
-
-
-
-
-		}
-
-
-
-	}
-
-
-	private function getCalculatedConf($option,$optionValue,$modus){
-
-
-		if($modus == 'insert')
-			$conf = $this->fields['insert'];
-		elseif($modus == 'update')
-			$conf = $this->fields['update'];
-
-		$array = array();
-
-		if($option == 'mm_option')
-			$optionSetting = 'mm_option';
-
-		foreach($conf as $key => $field){
-
-			if($field[$optionSetting] == $optionValue)
-			$array[$key] = $field;
-
-		}
-
-		echo "CALCULATED CONF";
-		print_r($array);
-
-		return $array;
-
-	}
-
-	*/
-
-
-	/*
-
-		Input jedes Feld einzeln und damit wiederholend aufgerufen? Nein.
-
-		WO DIE INTELIGENZ HINLEGEN? IN DIE OBJECTE ODER DEN IMPORTER?
-	 * IMPORTER MUSS IMMER F?R ALLE IMPLEMENTIEREN.
-
-		$project->allMMOptionsAvailable();
-
-			f?r alle mmOptions
-				f?r alle Daten der mmOption
-
-		function allMMOptionsAvailable($mmOptionsDataArray){
-
-			$tmpConf = $this->getCalculatedConf("mmOptions");
-			$returnValue = true;
-
-			foreach(tmpConf as $xmlField => $fieldconf){
-
-				if($fieldconf['required'] == true){
-					//Query if option is aivailable
-
-						
-
-					//if is multioption accept one as ok
-
-					//all options available
-				}else{
-					if($extConf['ignoreFailureImportingNotNeededOptions'] == 1){
-						//true
-					}else{
-						//
-					}
-				}
-
-			}
-
-		}
-
-		function setData(){
-
-			if(allMMOptionsAvailable()){
-
-				$objectDBUid = $this->writeObjectToDB();
-				writeOptions($objectDBUid);
-				updateObjectForCounts($objectDBUid);
-
-
-			}
-
-
-		}
-		
-
-	*/
-
 	public function updateMMOptionsData($fields_values) {
 
 		$where = " objectid = '".$this->data['objectid']."'";
@@ -550,9 +427,7 @@ class contact extends object {
 		$GLOBALS['TYPO3_DB']->exec_UPDATEquery($this->objectTable,$where,$fields_values);
 
 		if($GLOBALS['TYPO3_DB']->sql_error()) {
-
 			throw new Exception('Database Query Error in UpdateMMOptionsData',203);
-
 		}
 
 		foreach($fields_values as $field => $value) {
@@ -563,12 +438,8 @@ class contact extends object {
 
 
 	public function setRealations() {
-
 		// Alle DB Operationen um die Beziehungen zwischen den Objekten korrekt zu speichern / mm und co
-
 	}
-
-
 
 }
 

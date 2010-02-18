@@ -496,24 +496,15 @@ class university {
 
 	}
 
-
 	public function university() {
-
-
 		$this->getData();
-
-
-//		$this->objects = array('event','training','contact','service','project','tool','toolportrait');
 		$this->objects = array('event','project');
 
 	}
 
 
 	public function writeCode() {
-
 		return $this->getXMLCode();
-
-
 	}
 
 	function getObjectCode($objectname) {
@@ -547,24 +538,19 @@ class university {
 		if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) >= 1) {
 			while($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
 
-//				 t3lib_div::debug($data,"DATA IN UNI");
+//			 t3lib_div::debug($data,"DATA IN UNI");
 
 				$oId = $data['objectid'];
 
 				$object = new $objectname('uuid',$oId);
 
-//				t3lib_div::debug($object,"OBJ IN GETOBJ CODE");
-
+//			t3lib_div::debug($object,"OBJ IN GETOBJ CODE");
 
 				$object->setProcessMode('loadxml',$objectTemplate);
 				$object->processFields();
-
-//				t3lib_div::debug($object,"OBJ IN GETOBJ CODE 2");
-
-
+//			t3lib_div::debug($object,"OBJ IN GETOBJ CODE 2");
 
 				$markerArray = $object->getMarkerArray();
-//        print_r($markerArray);
 
 				$objXMLCode = t3lib_parsehtml::getSubpart($objectTemplate, "###TEMPLATE_LIST###");
 				$code = t3lib_parsehtml::substituteMarkerArray($objXMLCode,$markerArray,'',0);
@@ -576,10 +562,7 @@ class university {
 
 			}
 
-//			t3lib_div::debug($content,"CONTENT");
-
 			return $content;
-
 		}
 
 	}
@@ -587,7 +570,6 @@ class university {
 	function getXMLCode() {
 
 		t3lib_div::debug($this->data,"THIS DASTE");
-
 
 		$content = '<?xml version="1.0" encoding="ISO-8859-1"?>'."\n\r";
 		$content .= '<!DOCTYPE eteaching-content-syndication SYSTEM "eteaching-org.dtd">'."\n\r";
@@ -597,25 +579,13 @@ class university {
 		$content .= '   <university-info><![CDATA['.$this->data['info'].']]></university-info>'."\n\r";
 		$content .= '   <university-news><![CDATA['.$this->data['news'].']]></university-news>'."\n\r";
 
-
-//		foreach($this->objects as $key => $objectname){
-//			$content .= $this->getObjectCode($objectname);
-
 		$content .= $this->getObjectCode('project');
 
-//		}
-//		$content = '123';	
-
-//		t3lib_div::debug($content,"CONTENT in GET XML CODE");
-
 		return $content;
-
-
 	}
 
 
 	protected function getData() {
-
 		//TODO
 
 		$uid = 1;
@@ -641,11 +611,7 @@ class university {
 		}elseif($count == 0) {
 			throw new Exception('No object with this uid in database',100);
 		}
-
-
-
 	}
-
 
 }
 
