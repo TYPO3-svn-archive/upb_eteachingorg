@@ -21,14 +21,14 @@ require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.toolportrai
 require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.tool.php');
 require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.university.php');
 
-    // Include configuration file:
-    require(dirname(PATH_thisScript).'/conf.php');
-    
-    // Include init file:
-    require_once(dirname(PATH_thisScript).'/'.$BACK_PATH.'init.php');
+	// Include configuration file:
+	require(dirname(PATH_thisScript).'/conf.php');
+	
+	// Include init file:
+	require_once(dirname(PATH_thisScript).'/'.$BACK_PATH.'init.php');
 
-    # HERE you run your application!
-    GLOBAL $BE_USER;
+	# HERE you run your application!
+	GLOBAL $BE_USER;
 
 
 /*
@@ -45,20 +45,20 @@ class importEtoFeed{
 
 
 
-        function importEtoFeed($feedUrl,$conf,$syncId){
+		function importEtoFeed($feedUrl,$conf,$syncId){
 
-                $this->feedUrl = $feedUrl;
-             	$this->pid = intval($conf['etoPid']);
-		$this->ownPid = intval($conf['ownPid']);
-		$this->syncId = intval($syncId);
-		$this->conf = $conf;
-                $this->setFeedData();
-                $data = $this->getFeedData();
-                $objectlist = array('project','event');
-                $this->writeObjects($data->{eteaching-export});
-                $this->writeRelations($data->{eteaching-export});
+			$this->feedUrl = $feedUrl;
+			$this->pid = intval($conf['etoPid']);
+			$this->ownPid = intval($conf['ownPid']);
+			$this->syncId = intval($syncId);
+			$this->conf = $conf;
+			$this->setFeedData();
+			$data = $this->getFeedData();
+			$objectlist = array('project','event');
+			$this->writeObjects($data->{eteaching-export});
+			$this->writeRelations($data->{eteaching-export});
 
-        }
+		}
 
 	function getLoglevel(){
 
@@ -103,7 +103,7 @@ class importEtoFeed{
 			'event' => 'event',
 			'training' => 'training',
 			'service' => 'service',
- 			'tool' => 'tool',
+			'tool' => 'tool',
 			'tool-portrait' => 'toolportraiteto',
 			'contact' => 'contact',
 			'university-data' => 'university',
@@ -165,7 +165,7 @@ class importEtoFeed{
 				}catch(Exception $ex){
 					
 					$msg = 'Inserting '.$objectSourceType.' object '.$castName.' with objectid '.$objectId;
-                                        $this->writeLog($msg,1);
+										$this->writeLog($msg,1);
 					$object->setData($object->processedImportData,'insert');
 					$this->writeMMOptions($object);
 									
@@ -173,13 +173,13 @@ class importEtoFeed{
 				}
 		
 				if($name != 'contact')
-    				$this->writeObjects($child,$depth+1);
+					$this->writeObjects($child,$depth+1);
 			}else{
 				
 				// echo "$name NOT IN LIST";
 				
 			}
-  		}
+		}
 	}
 	
 	/*
@@ -202,39 +202,29 @@ class importEtoFeed{
 		);
 
 		if($xmlObj->attributes()->uid !=''){
-		echo "Write Relations for ".$xmlObj->getName()." with Id ".$xmlObj->attributes()->uid."\n";
-
+			echo "Write Relations for ".$xmlObj->getName()." with Id ".$xmlObj->attributes()->uid."\n";
 
 			$curObjName = $xmlObj->getName();
-                        $curObjCastName = $objectList[$curObjName];
+			$curObjCastName = $objectList[$curObjName];
 
-                        echo "Cu OBJ NAME $curObjName - Cast: $curObjCastName";
-                        $curObj = new $curObjCastName('new','',0,1);
-                        $curObjId = (string)$xmlObj->attributes()->uid;
+			echo "Cu OBJ NAME $curObjName - Cast: $curObjCastName";
+			$curObj = new $curObjCastName('new','',0,1);
+			$curObjId = (string)$xmlObj->attributes()->uid;
 
-                        echo "CU OBJ VAL:: ".$curObjId.' - Castname:: '.$curObjCastName.' -';
+			echo "CU OBJ VAL:: ".$curObjId.' - Castname:: '.$curObjCastName.' -';
 
-                        $curObj->loadByUuid($curObjId);
+			$curObj->loadByUuid($curObjId);
 	
 			$curObjUid = $curObj->getFieldValue('uid');
 
-			foreach((array)$curObj->fields['mmData'] as $key => $fieldConf){
-
+			foreach((array)$curObj->fields['mmData'] as $key => $fieldConf) {
 				// only clear Relations if mmTable is set and important: dont delete object MMOptions relations - only clear mmObject relations
-				if($fieldConf['mmTable'] != '' && $fieldConf['mm_object']){
-
+				if($fieldConf['mmTable'] != '' && $fieldConf['mm_object']) {
 					echo "CLEAR $key in ".$xmlObj->getName()." Table -> ".$fieldConf['mmTable'];
-
 					$this->clearRelations($curObjUid,$fieldConf['mmTable']);
 				}
-
 			}
-
 		}
-
-
-
-
 		
 		
 		foreach($xmlObj->children() as $key => $child) {
@@ -249,40 +239,40 @@ class importEtoFeed{
 
 			
 					
-                                        // print_r((string)$child);
+										// print_r((string)$child);
 
 
 					/*
 
 					Working but missing import object for toolportrait
 
-                                        $objChild = new toolportraiteto('new','',0,1);
-                                        $value = (string)$child;
-                                        $objChild->loadByUuid($value);
+										$objChild = new toolportraiteto('new','',0,1);
+										$value = (string)$child;
+										$objChild->loadByUuid($value);
 
-                                        $objName = $parent->getName();
-                                        $objCastName = $objectList[$objName];
+										$objName = $parent->getName();
+										$objCastName = $objectList[$objName];
 
-                                        echo "2 OBJ NAME $objName - Cast: $objCastName";
+										echo "2 OBJ NAME $objName - Cast: $objCastName";
 
-                                        $obj = new $objCastName('new','',0,1);
-                                        $valueObj = (string)$parent->attributes()->uid;
+										$obj = new $objCastName('new','',0,1);
+										$valueObj = (string)$parent->attributes()->uid;
 
-                                        echo "2 OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
+										echo "2 OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
 
-                                        $obj->loadByUuid($valueObj);
+										$obj->loadByUuid($valueObj);
 
 
-                                        echo "2 UIIIDS";
-                                        echo $objChild->getFieldValue('uid')."\n";
-                                        echo $obj->getFieldValue('uid');
-                                        echo "2 KKKSKK";
+										echo "2 UIIIDS";
+										echo $objChild->getFieldValue('uid')."\n";
+										echo $obj->getFieldValue('uid');
+										echo "2 KKKSKK";
 
-                                        $mmTable = $obj->fields['mmData'][$childName]['mmTable'];
+										$mmTable = $obj->fields['mmData'][$childName]['mmTable'];
 
-                                      echo "MM TABLE $mmTable";
+									echo "MM TABLE $mmTable";
 
-                                        $this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
+										$this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
 
 					*/
 
@@ -301,11 +291,11 @@ class importEtoFeed{
 					echo "OBJ NAME $objName - Cast: $objCastName";
 
 					$obj = new $objCastName('new','',0,1);
-	                                $valueObj = (string)$xmlObj->attributes()->uid;
+									$valueObj = (string)$xmlObj->attributes()->uid;
 	
 					echo "OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
 
-	                                $obj->loadByUuid($valueObj);
+									$obj->loadByUuid($valueObj);
 
 
 					echo "UIIIDS";
@@ -330,66 +320,63 @@ class importEtoFeed{
 
 			if($child->getName() == 'tool-id'){
 
-                                if($xmlObj->getName() == 'hs-tools'){
+				if($xmlObj->getName() == 'hs-tools'){
+
+					// print_r((string)$child);
 
 
+					$objChild = new tool('new','',0,1);
+					$value = (string)$child;
+					$objChild->loadByUuid($value);
 
-                                        // print_r((string)$child);
+					$objName = $parent->getName();
+					$objCastName = $objectList[$objName];
 
+					echo "2ToolId OBJ NAME $objName - Cast: $objCastName";
 
-                                        $objChild = new tool('new','',0,1);
-                                        $value = (string)$child;
-                                        $objChild->loadByUuid($value);
+					$obj = new university('new','',0,1);
+					$valueObj = $parent->attributes()->uid;
 
-                                        $objName = $parent->getName();
-                                        $objCastName = $objectList[$objName];
+					echo "2ToolId OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
 
-                                        echo "2ToolId OBJ NAME $objName - Cast: $objCastName";
-
-                                        $obj = new university('new','',0,1);
-                                        $valueObj = $parent->attributes()->uid;
-
-                                        echo "2ToolId OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
-
-                                        $obj->loadByUuid($valueObj);
+					$obj->loadByUuid($valueObj);
 
 					$mmTable = 'tx_upbeteachingorg_university_tools_mm';
 
-                                        $this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
+					$this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
+
+
+				}else{
+
+					// print_r((string)$child);
+
+					$objChild = new tool('new','',0,1);
+					$value = (string)$child;
+					$objChild->loadByUuid($value);
+
+					$objName = $xmlObj->getName();
+					$objCastName = $objectList[$objName];
+
+					echo "OBJ NAME $objName - Cast: $objCastName";
+
+					$obj = new $objCastName('new','',0,1);
+					$valueObj = (string)$xmlObj->attributes()->uid;
+
+					echo "OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
+
+					$obj->loadByUuid($valueObj);
+
+					$mmTable = $obj->fields['mmData'][$childName]['mmTable'];
+
+					$this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
 
 
 
-                                }else{
+					// print_r($obj);
 
-                                        // print_r((string)$child);
+				}
 
-                                        $objChild = new tool('new','',0,1);
-                                        $value = (string)$child;
-                                        $objChild->loadByUuid($value);
-
-                                        $objName = $xmlObj->getName();
-                                        $objCastName = $objectList[$objName];
-
-                                        echo "OBJ NAME $objName - Cast: $objCastName";
-
-                                        $obj = new $objCastName('new','',0,1);
-                                        $valueObj = (string)$xmlObj->attributes()->uid;
-
-                                        echo "OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
-
-                                        $obj->loadByUuid($valueObj);
-
-                                        $mmTable = $obj->fields['mmData'][$childName]['mmTable'];
-
-                                        $this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
-
-
-
-                                        // print_r($obj);
-
-                                }
-
-                        }
+			}
 
 
 			if($child->getName() == 'contact'){
@@ -403,36 +390,34 @@ class importEtoFeed{
 					echo "CONTACT TO UNIVERSITY";
 
 					$objChild = new contact('new','',0,1);
-                                        $value = (string)$child->attributes()->uid;
-                                        $objChild->loadByUuid($value);
+					$value = (string)$child->attributes()->uid;
+					$objChild->loadByUuid($value);
 
-                                        $objName = $xmlObj->getName();
+					$objName = $xmlObj->getName();
 
-                                        echo "OBJ NAME $objName - Cast UNIVER";
+					echo "OBJ NAME $objName - Cast UNIVER";
 
-                                        $obj = new university('new','',0,1);
+					$obj = new university('new','',0,1);
 
-                                        // print_r($parent);
+					// print_r($parent);
 
-                                        $valueObj = $parent->attributes()->uid;
+					$valueObj = $parent->attributes()->uid;
 
-                                        echo "OBJ VAL:: ".$valueObj.' - Castname UniversityD -';
+					echo "OBJ VAL:: ".$valueObj.' - Castname UniversityD -';
 
-                                        $obj->loadByUuid($valueObj);
-
-
-                                        echo "UIIIDS";
-                                        echo "CHILD CONTACT ".$objChild->getFieldValue('uid')."\n";
-                                        echo "UNI ".$obj->getFieldValue('uid');
-                                        echo "KKKSKK";
-
-                                        $mmTable = 'tx_upbeteachingorg_university_contacts_mm';
-
-                                        echo "MM TABLE $mmTable";
-
-                                        $this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
+					$obj->loadByUuid($valueObj);
 
 
+					echo "UIIIDS";
+					echo "CHILD CONTACT ".$objChild->getFieldValue('uid')."\n";
+					echo "UNI ".$obj->getFieldValue('uid');
+					echo "KKKSKK";
+
+					$mmTable = 'tx_upbeteachingorg_university_contacts_mm';
+
+					echo "MM TABLE $mmTable";
+
+					$this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
 
 				}else{
 
@@ -441,25 +426,25 @@ class importEtoFeed{
 					echo "CONTACT TO PARENT NORMAL OBJ";
 
 					$objChild = new contact('new','',0,1);
-                                        $value = (string)$child->attributes()->uid;
-                                        $objChild->loadByUuid($value);
+					$value = (string)$child->attributes()->uid;
+					$objChild->loadByUuid($value);
 
-                                        $objName = $xmlObj->getName();
-                                        $objCastName = $objectList[$objName];
+					$objName = $xmlObj->getName();
+					$objCastName = $objectList[$objName];
 
-                                        echo "OBJ NAME $objName - Cast: $objCastName";
+					echo "OBJ NAME $objName - Cast: $objCastName";
 
-                                        $obj = new $objCastName('new','',0,1);
+					$obj = new $objCastName('new','',0,1);
 
-                                        $valueObj = $xmlObj->attributes()->uid;
+					$valueObj = $xmlObj->attributes()->uid;
 
-                                        echo "OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
+					echo "OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
 
-                                        $obj->loadByUuid($valueObj);
+					$obj->loadByUuid($valueObj);
 
-                                        $mmTable = $obj->fields['mmData'][$childName]['mmTable'];
+					$mmTable = $obj->fields['mmData'][$childName]['mmTable'];
 
-                                        $this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
+					$this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
 
 				}
 
@@ -483,7 +468,7 @@ class importEtoFeed{
 			}
 
 
-  		}
+		}
 	}	
 	
 	
@@ -497,9 +482,6 @@ class importEtoFeed{
 		if(is_array($conf))
 		foreach($conf as $key => $fieldconf){
 		
-
-			
-	
 			if($importConf[$key]['multi']){
 				
 				$object->removeAllObjectMMOptionEntriesFromDB($key);
@@ -507,9 +489,7 @@ class importEtoFeed{
 				$options = $object->getImportFieldValue($object->getInternalFieldname($key));
 				foreach((array)$options as $optionKey => $optionname)
 
-	
-					// echo "KEY $key and OPT $optionname";					
-
+					// echo "KEY $key and OPT $optionname";
 					$object->addMMOption($key,$optionname);
 				
 			}		
@@ -517,10 +497,10 @@ class importEtoFeed{
 	}
 	
 	/**
-	 * 
-	 *  Transforms the XML-Obj data into object data
-	 * 
-	 */
+	* 
+	*  Transforms the XML-Obj data into object data
+	* 
+	*/
 	function getObjectData($xmlObj,$conf){
 		
 		$returnArr = array();
@@ -568,46 +548,46 @@ class importEtoFeed{
 	
 	
 	/**
-        *       getFeedData: Fetch file and return simpleXML-Object
-        */
-        function setFeedData(){
+		*       getFeedData: Fetch file and return simpleXML-Object
+		*/
+		function setFeedData(){
 
-                $this->xml = simplexml_load_file($this->feedUrl, 'SimpleXMLElement', LIBXML_NOCDATA);
-                echo $this->feedUrl."\n";
-                print_r($this->xml);
+				$this->xml = simplexml_load_file($this->feedUrl, 'SimpleXMLElement', LIBXML_NOCDATA);
+				echo $this->feedUrl."\n";
+				print_r($this->xml);
 
-        }
-        
+		}
+		
 	/**
-        *       getFeedData: Fetch file and return simpleXML-Object
-        */
-        function getFeedData(){
+		*       getFeedData: Fetch file and return simpleXML-Object
+		*/
+		function getFeedData(){
 
 		return $this->xml;
 
 
-        }
+		}
 
-        function writeRelation($localUid,$foreignUid,$mmTable){
-        	
-        	$fieldArray = array();
+		function writeRelation($localUid,$foreignUid,$mmTable){
+			
+			$fieldArray = array();
 		$fieldArray['uid_local'] = $localUid; 
 		$fieldArray['uid_foreign'] = $foreignUid;
 		$GLOBALS['TYPO3_DB']->exec_INSERTquery($mmTable,$fieldArray);
-        	
-        }
-        
-        function clearRelations($localUid,$mmTable){
-        	
-        	if(intval($localUid) != 0){
+			
+		}
+		
+		function clearRelations($localUid,$mmTable){
+			
+			if(intval($localUid) != 0){
 			$where = " uid_local = $localUid ";
 			$GLOBALS['TYPO3_DB']->exec_DELETEquery($mmTable,$where);
 			//$debug = $GLOBALS['TYPO3_DB']->DELETEquery($table,$where);
 			//t3lib_div::debug($debug,"DEBUG REMOVE ALL BY RELATION");
 		}
-        	
-        	
-        }
+			
+			
+		}
 
 	function writeConfOption($optionName,$type,$value){
 
@@ -618,9 +598,9 @@ class importEtoFeed{
 			$fieldname = 'confvalueString';
 		}
 
-                $fieldArray = array();
+				$fieldArray = array();
 		$fieldArray['confname'] = $optionName;
-                $fieldArray[$fieldname] = $value;
+				$fieldArray[$fieldname] = $value;
 
 		$from_table = 'tx_upbeteachingorg_conf';
 
@@ -630,60 +610,53 @@ class importEtoFeed{
 			$optionNameQuoted = $GLOBALS['TYPO3_DB']->fullQuoteStr($optionName,$from_table);
 		
 			$where = ' confname = '.$optionNameQuoted;
-                        // $debug = $GLOBALS['TYPO3_DB']->UPDATEquery($from_table,$where,$fieldArray);
-                        $GLOBALS['TYPO3_DB']->exec_UPDATEquery($from_table,$where,$fieldArray);
+						// $debug = $GLOBALS['TYPO3_DB']->UPDATEquery($from_table,$where,$fieldArray);
+						$GLOBALS['TYPO3_DB']->exec_UPDATEquery($from_table,$where,$fieldArray);
 
 		}else{
 
-                	$GLOBALS['TYPO3_DB']->exec_INSERTquery($from_table,$fieldArray);
+					$GLOBALS['TYPO3_DB']->exec_INSERTquery($from_table,$fieldArray);
 			// $debug = $GLOBALS['TYPO3_DB']->INSERTquery($from_table,$fieldArray);
 
 		}
 
-        }
+		}
 
 
 	public function getConfOption($optionName){
 
-                $select_fields = '*';
-                $from_table = 'tx_upbeteachingorg_conf';
-                $optionNameQuoted = $GLOBALS['TYPO3_DB']->fullQuoteStr($optionName,$from_table);
-                $where_clause = " confname = $optionNameQuoted";
-                $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
-	   	// $debug = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
-                $count = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
+		$select_fields = '*';
+		$from_table = 'tx_upbeteachingorg_conf';
+		$optionNameQuoted = $GLOBALS['TYPO3_DB']->fullQuoteStr($optionName,$from_table);
+		$where_clause = " confname = $optionNameQuoted";
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+		// $debug = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+		$count = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 
 
-                if($count == 1){
-
-                        $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+		if($count == 1){
+			$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 
 			if(intval($row['confvalueInt']) == 0){
-                        	$value = $row['confvalueString'];
-	                }else{
-        	                $value = $row['confvalueInt'];
-                	}
+				$value = $row['confvalueString'];
+			}else{
+				$value = $row['confvalueInt'];
+			}
 
-                        return $value;
-                }else{
+			return $value;
+		}else{
 			return false;
 		}
+	}
 
-        }
-
-
-	
-        
 
 	function isOwnObject($objectId){
-
 		$tmp = explode('__',$objectId);
 		if($tmp[0] == $this->conf['ownDataETOUid']){
 			return true;
 		}else{	
 			return false;
 		}
-
 	}
 
 
@@ -694,38 +667,29 @@ class importEtoFeed{
 		$sync = $currentSyncId - intval($conf['deleteAfterSyncIdGap']);
 
 		$objectList = array(
-
-                        'project' => 'project',
-                        'event' => 'event',
-                        'training' => 'training',
-                        'service' => 'service',
-                        'tool' => 'tool',
-                        'tool-portrait' => 'toolportraiteto',
-                        'contact' => 'contact',
-
-
-
-                );
-
+			'project' => 'project',
+			'event' => 'event',
+			'training' => 'training',
+			'service' => 'service',
+			'tool' => 'tool',
+			'tool-portrait' => 'toolportraiteto',
+			'contact' => 'contact',
+		);
 
 		foreach($objectList as $key => $objname){
 
 			$obj = new $objname();
 			$table = $obj->objectTable;
 
-
 			$fieldArray = array();
-        	        $fieldArray['deleted'] = 1;
+			$fieldArray['deleted'] = 1;
 
-                        $where = ' syncid < '.$sync.' AND pid = '.$etoPid;
-                        //$debug = $GLOBALS['TYPO3_DB']->UPDATEquery($table,$where,$fieldArray);
+			$where = ' syncid < '.$sync.' AND pid = '.$etoPid;
+			//$debug = $GLOBALS['TYPO3_DB']->UPDATEquery($table,$where,$fieldArray);
 
-                       $GLOBALS['TYPO3_DB']->exec_UPDATEquery($table,$where,$fieldArray);
+			$GLOBALS['TYPO3_DB']->exec_UPDATEquery($table,$where,$fieldArray);
 
 		}
-
-
-
 
 
 	}
@@ -734,18 +698,14 @@ class importEtoFeed{
 	function getListOfDeletedObjectUids($conf){
 
 		$objectList = array(
-
-                        'project' => 'project',
-                        'event' => 'event',
-                        'training' => 'training',
-                        'service' => 'service',
-                        'tool' => 'tool',
-                        'tool-portrait' => 'toolportraiteto',
-                        'contact' => 'contact',
-
-
-
-                );
+			'project' => 'project',
+			'event' => 'event',
+			'training' => 'training',
+			'service' => 'service',
+			'tool' => 'tool',
+			'tool-portrait' => 'toolportraiteto',
+			'contact' => 'contact',
+		);
 
 		$etoPid = intval($conf['etoPid']);
 	
@@ -757,15 +717,13 @@ class importEtoFeed{
 			$table = $obj->objectTable;
 
 			$select_fields = 'uid';
-	                $where_clause = " deleted = 1 AND pid = ".$etoPid;;
-        	        $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$table,$where_clause,$groupBy='',$orderBy='',$limit='');
-                	//$debug = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$table,$where_clause,$groupBy='',$orderBy='',$limit='');
+			$where_clause = " deleted = 1 AND pid = ".$etoPid;;
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$table,$where_clause,$groupBy='',$orderBy='',$limit='');
+			//$debug = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$table,$where_clause,$groupBy='',$orderBy='',$limit='');
 			$returnArray[$objectName] = array();
 
-	                while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)){
-
+			while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)){
 				importEtoFeed::deleteRelationsOfObject($row['uid'],$obj);
-
 			}
 
 		}
@@ -789,7 +747,7 @@ class importEtoFeed{
 				$table = $fieldconf['mmTable'];
 
 				$where_clause = " uid_local = ".$uid;;
-                        	// $debug = $GLOBALS['TYPO3_DB']->DELETEquery($table,$where_clause);
+				// $debug = $GLOBALS['TYPO3_DB']->DELETEquery($table,$where_clause);
 
 				$GLOBALS['TYPO3_DB']->exec_DELETEquery($table,$where_clause);
 
@@ -802,69 +760,51 @@ class importEtoFeed{
 
 	function realyDeleteObjects($conf){
 
-                $etoPid = intval($conf['etoPid']);
+		$etoPid = intval($conf['etoPid']);
 
-                $objectList = array(
-
-                        'project' => 'project',
-                        'event' => 'event',
-                        'training' => 'training',
-                        'service' => 'service',
-                        'tool' => 'tool',
-                        'tool-portrait' => 'toolportraiteto',
-                        'contact' => 'contact',
-
+		$objectList = array(
+			'project' => 'project',
+			'event' => 'event',
+			'training' => 'training',
+			'service' => 'service',
+			'tool' => 'tool',
+			'tool-portrait' => 'toolportraiteto',						'contact' => 'contact',
+		);
 
 
-                );
+		foreach($objectList as $key => $objname){
 
+			$obj = new $objname();
+			$table = $obj->objectTable;
 
-                foreach($objectList as $key => $objname){
-
-                        $obj = new $objname();
-                        $table = $obj->objectTable;
-
-                        $where = ' deleted = 1 AND pid = '.$etoPid;
-                        // $debug = $GLOBALS['TYPO3_DB']->DELETEquery($table,$where);
+			$where = ' deleted = 1 AND pid = '.$etoPid;
+			// $debug = $GLOBALS['TYPO3_DB']->DELETEquery($table,$where);
 
 			$GLOBALS['TYPO3_DB']->exec_DELETEquery($table,$where);
+		}
+		
+	}
 
+		public function getUidByUuid($uuid,$from_table){
 
-                }
+			$select_fields = '*';
 
+			$objectId = $GLOBALS['TYPO3_DB']->fullQuoteStr($uuid,$from_table);
+			$where_clause = " objectid = $objectId AND deleted != 1 AND hidden != 1";
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+			//$debug = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+			$count = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 
-
-
-
-        }
-                
-        
-        
-        
-        
-
-        public function getUidByUuid($uuid,$from_table){
-
-                $select_fields = '*';
-
-                $objectId = $GLOBALS['TYPO3_DB']->fullQuoteStr($uuid,$from_table);
-                $where_clause = " objectid = $objectId AND deleted != 1 AND hidden != 1";
-                $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
-                //$debug = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
-                $count = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
-
-                if($count == 1){
-                        $row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
-                        return $row['uid'];
-                }elseif($count > 1){
-                        throw new Exception('Duplicate Option',201);
-                }elseif($count == 0){
-                        return 0;
-                }
-
-        }
-
-
+			if($count == 1){
+				$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+				return $row['uid'];
+			}elseif($count > 1){
+				throw new Exception('Duplicate Option',201);
+			}elseif($count == 0){
+				return 0;
+			}
+			
+		}
 
 
 }
@@ -895,14 +835,14 @@ class importEtoFeed{
 	importEtoFeed::getListOfDeletedObjectUids($etoConf);
 
 	echo "\n";
-        echo "\n Speicherverbrauch: : \n";
-        print_r(memory_get_usage())." Bytes";
+	echo "\n Speicherverbrauch: : \n";
+	print_r(memory_get_usage())." Bytes";
 
 
 	echo "\n Import script finished! \n";
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/import_cli.php'])    {
-    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/import_cli.php']);
+	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/import_cli.php']);
 }
 
 ?>

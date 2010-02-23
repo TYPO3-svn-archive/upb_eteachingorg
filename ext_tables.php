@@ -4,14 +4,14 @@ if (!defined ('TYPO3_MODE')) {
 }
 $TCA['tx_upbeteachingorg_university'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university',		
-		'label'     => 'name',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university',
+		'label'     => 'name',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -21,14 +21,14 @@ $TCA['tx_upbeteachingorg_university'] = array (
 
 $TCA['tx_upbeteachingorg_contact'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact',		
-		'label'     => 'familyname',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact',
+		'label'     => 'familyname',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -38,14 +38,14 @@ $TCA['tx_upbeteachingorg_contact'] = array (
 
 $TCA['tx_upbeteachingorg_training'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training',		
-		'label'     => 'summary',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training',
+		'label'     => 'summary',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -55,14 +55,14 @@ $TCA['tx_upbeteachingorg_training'] = array (
 
 $TCA['tx_upbeteachingorg_event'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event',		
-		'label'     => 'summary',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event',
+		'label'     => 'summary',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -72,14 +72,14 @@ $TCA['tx_upbeteachingorg_event'] = array (
 
 $TCA['tx_upbeteachingorg_tool'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool',		
-		'label'     => 'title',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool',
+		'label'     => 'title',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -89,14 +89,14 @@ $TCA['tx_upbeteachingorg_tool'] = array (
 
 $TCA['tx_upbeteachingorg_toolcategories'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolcategories',		
-		'label'     => 'title',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolcategories',
+		'label'     => 'title',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -106,14 +106,14 @@ $TCA['tx_upbeteachingorg_toolcategories'] = array (
 
 $TCA['tx_upbeteachingorg_servicecategory'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_servicecategory',		
-		'label'     => 'title',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_servicecategory',
+		'label'     => 'title',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -123,14 +123,14 @@ $TCA['tx_upbeteachingorg_servicecategory'] = array (
 
 $TCA['tx_upbeteachingorg_service'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service',		
-		'label'     => 'summary',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service',
+		'label'     => 'summary',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -140,14 +140,14 @@ $TCA['tx_upbeteachingorg_service'] = array (
 
 $TCA['tx_upbeteachingorg_project'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project',		
-		'label'     => 'title',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project',
+		'label'     => 'title',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -157,14 +157,14 @@ $TCA['tx_upbeteachingorg_project'] = array (
 
 $TCA['tx_upbeteachingorg_projectdepartment'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_projectdepartment',		
-		'label'     => 'title',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_projectdepartment',
+		'label'     => 'title',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -174,14 +174,14 @@ $TCA['tx_upbeteachingorg_projectdepartment'] = array (
 
 $TCA['tx_upbeteachingorg_projectpartner'] = array (
 	'ctrl' => array (
-		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_projectpartner',		
-		'label'     => 'title',	
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_projectpartner',
+		'label'     => 'title',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'default_sortby' => 'ORDER BY crdate',	
-		'delete' => 'deleted',	
-		'enablecolumns' => array (		
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -190,54 +190,54 @@ $TCA['tx_upbeteachingorg_projectpartner'] = array (
 );
 
 $TCA['tx_upbeteachingorg_role'] = array (
-        'ctrl' => array (
-                'title'     => 'Rolle fuer Kontakt',
-                'label'     => 'title',
-                'tstamp'    => 'tstamp',
-                'crdate'    => 'crdate',
-                'cruser_id' => 'cruser_id',
-                'default_sortby' => 'ORDER BY crdate',
-                'delete' => 'deleted',
-                'enablecolumns' => array (
-                        'disabled' => 'hidden',
-                ),
-                'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-                'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_role.gif',
-        ),
+	'ctrl' => array (
+		'title'     => 'Rolle fuer Kontakt',
+		'label'     => 'title',
+		'tstamp'    => 'tstamp',
+		'crdate'    => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array (
+			'disabled' => 'hidden',
+		),
+		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_role.gif',
+	),
 );
 
 $TCA['tx_upbeteachingorg_toolportraiteto'] = array (
-        'ctrl' => array (
-                'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto',
-                'label'     => 'title',
-                'tstamp'    => 'tstamp',
-                'crdate'    => 'crdate',
-                'cruser_id' => 'cruser_id',
-                'default_sortby' => 'ORDER BY crdate',
-                'delete' => 'deleted',
-                'enablecolumns' => array ( 
-                        'disabled' => 'hidden',
-                ),
-                'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-                'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_toolportraiteto.gif',
-        ),
+	'ctrl' => array (
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto',
+		'label'     => 'title',
+		'tstamp'    => 'tstamp',
+		'crdate'    => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array ( 
+			'disabled' => 'hidden',
+		),
+		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_toolportraiteto.gif',
+	),
 );
 
 $TCA['tx_upbeteachingorg_toolportrait'] = array (
-        'ctrl' => array (
-                'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportrait',
-                'label'     => 'portrait_id',
-                'tstamp'    => 'tstamp',
-                'crdate'    => 'crdate',
-                'cruser_id' => 'cruser_id',
-                'default_sortby' => 'ORDER BY crdate',
-                'delete' => 'deleted',
-                'enablecolumns' => array ( 
-                        'disabled' => 'hidden',
-                ),
-                'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-                'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_toolportrait.gif',
-        ),
+	'ctrl' => array (
+		'title'     => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportrait',
+		'label'     => 'portrait_id',
+		'tstamp'    => 'tstamp',
+		'crdate'    => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'default_sortby' => 'ORDER BY crdate',
+		'delete' => 'deleted',
+		'enablecolumns' => array ( 
+			'disabled' => 'hidden',
+		),
+		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_toolportrait.gif',
+	),
 );
 
 
@@ -248,9 +248,9 @@ $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pi1']='la
 
 
 t3lib_extMgm::addPlugin(array(
-    'LLL:EXT:upb_eteachingorg/locallang_db.xml:tt_content.list_type_pi1',
-    $_EXTKEY . '_pi1',
-    t3lib_extMgm::extRelPath($_EXTKEY) . 'ext_icon.gif'
+'LLL:EXT:upb_eteachingorg/locallang_db.xml:tt_content.list_type_pi1',
+$_EXTKEY . '_pi1',
+t3lib_extMgm::extRelPath($_EXTKEY) . 'ext_icon.gif'
 ),'list_type');
 
 

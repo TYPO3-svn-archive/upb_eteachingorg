@@ -29,7 +29,7 @@ class contact extends object {
 
 		/*
 			here we care about what is in the values_array. For example the objectid
-		 	is required for a new event-object but not allowed to be updated
+			is required for a new event-object but not allowed to be updated
 
 			required			needed to be set in feed
 			validate			feed data musst be valid against this function
@@ -198,18 +198,18 @@ class contact extends object {
 								'allowNewElements'      => true,
 						),
 				/*                                'tool-id' => array(
-                                        'required' => false,
-                                        'validate' => 'isETODate',
-                                        'objectFieldname' => 'tools',
-                                        'objectFunction' => 'XMLfieldFunc_writeObjectLight',
-                                ),
-                                'tool-portrait-id' => array(
-                                        'required' => false,
-                                        'validate' => 'isETODate',
-                                        'objectFieldname' => 'portrait',
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'tools',
+					'objectFunction' => 'XMLfieldFunc_writeObjectLight',
+				),
+				'tool-portrait-id' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'portrait',
 					'valueField' => 'objectid',
-                                        'objectFunction' => 'XMLfieldFunc_writeMMOption',
-                                ), */
+					'objectFunction' => 'XMLfieldFunc_writeMMOption',
+				), */
 
 
 
