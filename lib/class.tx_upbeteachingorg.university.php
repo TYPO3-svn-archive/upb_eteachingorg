@@ -8,14 +8,10 @@ require_once('class.tx_upbeteachingorg.contact.php');
 /**
  * Object Project
  *
- *
- *
  * @author      Heiko Noethen <noethen@uni-paderborn.de>
  * @package     tx_upbeteachingorg
  * @subpackage  lib
  */
-
-
 class university extends object {
 
 
@@ -395,18 +391,22 @@ class university extends object {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function writeCode() {
 		//	return $this->getXMLCode();
 	}
 
 
 	/**
-	 *	Creates the XML code for one object type for all existing entries
+	 * Creates the XML code for one object type for all existing entries
 	 *
-	 *	@param object $obj
-	 *	@param string $fieldname
-	 *	@return string
-	 *
+	 * @param	object		$obj
+	 * @param	string		$fieldname
+	 * @return	string
 	 */
 	function getObjectCode($obj,$fieldname) {
 
@@ -459,16 +459,29 @@ class university extends object {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getData() {
 		return $this->data;
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getObjectOptionList() {
 
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function setRealations() {
 	}
 

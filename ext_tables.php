@@ -215,7 +215,7 @@ $TCA['tx_upbeteachingorg_toolportraiteto'] = array (
 		'cruser_id' => 'cruser_id',
 		'default_sortby' => 'ORDER BY crdate',
 		'delete' => 'deleted',
-		'enablecolumns' => array ( 
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
@@ -232,7 +232,7 @@ $TCA['tx_upbeteachingorg_toolportrait'] = array (
 		'cruser_id' => 'cruser_id',
 		'default_sortby' => 'ORDER BY crdate',
 		'delete' => 'deleted',
-		'enablecolumns' => array ( 
+		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',

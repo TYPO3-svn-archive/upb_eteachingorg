@@ -8,14 +8,10 @@ require_once('class.tx_upbeteachingorg.contact.php');
 /**
  * Object Service
  *
- *
- *
  * @author      Heiko Noethen <noethen@uni-paderborn.de>
  * @package     tx_upbeteachingorg
  * @subpackage  lib
  */
-
-
 class service extends object {
 
 
@@ -46,7 +42,7 @@ class service extends object {
 			objectFieldname		mapping between feed an object/database
 			objectFunction		function to transform feed data into database date
 						for ex. date musst be transformed to timestamp
-			
+
 
 			objectfield		field not in feed
 						all required: needs to be set
@@ -389,19 +385,39 @@ class service extends object {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getObjectOptionList() {
 		return $this->staticOptions;
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getData() {
 		return $this->data;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getObjectTable() {
 		return $this->objectTable;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$fields_values: ...
+	 * @return	[type]		...
+	 */
 	public function updateMMOptionsData($fields_values) {
 		$where = " objectid = '".$this->data['objectid']."'";
 		$debug = $GLOBALS['TYPO3_DB']->UPDATEquery($this->objectTable,$where,$fields_values);

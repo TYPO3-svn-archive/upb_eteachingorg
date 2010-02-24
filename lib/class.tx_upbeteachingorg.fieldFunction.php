@@ -8,8 +8,6 @@
  * @package     tx_upbeteachingorg
  * @subpackage  lib
  */
-
-
 class fieldFunction {
 
 
@@ -26,6 +24,13 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_textonly($obj,$fieldname){
 
 		$extConf = $obj->extConf;
@@ -36,7 +41,13 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeUid($obj,$fieldname){
 
 
@@ -49,8 +60,13 @@ class fieldFunction {
 
         }
 
-
-        
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function ImportfieldFunc_textonly($obj,$fieldname){
 
 
@@ -87,15 +103,22 @@ class fieldFunction {
 			return iconv($encodingFeed,$encodingTypo3, $obj->getImportFieldValue($obj->getInternalFieldname($fieldname)) );
 
 		}else{
-	
+
 			return $obj->getImportFieldValue($obj->getInternalFieldname($fieldname));
 
 		}
 
 //		return utf8_decode($obj->getImportFieldValue($obj->getInternalFieldname($fieldname)));
 
-        }        
-        
+        }
+
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function ImportfieldFunc_setValue($obj,$fieldname){
 
 
@@ -106,25 +129,46 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
         function ImportfieldFunc_convertETODateToTimestamp($obj,$fieldname){
 
         	$conf = $obj->fields['import'][$fieldname];
-        	$internalFieldname = ($conf['objectFieldname']) ? $conf['objectFieldname'] : $fieldname; 
+        	$internalFieldname = ($conf['objectFieldname']) ? $conf['objectFieldname'] : $fieldname;
         	$date = date_parse($obj->getImportFieldValue($internalFieldname));
                 $timestamp = mktime($date['hour'],$date['minute'],$date['second'],$date['month'],$date['day'], $date['year']);
 
                 return $timestamp;
         }
-        
+
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
         function ImportfieldFunc_simpleOption($obj,$fieldname){
-        	
-        	$conf = $obj->fields['import'][$fieldname];        	
+
+        	$conf = $obj->fields['import'][$fieldname];
         	$value = $obj->getImportFieldValue($obj->getInternalFieldname($fieldname));
-        	
-        	return $conf['options'][$value];        	
-        	
+
+        	return $conf['options'][$value];
+
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function ImportfieldFunc_simpleOptionMulti($obj,$fieldname){
 
                 $conf = $obj->fields['import'][$fieldname];
@@ -137,7 +181,7 @@ class fieldFunction {
 		foreach((array)$selectedOptions as $key => $option){
 
 			$return .= $options[$option].',';
-			
+
 		}
 		$return = substr($return, 0, -1); // remove last char
 
@@ -146,28 +190,48 @@ class fieldFunction {
 
         }
 
-        
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function ImportfieldFunc_countMMOption($obj,$fieldname){
-        	
-        	$conf = $obj->fields['import'][$fieldname];        	
+
+        	$conf = $obj->fields['import'][$fieldname];
         	$value = $obj->getImportFieldValue($obj->getInternalFieldname($fieldname));
-        	
+
         	if(is_array($value)){
-        		return count($value);        		
+        		return count($value);
         	}else
         		return 0;
-        	
+
         }
-        
+
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	public function ImportfieldFunc_getETOPid($obj,$fieldname){
 
 		//own/eto-pid Is set by importCli in $obj
-		
+
                 return $obj->pid;
 
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	public function ImportfieldFunc_getSyncId($obj,$fieldname){
 
                 // syncId is set by importCli in $obj
@@ -177,6 +241,13 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeDate($obj,$fieldname){
 
                 $timestamp = $obj->getFieldValue($obj->getInternalFieldname($fieldname));
@@ -189,6 +260,13 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeDate($obj,$fieldname){
 
                 $timestamp = $obj->getFieldValue($obj->getInternalFieldname($fieldname));
@@ -201,6 +279,13 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeExtendedDate($obj,$fieldname){
 
 		$conf = $obj->fields['load'][$fieldname];
@@ -226,28 +311,41 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeLink($obj,$fieldname){
 
 		$url = $obj->getFieldValue($obj->getInternalFieldname($fieldname));
 
 		if ((substr($url,0,7) === 'http://') || (substr($url,0,8) === 'https://'))
 			return '<a href="'.$url.'">'.$obj->getFieldValue($fieldname).'</a>';
-		elseif($url != '') 
+		elseif($url != '')
 	                return '<a href="http://'.$url.'">http://'.$url.'</a>';
 		else
 			return '';
 
 
         }
-     
+
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeImage($obj,$fieldname){
 
 		$url = $obj->getFieldValue($obj->getInternalFieldname($fieldname));
 
 		if ((substr($url,0,7) === 'http://') || (substr($url,0,8) === 'https://'))
 			return '<img src="'.$url.'" style="height: 100px;" />';
-		elseif($url != '') 
+		elseif($url != '')
 	                return '<img src="http://'.$url.'" style="height: 100px;" />';
 		else
 			return '';
@@ -255,6 +353,13 @@ class fieldFunction {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
         function XMLfieldFunc_writeLink($obj,$fieldname){
 
 		$url = $obj->getFieldValue($obj->getInternalFieldname($fieldname));
@@ -266,7 +371,13 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeMail($obj,$fieldname){
 
                 return $obj->getFieldValue($obj->getInternalFieldname($fieldname));
@@ -274,8 +385,13 @@ class fieldFunction {
 
         }
 
-
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeProjectState($obj,$fieldname){
 
                 switch ($obj->getFieldValue($obj->getInternalFieldname($fieldname))){
@@ -300,7 +416,13 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeOption($obj,$fieldname){
 
                 $selectedArr = explode(',',$obj->getFieldValue($obj->getInternalFieldname($fieldname)));
@@ -309,10 +431,10 @@ class fieldFunction {
 
 
 		$conf = fieldFunction::getFieldConf($obj,$fieldname);
-		
+
 //		t3lib_div::debug($conf,"CONF IN FIELD WRITE OPT");
 
-                $categories = $conf['options']; 
+                $categories = $conf['options'];
                 $count = count($selectedArr);
 
                 for($i=0; $i < $count; $i++){
@@ -327,6 +449,13 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeSimpleOption($obj,$fieldname){
 
                 $conf = fieldFunction::getFieldConf($obj,$fieldname);
@@ -342,12 +471,19 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeOption($obj,$fieldname){
 
 		$conf = fieldFunction::getFieldConf($obj,$fieldname);
                 $template =  $obj->getTemplate();
 		$fieldnameUpper = strtoupper($fieldname);
-		
+
 
 //              t3lib_div::debug($template," WRITE MM OPT N XML FUNC PRO CAT - FIRST");
 
@@ -363,7 +499,7 @@ class fieldFunction {
 //              t3lib_div::debug($code,"CODE IN XML FUNC PRO CAT");
 
                 $content = '';
-		
+
 
                 $selectedArr = explode(',',$obj->getFieldValue($obj->getInternalFieldname($fieldname)));
 
@@ -391,6 +527,13 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeMMOption($obj,$fieldname){
 
 		$conf = fieldFunction::getFieldConf($obj,$fieldname);
@@ -428,7 +571,7 @@ class fieldFunction {
 		$markerName = '###'.strToUpper($fieldname).'###';
 
 		$valueField = ($conf['valueField']) ? $conf['valueField'] : 'title';
-		
+
 
                  for($i=0; $i < $count; $i++){
                          $mArray = array( $markerName => $options[$i][$valueField] );
@@ -449,7 +592,13 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function getFieldConf($obj,$fieldname){
 
 		$conf = $obj->fields[$obj->getProcessMode()][$fieldname];
@@ -458,14 +607,21 @@ class fieldFunction {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeObject($obj,$fieldname){
 
-		
+
 
 		$conf = $obj->fields[$obj->getProcessMode()][$fieldname];
-                $objectFieldname = 'loaded_'.$conf['objectFieldname']; 
+                $objectFieldname = 'loaded_'.$conf['objectFieldname'];
 
-		
+
 
                 $objects = $obj->data[$objectFieldname];
 
@@ -504,10 +660,17 @@ class fieldFunction {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeObjectLight($obj,$fieldname){
 
 		$conf = $obj->fields[$obj->getProcessMode()][$fieldname];
-		$objectFieldname = 'loadedLight_'.$conf['objectFieldname']; 
+		$objectFieldname = 'loadedLight_'.$conf['objectFieldname'];
                 $objects = $obj->data[$objectFieldname];
 
 //		t3lib_div::debug($objectFieldname,"WRITE OBJECT LIGHT");
@@ -538,10 +701,17 @@ class fieldFunction {
 
         }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_writeObjectPortraitId($obj,$fieldname){
 
 
-		
+
 
                 $conf = $obj->fields[$obj->getProcessMode()][$fieldname];
                 // $objectFieldname = 'loaded_'.$conf['objectFieldname'];
@@ -593,7 +763,13 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_getToolportraitid($obj,$fieldname){
 
 	// function gets toolportrait id from eto portrait or portrait used in university
@@ -621,6 +797,13 @@ class fieldFunction {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function XMLfieldFunc_printUniversityKey($obj,$fieldname){
 
 
@@ -630,8 +813,13 @@ class fieldFunction {
 
 	}
 
-
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeMMOption($obj,$fieldname){
 
                 $conf = fieldFunction::getFieldConf($obj,$fieldname);
@@ -672,7 +860,13 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
         function fieldFunc_writeObject($obj,$fieldname){
 
 
@@ -719,7 +913,7 @@ class fieldFunction {
 
 			if($conf['objectParams']['title']['function'] == 'concat' && is_array($conf['objectParams']['title']['fields'])){
 
-				
+
 				foreach($conf['objectParams']['title']['fields'] as $key => $value){
 
 					$title .=  $object->data[$value].' ';
@@ -729,7 +923,7 @@ class fieldFunction {
 
 
 				$title = $object->data['title'];
-	
+
 			}
 
 //			$title = $contact['honorific_suffix'].' '.$contact['givenname'].' '.$contact['familyname'];
@@ -740,7 +934,7 @@ class fieldFunction {
 
                         $content .= $link." <br/> \n\r";
 
-//			$content .= $object->data['honorific_suffix'].' '.$object->data['givenname'].' '.$object->data['familyname'];			
+//			$content .= $object->data['honorific_suffix'].' '.$object->data['givenname'].' '.$object->data['familyname'];
 
 
                 }
@@ -753,7 +947,13 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeObjectLight($obj,$fieldname){
 
                 $conf = $obj->fields[$obj->getProcessMode()][$fieldname];
@@ -789,8 +989,13 @@ class fieldFunction {
 
         }
 
-
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeMail($obj,$fieldname){
 
 		$data = $obj->getFieldValue($obj->getInternalFieldname($fieldname));
@@ -799,7 +1004,13 @@ class fieldFunction {
 
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeSimpleOption($obj,$fieldname){
 
                 $conf = fieldFunction::getFieldConf($obj,$fieldname);
@@ -814,8 +1025,14 @@ class fieldFunction {
                 return $options[$selected];
 
         }
-	
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeToolPortraitLink($obj,$fieldname){
 
                 $conf = fieldFunction::getFieldConf($obj,$fieldname);
@@ -826,7 +1043,7 @@ class fieldFunction {
                         $dataName = 'loaded_'.$conf['objectFieldname'];
                 }
 
-	
+
 
 //                $dataName = 'loaded_'.$conf['objectFieldname'];
                 $content = '';
@@ -869,7 +1086,13 @@ class fieldFunction {
 
         }
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function fieldFunc_writeMoreLink($obj,$fieldname){
 
 		$objName = get_class($obj);

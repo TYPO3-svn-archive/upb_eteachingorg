@@ -6,14 +6,10 @@ require_once('class.tx_upbeteachingorg.object.php');
 /**
  * Object Contact
  *
- *
- *
  * @author      Heiko Noethen <noethen@uni-paderborn.de>
  * @package     tx_upbeteachingorg
  * @subpackage  lib
  */
-
-
 class contact extends object {
 
 	var $objectTable = 'tx_upbeteachingorg_contact';
@@ -407,18 +403,39 @@ class contact extends object {
 		);
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getObjectOptionList() {
 		return $this->staticOptions;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getData() {
 		return $this->data;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getObjectTable() {
 		return $this->objectTable;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$fields_values: ...
+	 * @return	[type]		...
+	 */
 	public function updateMMOptionsData($fields_values) {
 
 		$where = " objectid = '".$this->data['objectid']."'";
@@ -436,7 +453,11 @@ class contact extends object {
 
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function setRealations() {
 		// Alle DB Operationen um die Beziehungen zwischen den Objekten korrekt zu speichern / mm und co
 	}

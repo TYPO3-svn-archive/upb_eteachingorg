@@ -27,8 +27,8 @@
 
 /**
  * [CLASS/FUNCTION INDEX of Script
+ *
  */
-
 class tx_upbelearningorg_tceProcessing{
 
 	function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj){
@@ -56,7 +56,11 @@ class tx_upbelearningorg_tceProcessing{
 
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	function guid(){
 		if (function_exists('com_create_guid')){
 			return com_create_guid();

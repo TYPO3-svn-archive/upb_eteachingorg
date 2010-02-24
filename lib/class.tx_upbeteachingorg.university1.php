@@ -8,14 +8,10 @@ require_once('class.tx_upbeteachingorg.contact.php');
 /**
  * Object Project
  *
- *
- *
  * @author      Heiko Noethen <noethen@uni-paderborn.de>
  * @package     tx_upbeteachingorg
  * @subpackage  lib
  */
-
-
 class university {
 
 
@@ -496,17 +492,32 @@ class university {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function university() {
 		$this->getData();
 		$this->objects = array('event','project');
 
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function writeCode() {
 		return $this->getXMLCode();
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$objectname: ...
+	 * @return	[type]		...
+	 */
 	function getObjectCode($objectname) {
 		$select_fields = "objectid";
 		$tmpObj = new $objectname();
@@ -567,6 +578,11 @@ class university {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	function getXMLCode() {
 
 		t3lib_div::debug($this->data,"THIS DASTE");
@@ -584,7 +600,11 @@ class university {
 		return $content;
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	protected function getData() {
 		//TODO
 

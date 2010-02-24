@@ -12,8 +12,6 @@ require_once('class.tx_upbeteachingorg.object.php');
  * @package     tx_upbeteachingorg
  * @subpackage  lib
  */
-
-
 class event extends object {
 
 
@@ -65,7 +63,7 @@ class event extends object {
 			objectFieldname		mapping between feed an object/database
 			objectFunction		function to transform feed data into database date
 						for ex. date musst be transformed to timestamp
-			
+
 
 			objectfield		field not in feed
 						all required: needs to be set
@@ -397,23 +395,48 @@ class event extends object {
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getData() {
 		return $this->data;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$field: ...
+	 * @return	[type]		...
+	 */
 	public function getFieldValue($field) {
 		return $this->data[$field];
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getObjectOptionList() {
 		return $this->staticOptions;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getObjectTable() {
 		return $this->objectTable;
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function setRealations() {
 		// Alle DB Operationen um die Beziehungen zwischen den Objekten korrekt zu speichern / mm und co
 	}

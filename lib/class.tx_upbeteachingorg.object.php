@@ -64,37 +64,87 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$field: ...
+	 * @return	[type]		...
+	 */
 	public function getFieldValue($field) {
 		return $this->data[$field];
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$field: ...
+	 * @return	[type]		...
+	 */
 	public function getImportFieldValue($field){
 		return $this->importData[$field];
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getConf(){
 		return $this->fields;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
     protected function initNewObject(){
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$pid: ...
+	 * @return	[type]		...
+	 */
 	public function setPid($pid){
 		$this->pid = intval($pid);
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getPid(){
 		return $this->pid;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$syncId: ...
+	 * @return	[type]		...
+	 */
 	public function setSyncId($syncId) {
 		$this->syncId = intval($syncId);
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getSyncId() {
 		return $this->syncId;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$uuid: ...
+	 * @return	[type]		...
+	 */
 	public function loadByUuid($uuid) {
 		$select_fields = '*';
 		$from_table = $this->objectTable;
@@ -115,6 +165,12 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$uid: ...
+	 * @return	[type]		...
+	 */
 	protected function loadByUid($uid) {
 		$select_fields = '*';
 		$from_table = $this->objectTable;
@@ -172,6 +228,11 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function processFields() {
 		$confType = $this->getProcessMode();
 		$conf = $this->fields[$confType];
@@ -200,6 +261,11 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getMarkerArray() {
 		$type = $this->getProcessMode();
 		switch($type) {
@@ -220,10 +286,22 @@ abstract class object{
 		return $markerArray;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getProcessMode() {
 		return $this->processMode;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$mode: ...
+	 * @param	[type]		$template: ...
+	 * @return	[type]		...
+	 */
 	public function setProcessMode($mode,$template) {
 		switch($mode) {
 			case 'loadxml':
@@ -240,10 +318,21 @@ abstract class object{
 	$this->template = $template;
 }
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	public function getTemplate(){
 		return $this->template;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	public function getInternalFieldname($fieldname) {
 		$mode = $this->getProcessMode();
 		$mappedName = $this->fields[$mode][$fieldname]['objectFieldname'];
@@ -254,6 +343,13 @@ abstract class object{
 			return $fieldname;
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function getMMOptionData($obj,$fieldname) {
 
 		$objectname = get_class($obj);
@@ -301,7 +397,13 @@ abstract class object{
 
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function getMMObjects($obj,$fieldname) {
 
 		$objectname = get_class($obj);
@@ -360,6 +462,13 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$obj: ...
+	 * @param	[type]		$fieldname: ...
+	 * @return	[type]		...
+	 */
 	function getMMObjectsLight($obj,$fieldname) {
 
 		$objectname = get_class($obj);
@@ -419,6 +528,12 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$type: ...
+	 * @return	[type]		...
+	 */
 	function getObjectTemplate($type) {
 
 		$filePath = '';
@@ -440,6 +555,12 @@ abstract class object{
 		return $cObj->fileResource($filePath);
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$piConf: ...
+	 * @return	[type]		...
+	 */
 	function getThisObjectCode($piConf) {
 		$objectname = get_class($this);
 		$select_fields = "uid";
@@ -485,6 +606,11 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	function processImportFields() {
 		$conf = $this->fields['import'];
 		$returnData = array();
@@ -507,6 +633,13 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$field: ...
+	 * @param	[type]		$value: ...
+	 * @return	[type]		...
+	 */
 	function addMMOption($field,$value) {
 		GLOBAL $BE_USER;
 
@@ -551,6 +684,12 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$field: ...
+	 * @return	[type]		...
+	 */
 	function removeAllObjectMMOptionEntriesFromDB($field) {
 
 		$conf = $this->fields['mmData'][$field];
@@ -564,6 +703,13 @@ abstract class object{
 		}
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$fields_values: ...
+	 * @param	[type]		$mode: ...
+	 * @return	[type]		...
+	 */
 	public function setData($fields_values,$mode) {
 		GLOBAL $BE_USER;
 		$objName = get_class($this);

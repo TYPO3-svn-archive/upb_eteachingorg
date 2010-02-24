@@ -23,7 +23,7 @@ require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.university.
 
 	// Include configuration file:
 	require(dirname(PATH_thisScript).'/conf.php');
-	
+
 	// Include init file:
 	require_once(dirname(PATH_thisScript).'/'.$BACK_PATH.'init.php');
 
@@ -60,6 +60,11 @@ class importEtoFeed{
 
 		}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @return	[type]		...
+	 */
 	function getLoglevel(){
 
 		switch($this->conf['cliLoglevel']){
@@ -73,7 +78,7 @@ class importEtoFeed{
 			case 'high' : $level = 3;
 				break;
 			default : $level = 1;
-			
+
 
 		}
 
@@ -81,6 +86,13 @@ class importEtoFeed{
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$msg: ...
+	 * @param	[type]		$level: ...
+	 * @return	[type]		...
+	 */
 	function writeLog($msg,$level){
 
 		$level = intval($level);
@@ -90,15 +102,19 @@ class importEtoFeed{
 
 
 	}
-	
+
 
 	/**
-	*	Writes all objects from XML given by function getObjectData as array into database. Therefore we use the setData function of each object.
-	*/        
+	 * Writes all objects from XML given by function getObjectData as array into database. Therefore we use the setData function of each object.
+	 *
+	 * @param	[type]		$xmlObj: ...
+	 * @param	[type]		$depth: ...
+	 * @return	[type]		...
+	 */
 	function writeObjects($xmlObj,$depth=0) {
-		
+
 		$objectList = array(
-		
+
 			'project' => 'project',
 			'event' => 'event',
 			'training' => 'training',
@@ -109,16 +125,16 @@ class importEtoFeed{
 			'university-data' => 'university',
 			'hs-contacts' => '##SUB##',
 		);
-		
+
 		foreach($xmlObj->children() as $key => $child) {
 			$name = $child->getName();
 			$castName = $objectList[$name];
 			if($castName == '##SUB##'){
 				$this->writeObjects($child,$depth+1);
-	
+
 			}elseif($castName != ''){
 				// echo str_repeat('-',$depth).">".$objectname.": ".$child->title." \n\r";
-				
+
 				$object = new $castName();
 				$object->setProcessMode('import','');
 				$object->setSyncId($this->syncId);
@@ -140,14 +156,14 @@ class importEtoFeed{
 					$object->setPid($this->conf['etoPid']);
 					$objectSourceType = 'eto';
 				}
-			
+
 				$object->importData = $data;
 				$object->processImportFields();
 				$objectId = $object->getImportFieldValue('objectid');
-				
+
 				$objectUid = $this->getUidByUuid($objectId,$object->objectTable);
 				// echo "OBJECT UID $objectUid \n\r";
-				
+
 				try{
 					$object->loadByUuid($objectId);
 
@@ -157,38 +173,38 @@ class importEtoFeed{
 
 					if(!$this->isOwnObject($objectId) || ($object->processedImportData['tstamp'] > $object->getFieldValue('tstamp')) ){
 						$msg = "\n".'Updating '.$objectSourceType.' object '.$castName.' with objectid '.$objectId."\n";
-						$this->writeLog($msg,1);	
+						$this->writeLog($msg,1);
 						$object->setData($object->processedImportData,'update');
 						$this->writeMMOptions($object);
 					}
-					
+
 				}catch(Exception $ex){
-					
+
 					$msg = 'Inserting '.$objectSourceType.' object '.$castName.' with objectid '.$objectId;
 										$this->writeLog($msg,1);
 					$object->setData($object->processedImportData,'insert');
 					$this->writeMMOptions($object);
-									
-					
+
+
 				}
-		
+
 				if($name != 'contact')
 					$this->writeObjects($child,$depth+1);
 			}else{
-				
+
 				// echo "$name NOT IN LIST";
-				
+
 			}
 		}
 	}
-	
+
 	/*
 	*	Writes all relations between objects. It does not handle MMOptions.
 	*/
 	function writeRelations($xmlObj,$depth=0,$parent=null,$prevParent=null) {
-		
+
 		$objectList = array(
-		
+
 			'project' => 'project',
 			'event' => 'event',
 			'training' => 'training',
@@ -197,8 +213,8 @@ class importEtoFeed{
 			'tool-portrait' => 'toolportraiteto',
 			'contact' => 'contact',
 			'university-data' => 'university',
-			
-					
+
+
 		);
 
 		if($xmlObj->attributes()->uid !=''){
@@ -214,7 +230,7 @@ class importEtoFeed{
 			echo "CU OBJ VAL:: ".$curObjId.' - Castname:: '.$curObjCastName.' -';
 
 			$curObj->loadByUuid($curObjId);
-	
+
 			$curObjUid = $curObj->getFieldValue('uid');
 
 			foreach((array)$curObj->fields['mmData'] as $key => $fieldConf) {
@@ -225,8 +241,8 @@ class importEtoFeed{
 				}
 			}
 		}
-		
-		
+
+
 		foreach($xmlObj->children() as $key => $child) {
 			$name = $xmlObj->getName();
 			$childName = $child->getName();
@@ -237,8 +253,8 @@ class importEtoFeed{
 
 				if($xmlObj->getName() == 'hs-tools'){
 
-			
-					
+
+
 										// print_r((string)$child);
 
 
@@ -283,16 +299,16 @@ class importEtoFeed{
 
 					$objChild = new toolportraiteto('new','',0,1);
 					$value = (string)$child;
-					$objChild->loadByUuid($value); 
+					$objChild->loadByUuid($value);
 
 					$objName = $xmlObj->getName();
 					$objCastName = $objectList[$objName];
-	
+
 					echo "OBJ NAME $objName - Cast: $objCastName";
 
 					$obj = new $objCastName('new','',0,1);
 									$valueObj = (string)$xmlObj->attributes()->uid;
-	
+
 					echo "OBJ VAL:: ".$valueObj.' - Castname:: '.$objCastName.' -';
 
 									$obj->loadByUuid($valueObj);
@@ -309,10 +325,10 @@ class importEtoFeed{
 
 					$this->writeRelation($obj->getFieldValue('uid'),$objChild->getFieldValue('uid'),$mmTable);
 
-						
+
 
 					// print_r($obj);
-	
+
 				}
 
 			}
@@ -469,21 +485,26 @@ class importEtoFeed{
 
 
 		}
-	}	
-	
-	
+	}
+
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$object: ...
+	 * @return	[type]		...
+	 */
 	function writeMMOptions($object){
-		
+
 		$conf = $object->fields['mmData'];
 		$importConf = $object->fields['import'];
 
 		echo $object->getFieldValue('objectid');
-		
+
 		if(is_array($conf))
 		foreach($conf as $key => $fieldconf){
-		
+
 			if($importConf[$key]['multi']){
-				
+
 				$object->removeAllObjectMMOptionEntriesFromDB($key);
 				$internalName = $object->getInternalFieldname($key);
 				$options = $object->getImportFieldValue($object->getInternalFieldname($key));
@@ -491,24 +512,26 @@ class importEtoFeed{
 
 					// echo "KEY $key and OPT $optionname";
 					$object->addMMOption($key,$optionname);
-				
-			}		
+
+			}
 		}
 	}
-	
+
 	/**
-	* 
-	*  Transforms the XML-Obj data into object data
-	* 
-	*/
+	 * Transforms the XML-Obj data into object data
+	 *
+	 * @param	[type]		$xmlObj: ...
+	 * @param	[type]		$conf: ...
+	 * @return	[type]		...
+	 */
 	function getObjectData($xmlObj,$conf){
-		
+
 		$returnArr = array();
-		
+
 		foreach($conf as $key => $fieldconf){
-			
-			$fieldname = ($fieldconf['objectFieldname'] != '') ? $fieldconf['objectFieldname'] : $key; 
-			
+
+			$fieldname = ($fieldconf['objectFieldname'] != '') ? $fieldconf['objectFieldname'] : $key;
+
 			if(!$fieldconf['relation']){
 				if(!$fieldconf['isAttribute']){
 					if(!$fieldconf['multi'])
@@ -526,30 +549,32 @@ class importEtoFeed{
 				$values = get_object_vars($xmlObj);
 				$arr = array();
 				$relationData = $values[$key];
-				
+
 				if(!is_array($relationData)){
 					$tmp = get_object_vars($values[$key]);
 					$arr[] = $tmp;
 				}else{
-				
+
 					foreach($relationData as $sub => $data){
 						$arr[] = (array)$data;
 					}
 				}
 				$returnArr[$fieldname] = $arr;
 			}
-			
-			
-		}		
+
+
+		}
 		return $returnArr;
-	
+
 	}
-	
-	
-	
+
+
+
 	/**
-		*       getFeedData: Fetch file and return simpleXML-Object
-		*/
+	 * getFeedData: Fetch file and return simpleXML-Object
+	 *
+	 * @return	[type]		...
+	 */
 		function setFeedData(){
 
 				$this->xml = simplexml_load_file($this->feedUrl, 'SimpleXMLElement', LIBXML_NOCDATA);
@@ -557,10 +582,12 @@ class importEtoFeed{
 				print_r($this->xml);
 
 		}
-		
+
 	/**
-		*       getFeedData: Fetch file and return simpleXML-Object
-		*/
+	 * getFeedData: Fetch file and return simpleXML-Object
+	 *
+	 * @return	[type]		...
+	 */
 		function getFeedData(){
 
 		return $this->xml;
@@ -568,27 +595,50 @@ class importEtoFeed{
 
 		}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$localUid: ...
+	 * @param	[type]		$foreignUid: ...
+	 * @param	[type]		$mmTable: ...
+	 * @return	[type]		...
+	 */
 		function writeRelation($localUid,$foreignUid,$mmTable){
-			
+
 			$fieldArray = array();
-		$fieldArray['uid_local'] = $localUid; 
+		$fieldArray['uid_local'] = $localUid;
 		$fieldArray['uid_foreign'] = $foreignUid;
 		$GLOBALS['TYPO3_DB']->exec_INSERTquery($mmTable,$fieldArray);
-			
+
 		}
-		
+
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$localUid: ...
+	 * @param	[type]		$mmTable: ...
+	 * @return	[type]		...
+	 */
 		function clearRelations($localUid,$mmTable){
-			
+
 			if(intval($localUid) != 0){
 			$where = " uid_local = $localUid ";
 			$GLOBALS['TYPO3_DB']->exec_DELETEquery($mmTable,$where);
 			//$debug = $GLOBALS['TYPO3_DB']->DELETEquery($table,$where);
 			//t3lib_div::debug($debug,"DEBUG REMOVE ALL BY RELATION");
 		}
-			
-			
+
+
 		}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$optionName: ...
+	 * @param	[type]		$type: ...
+	 * @param	[type]		$value: ...
+	 * @return	[type]		...
+	 */
 	function writeConfOption($optionName,$type,$value){
 
 		if($type = 'int'){
@@ -606,9 +656,9 @@ class importEtoFeed{
 
 		if(importEtoFeed::getConfOption($optionName)){
 
-			
+
 			$optionNameQuoted = $GLOBALS['TYPO3_DB']->fullQuoteStr($optionName,$from_table);
-		
+
 			$where = ' confname = '.$optionNameQuoted;
 						// $debug = $GLOBALS['TYPO3_DB']->UPDATEquery($from_table,$where,$fieldArray);
 						$GLOBALS['TYPO3_DB']->exec_UPDATEquery($from_table,$where,$fieldArray);
@@ -622,7 +672,12 @@ class importEtoFeed{
 
 		}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$optionName: ...
+	 * @return	[type]		...
+	 */
 	public function getConfOption($optionName){
 
 		$select_fields = '*';
@@ -649,17 +704,27 @@ class importEtoFeed{
 		}
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$objectId: ...
+	 * @return	[type]		...
+	 */
 	function isOwnObject($objectId){
 		$tmp = explode('__',$objectId);
 		if($tmp[0] == $this->conf['ownDataETOUid']){
 			return true;
-		}else{	
+		}else{
 			return false;
 		}
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$conf: ...
+	 * @return	[type]		...
+	 */
 	function deleteObjects($conf){
 
 		$etoPid = intval($conf['etoPid']);
@@ -694,7 +759,12 @@ class importEtoFeed{
 
 	}
 
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$conf: ...
+	 * @return	[type]		...
+	 */
 	function getListOfDeletedObjectUids($conf){
 
 		$objectList = array(
@@ -708,7 +778,7 @@ class importEtoFeed{
 		);
 
 		$etoPid = intval($conf['etoPid']);
-	
+
 		$returnArray = array();
 
 		foreach($objectList as $key => $objectName){
@@ -732,8 +802,13 @@ class importEtoFeed{
 
 	}
 
-	
-
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$uid: ...
+	 * @param	[type]		$obj: ...
+	 * @return	[type]		...
+	 */
 	function deleteRelationsOfObject($uid,$obj){
 
 
@@ -758,6 +833,12 @@ class importEtoFeed{
 
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$conf: ...
+	 * @return	[type]		...
+	 */
 	function realyDeleteObjects($conf){
 
 		$etoPid = intval($conf['etoPid']);
@@ -782,9 +863,16 @@ class importEtoFeed{
 
 			$GLOBALS['TYPO3_DB']->exec_DELETEquery($table,$where);
 		}
-		
+
 	}
 
+	/**
+	 * [Describe function...]
+	 *
+	 * @param	[type]		$uuid: ...
+	 * @param	[type]		$from_table: ...
+	 * @return	[type]		...
+	 */
 		public function getUidByUuid($uuid,$from_table){
 
 			$select_fields = '*';
@@ -803,7 +891,7 @@ class importEtoFeed{
 			}elseif($count == 0){
 				return 0;
 			}
-			
+
 		}
 
 
@@ -817,7 +905,7 @@ class importEtoFeed{
 	print_r($etoConf);
 
 	echo "Starting import";
-	
+
 	$syncId = importEtoFeed::getConfOption('syncId') + 1;
 
 	echo "SyncId: $syncId \n";
