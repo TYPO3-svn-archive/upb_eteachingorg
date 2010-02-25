@@ -109,29 +109,35 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 		}
 
 		switch($this->piConf['what_to_display']) {
-			case 'contact': $this->currentVars['object'] = 'contact';
+			case 'contact':
+				$this->currentVars['object'] = 'contact';
 				break;
-			case 'event': $this->currentVars['object'] = 'event';
+			case 'event':
+				$this->currentVars['object'] = 'event';
 				break;
-			case 'project': $this->currentVars['object'] = 'project';
+			case 'project':
+				$this->currentVars['object'] = 'project';
 				break;
-			case 'tool':  $this->currentVars['object'] = 'tool';
+			case 'tool':
+				$this->currentVars['object'] = 'tool';
 				break;
-			case 'training':  $this->currentVars['object'] = 'training';
+			case 'training':
+				$this->currentVars['object'] = 'training';
 				break;
-			case 'service':  $this->currentVars['object'] = 'service';
+			case 'service':
+				$this->currentVars['object'] = 'service';
 				break;
-			case 'university': $this->currentVars['object'] = 'university';
+			case 'university':
+				$this->currentVars['object'] = 'university';
 				break;
-			case 'toolportrait': $this->currentVars['object'] = 'toolportraiteto';
+			case 'toolportrait':
+				$this->currentVars['object'] = 'toolportraiteto';
 				break;
 			default:
 			//return '<h1>Fehler</h1><p>Keine g&uuml;ltige Display-Variable in Flexform (T3BE) &uuml;bergeben!</p>';
 		}
 
 		switch($this->currentVars['mode']) {
-
-
 			case 'list':
 				var_dump($this->piConf['what_to_display']);
 				$objectname = $this->currentVars['object'];
@@ -139,9 +145,8 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 				$content = $object->getThisObjectCode($this->piConf);
 				unset($object);
 				return $content;
-
-
 				break;
+
 			case 'detail':
 				$objectname = $this->currentVars['object'];
 				$uid = $this->piVars['uid'];
@@ -182,23 +187,16 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 
 				}
 				break;
-
 		}
 
-
 		return $content;
-
-
 	}
 
 	function debug($var,$text) {
-
 		if($this->debug) {
 			t3lib_div::debug($var,$text);
 		}
-
 	}
-
 
 }
 

@@ -44,13 +44,18 @@ class tx_upbelearningorg_tceProcessing{
 
 		}
 
-		if ($status == 'new' && $ownData && ($table == 'tx_upbeteachingorg_project' || $table == "tx_upbeteachingorg_contact" || $table == "tx_upbeteachingorg_event" || $table == "tx_upbeteachingorg_service" || $table == "tx_upbeteachingorg_tool" || $table == "tx_upbeteachingorg_training" || $table == "tx_upbeteachingorg_university" || $table == "tx_upbeteachingorg_toolportraiteto" ) ) {
-
+		if ($status == 'new'
+				&& $ownData
+				&& ($table == 'tx_upbeteachingorg_project'
+						|| $table == "tx_upbeteachingorg_contact"
+						|| $table == "tx_upbeteachingorg_event"
+						|| $table == "tx_upbeteachingorg_service"
+						|| $table == "tx_upbeteachingorg_tool"
+						|| $table == "tx_upbeteachingorg_training"
+						|| $table == "tx_upbeteachingorg_university"
+						|| $table == "tx_upbeteachingorg_toolportraiteto" ) ) {
 			$prefix = $etoConf['ownDataETOUid'];
-
 			$fieldArray['objectid'] = $prefix.'__'.$this->guid();
-
-
 		}
 
 

@@ -16,14 +16,9 @@ class tool extends object {
 	var $objectTable = 'tx_upbeteachingorg_tool';
 
 	var $displayTemplate = array(
-
-
-			'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_tool.tmpl',
+			'list'   => 'EXT:upb_eteachingorg/pi1/tmpl/list_tool.tmpl',
 			'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_tool.tmpl',
-			'xml' => 'EXT:upb_eteachingorg/pi1/tmpl/xml_tool.tmpl',
-
-
-
+			'xml'    => 'EXT:upb_eteachingorg/pi1/tmpl/xml_tool.tmpl',
 	);
 
 

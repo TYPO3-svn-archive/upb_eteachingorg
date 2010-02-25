@@ -15,7 +15,7 @@ $TCA['tx_upbeteachingorg_university'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_university.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_university.gif',
 	),
 );
 
@@ -32,7 +32,7 @@ $TCA['tx_upbeteachingorg_contact'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_contact.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_contact.gif',
 	),
 );
 
@@ -49,7 +49,7 @@ $TCA['tx_upbeteachingorg_training'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_training.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_training.gif',
 	),
 );
 
@@ -66,7 +66,7 @@ $TCA['tx_upbeteachingorg_event'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_event.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_event.gif',
 	),
 );
 
@@ -83,7 +83,7 @@ $TCA['tx_upbeteachingorg_tool'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_tool.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_tool.gif',
 	),
 );
 
@@ -100,7 +100,7 @@ $TCA['tx_upbeteachingorg_toolcategories'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_toolcategories.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_toolcategories.gif',
 	),
 );
 
@@ -117,7 +117,7 @@ $TCA['tx_upbeteachingorg_servicecategory'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_servicecategory.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_servicecategory.gif',
 	),
 );
 
@@ -134,7 +134,7 @@ $TCA['tx_upbeteachingorg_service'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_service.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_service.gif',
 	),
 );
 
@@ -151,7 +151,7 @@ $TCA['tx_upbeteachingorg_project'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_project.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_project.gif',
 	),
 );
 
@@ -168,7 +168,7 @@ $TCA['tx_upbeteachingorg_projectdepartment'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_projectdepartment.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_projectdepartment.gif',
 	),
 );
 
@@ -185,7 +185,7 @@ $TCA['tx_upbeteachingorg_projectpartner'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_projectpartner.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_projectpartner.gif',
 	),
 );
 
@@ -202,7 +202,7 @@ $TCA['tx_upbeteachingorg_role'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_role.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_role.gif',
 	),
 );
 
@@ -219,7 +219,7 @@ $TCA['tx_upbeteachingorg_toolportraiteto'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_toolportraiteto.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_toolportraiteto.gif',
 	),
 );
 
@@ -236,7 +236,7 @@ $TCA['tx_upbeteachingorg_toolportrait'] = array (
 			'disabled' => 'hidden',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'icon_tx_upbeteachingorg_toolportrait.gif',
+		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'res/icon_tx_upbeteachingorg_toolportrait.gif',
 	),
 );
 
