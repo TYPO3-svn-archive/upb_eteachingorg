@@ -60,180 +60,166 @@ class toolportrait extends object {
 
 
 		$this->staticOptions = array(
-
-				'project-state' => array(
-
-						'unbekannt' => '0',
-						'aktuell' => '1',
-						'im aufbau' => '2',
-						'nicht mehr gepflegt' => '3',
-
-				),
-				'category' => array(
-						'lernumgebung' => '0',
-						'lernmaterial' => '1',
-						'lernmaterial(-sammlung)' => '1',
-						'software' => '2',
-						'lehr-/lernszenario' => '3',
-				),
+			'project-state' => array(
+				'unbekannt' => '0',
+				'aktuell' => '1',
+				'im aufbau' => '2',
+				'nicht mehr gepflegt' => '3',
+			),
+			'category' => array(
+				'lernumgebung' => '0',
+				'lernmaterial' => '1',
+				'lernmaterial(-sammlung)' => '1',
+				'software' => '2',
+				'lehr-/lernszenario' => '3',
+			),
 		);
 
 
 		$this->fields = array(
-
-				'load' => array (
-						'title' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'summary' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'summary',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'description' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'description',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'url' => array(
-								'required' => true,
-								'validate' => 'url',
-								'objectFieldname' => 'url',
-								'objectFunction' => 'fieldFunc_writeLink',
-						),
-						'project-state' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'state',
-								'objectFunction' => 'fieldFunc_writeProjectState',
-						),
-						'dtend' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtend',
-								'objectFunction' => 'fieldFunc_writeDate',
-						),
-						'dtstart' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtstart',
-								'objectFunction' => 'fieldFunc_writeDate',
-						),
-						'project-responsibility' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'type',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'project-resources' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'resource',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'item-tags' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'tags',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'project-partner' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'partners',
-								'objectFunction' => 'pass',
-						),
-						'contact' => array(
-								'required' => false,
-								'validate' => 'isValideETOUuid',
-								'mm_option' => false,
-								'optionTable' => 'tx_upbeteachingorg_projectdepartment',
-								'mmTable' => 'tx_upbeteachingorg_project_department_mm',
-								'allowNewOptions' => false,
-								'objectFieldname' => 'department',
-								'objectFieldname' => 'contacts',
-								'objectFunction' => 'pass',
-								'execMM' => 'setMMOptionContact',
-						),
-						'category' => array(
-								'required' => false,
-								'validate' => 'isCategoryToDo',
-								'objectFieldname' => 'category',
-								'objectFunction' => 'fieldFunc_writeOption',
-								'options' => array(
-										'0' => 'Lernumgebung',
-										'1' => 'Lernmaterial(-sammlung)',
-										'2' => 'Software',
-										'3' => 'Lehr-/Lernszenario',
-								)
-						),
-						'sub-unit' => array(
-								'required' => false,
-								'validate' => 'optionValide',
-								'mm_option' => true,
-								'optionTable' => 'tx_upbeteachingorg_projectdepartment',
-								'optionTableWhereField' => 'title',
-								'mmTable' => 'tx_upbeteachingorg_project_department_mm',
-								'allowNewOptions' => true,
-								'objectFieldname' => 'department',
-								'objectFunction' => 'countOptions',
-								'execMM' => 'setMMOptionDepartment',
-						),
-
+			'load' => array (
+				'title' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFunction' => 'fieldFunc_textonly',
 				),
-				'loadxml' => array (
-						'uid' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'uid',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-
-
-						'tstamp' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => '',
-								'objectFunction' => 'XMLfieldFunc_writeDate',
-						),
-						// Ausnahme: Hier wird nicht das Object geladen sondern der Wert direkt in der Field-Func ausgelesen
-						'portrait-id' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'portrait_id',
-								'objectFunction' => 'XMLfieldFunc_getToolportraitid',
-						),
-						'contact' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'contacts',
-								'objectFunction' => 'XMLfieldFunc_writeObject',
-						),
-
+				'summary' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'summary',
+					'objectFunction' => 'fieldFunc_textonly',
 				),
-				'mmData' => array(
-
-						'contact' => array(
-								'loadDataFunction' => 'getMMObjects',
-								'loadDataParams' => '',
-								'mm_option' => true,
-								'optionTable' => ' tx_upbeteachingorg_toolportrait_contacts_mm',
-								'optionTableWhereField' => 'title',
-								'mmTable' => 'tx_upbeteachingorg_toolportrait_contacts_mm',
-								'objectFieldname' => 'contacts',
-								'castObject' => 'contact',
-						),
-
-
+				'description' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'description',
+					'objectFunction' => 'fieldFunc_textonly',
 				),
-
+				'url' => array(
+					'required' => true,
+					'validate' => 'url',
+					'objectFieldname' => 'url',
+					'objectFunction' => 'fieldFunc_writeLink',
+				),
+				'project-state' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'state',
+					'objectFunction' => 'fieldFunc_writeProjectState',
+				),
+				'dtend' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtend',
+					'objectFunction' => 'fieldFunc_writeDate',
+				),
+				'dtstart' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtstart',
+					'objectFunction' => 'fieldFunc_writeDate',
+				),
+				'project-responsibility' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'type',
+					'objectFunction' => 'fieldFunc_textonly',
+				),
+				'project-resources' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'resource',
+					'objectFunction' => 'fieldFunc_textonly',
+				),
+				'item-tags' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'tags',
+					'objectFunction' => 'fieldFunc_textonly',
+				),
+				'project-partner' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'partners',
+					'objectFunction' => 'pass',
+				),
+				'contact' => array(
+					'required' => false,
+					'validate' => 'isValideETOUuid',
+					'mm_option' => false,
+					'optionTable' => 'tx_upbeteachingorg_projectdepartment',
+					'mmTable' => 'tx_upbeteachingorg_project_department_mm',
+					'allowNewOptions' => false,
+					'objectFieldname' => 'department',
+					'objectFieldname' => 'contacts',
+					'objectFunction' => 'pass',
+					'execMM' => 'setMMOptionContact',
+				),
+				'category' => array(
+					'required' => false,
+					'validate' => 'isCategoryToDo',
+					'objectFieldname' => 'category',
+					'objectFunction' => 'fieldFunc_writeOption',
+					'options' => array(
+						'0' => 'Lernumgebung',
+						'1' => 'Lernmaterial(-sammlung)',
+						'2' => 'Software',
+						'3' => 'Lehr-/Lernszenario',
+					)
+				),
+				'sub-unit' => array(
+					'required' => false,
+					'validate' => 'optionValide',
+					'mm_option' => true,
+					'optionTable' => 'tx_upbeteachingorg_projectdepartment',
+					'optionTableWhereField' => 'title',
+					'mmTable' => 'tx_upbeteachingorg_project_department_mm',
+					'allowNewOptions' => true,
+					'objectFieldname' => 'department',
+					'objectFunction' => 'countOptions',
+					'execMM' => 'setMMOptionDepartment',
+				),
+			),
+			'loadxml' => array (
+				'uid' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'uid',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'tstamp' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => '',
+					'objectFunction' => 'XMLfieldFunc_writeDate',
+				),
+				// Ausnahme: Hier wird nicht das Object geladen sondern der Wert direkt in der Field-Func ausgelesen
+				'portrait-id' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'portrait_id',
+					'objectFunction' => 'XMLfieldFunc_getToolportraitid',
+				),
+				'contact' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'contacts',
+					'objectFunction' => 'XMLfieldFunc_writeObject',
+				),
+			),
+			'mmData' => array(
+				'contact' => array(
+					'loadDataFunction' => 'getMMObjects',
+					'loadDataParams' => '',
+					'mm_option' => true,
+					'optionTable' => ' tx_upbeteachingorg_toolportrait_contacts_mm',
+					'optionTableWhereField' => 'title',
+					'mmTable' => 'tx_upbeteachingorg_toolportrait_contacts_mm',
+					'objectFieldname' => 'contacts',
+					'castObject' => 'contact',
+				),
+			),
 		);
-
-
 	}
 
 	/**

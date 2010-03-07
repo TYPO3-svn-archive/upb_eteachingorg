@@ -16,14 +16,9 @@ class toolportraiteto extends object {
 	var $objectTable = 'tx_upbeteachingorg_toolportraiteto';
 
 	var $displayTemplate = array(
-
-
 			'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_toolportraiteto.tmpl',
 			'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_toolportraiteto.tmpl',
 			'xml' => 'EXT:upb_eteachingorg/pi1/tmpl/xml_toolportraiteto.tmpl',
-
-
-
 	);
 
 
@@ -60,377 +55,351 @@ class toolportraiteto extends object {
 
 
 		$this->staticOptions = array(
-
-				'project-state' => array(
-
-						'unbekannt' => '0',
-						'aktuell' => '1',
-						'im aufbau' => '2',
-						'nicht mehr gepflegt' => '3',
-
-				),
-				'category' => array(
-						'lernumgebung' => '0',
-						'lernmaterial' => '1',
-						'lernmaterial(-sammlung)' => '1',
-						'software' => '2',
-						'lehr-/lernszenario' => '3',
-				),
+			'project-state' => array(
+				'unbekannt' => '0',
+				'aktuell' => '1',
+				'im aufbau' => '2',
+				'nicht mehr gepflegt' => '3',
+			),
+			'category' => array(
+				'lernumgebung' => '0',
+				'lernmaterial' => '1',
+				'lernmaterial(-sammlung)' => '1',
+				'software' => '2',
+				'lehr-/lernszenario' => '3',
+			),
 		);
 
-
 		$this->fields = array(
-
-				'import' => array (
-
-						'pid' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_getETOPid',
-								'objectFieldname' => '',
-
-						),
-						'syncid' => array(
-								'update'        => false,
-								'insert'        => true,
-								'fieldFunction' => 'ImportfieldFunc_getSyncId',
-								'objectFieldname' => '',
-
-						),
-						'changed' => array(
-								'update'	=> true,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
-								'objectFieldname' => 'tstamp',
-								'isAttribute'	=> true,
-						),
-						'crdate' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
-								'objectFieldname' => 'crdate',
-						),
-						'cruser_id' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => $BE_USER->user['uid'],
-								'objectFieldname' => '',
-						),
-						'deleted' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => 0,
-								'objectFieldname' => '',
-						),
-						'hidden' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => 0,
-						),
-						'uid' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'objectid',
-								'isAttribute'	=> true,
-						),
-						'title' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'operating-field' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'operating_field',
-						),
-						'description' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'category' => array(
-								'update'        => true,
-								'insert'        => true,
-								'fieldFunction' => 'ImportfieldFunc_simpleOptionMulti',
-								'objectFieldname' => '',
-								'multi'         => true,
-								'options' => array(
-										'HTML' => 1,
-										'PDF' => 2,
-										'Bild' => 3,
-										'Audio' => 4,
-										'Video' => 5,
-										'Animation' => 6,
-										'Simulation' => 7,
-										'CBT/WBT' => 8,
-										'CMS' => 9,
-										'Synchrone Kommunikation' => 10,
-										'Asynchrone Kommunikation' => 11,
-										'Kooperation' => 12,
-										'Präsentation' => 13,
-										'LMS' => 14,
-										'Aufzeichnung' => 15,
-										'Literaturverwaltung' => 16,
-										'Macintosh' => 1,
-										'Unix / Linux' => 2,
-										'Sonstige' => 3,
-								)
-
-						),
-						'pros' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'cons' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'examples' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'format' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'producer' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'price' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'operating-system' => array(
-								'update'        => true,
-								'insert'        => true,
-								'fieldFunction' => 'ImportfieldFunc_simpleOptionMulti',
-								'objectFieldname' => 'operating_system',
-								'multi'         => true,
-								'options' => array(
-										'Windows' => 0,
-										'Macintosh' => 1,
-										'Unix / Linux' => 2,
-										'Sonstige' => 3,
-								)
-
-						),
-						'level' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'tutorials' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'references' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'reference',
-						),
-						'option' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'options',
-						),
-
-
+			'import' => array (
+				'pid' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_getETOPid',
+					'objectFieldname' => '',
 				),
-
-				'load' => array (
-
-						'title' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-
-						'operating-field' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => 'operating_field',
-						),
-						'description' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'category' => array(
-								'update'        => true,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_writeOption',
-								'objectFieldname' => '',
-								'multi'         => true,
-								'options' => array(
-										1 => 'HTML',
-										2 => 'PDF',
-										3 => 'Bild',
-										4 => 'Audio',
-										5 => 'Video',
-										6 => 'Animation',
-										7 => 'Simulation',
-										8 => 'CBT/WBT',
-										9 => 'CMS',
-										10 => 'Synchrone Kommunikation',
-										11 => 'Asynchrone Kommunikation',
-										12 => 'Kooperation',
-										13 => 'Präsentation',
-										14 => 'LMS',
-										15 => 'Aufzeichnung',
-										16 => 'Literaturverwaltung',
-								)
-
-						),
-						'pros' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'cons' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'examples' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'format' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'producer' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'price' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'operating-system' => array(
-								'update'        => true,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_writeOption',
-								'objectFieldname' => 'operating_system',
-								'multi'         => true,
-								'options' => array(
-										0 => 'Windows',
-										1 => 'Macintosh',
-										2 => 'Unix / Linux',
-										3 => 'Sonstige',
-								)
-
-						),
-						'level' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'tutorials' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'references' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => 'reference',
-						),
-						'option' => array(
-								'update'        => false,
-								'insert'        => true,
-								'objectFunction' => 'fieldFunc_textonly',
-								'objectFieldname' => 'options',
-						),
-
-
-
+				'syncid' => array(
+					'update'        => false,
+					'insert'        => true,
+					'fieldFunction' => 'ImportfieldFunc_getSyncId',
+					'objectFieldname' => '',
 				),
-				'loadxml' => array (
-						'uid' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'uid',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-
-
-						'tstamp' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => '',
-								'objectFunction' => 'XMLfieldFunc_writeDate',
-						),
-						// Ausnahme: Hier wird nicht das Object geladen sondern der Wert direkt in der Field-Func ausgelesen
-						'portrait-id' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'portrait_id',
-								'objectFunction' => 'XMLfieldFunc_getToolportraitid',
-						),
-						'contact' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'contacts',
-								'objectFunction' => 'XMLfieldFunc_writeObject',
-						),
-
+				'changed' => array(
+					'update'	=> true,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
+					'objectFieldname' => 'tstamp',
+					'isAttribute'	=> true,
 				),
-				'mmData' => array(
-
-						'contact' => array(
-								'loadDataFunction' => 'getMMObjects',
-								'loadDataParams' => '',
-								'mm_option' => true,
-								'optionTable' => ' tx_upbeteachingorg_toolportrait_contacts_mm',
-								'optionTableWhereField' => 'title',
-								'mmTable' => 'tx_upbeteachingorg_toolportrait_contacts_mm',
-								'objectFieldname' => 'contacts',
-								'castObject' => 'contact',
-						),
-
+				'crdate' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
+					'objectFieldname' => 'crdate',
 				),
-
+				'cruser_id' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => $BE_USER->user['uid'],
+					'objectFieldname' => '',
+				),
+				'deleted' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => 0,
+					'objectFieldname' => '',
+				),
+				'hidden' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => 0,
+				),
+				'uid' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'objectid',
+					'isAttribute'	=> true,
+				),
+				'title' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'operating-field' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'operating_field',
+				),
+				'description' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'category' => array(
+					'update'        => true,
+					'insert'        => true,
+					'fieldFunction' => 'ImportfieldFunc_simpleOptionMulti',
+					'objectFieldname' => '',
+					'multi'         => true,
+					'options' => array(
+						'HTML' => 1,
+						'PDF' => 2,
+						'Bild' => 3,
+						'Audio' => 4,
+						'Video' => 5,
+						'Animation' => 6,
+						'Simulation' => 7,
+						'CBT/WBT' => 8,
+						'CMS' => 9,
+						'Synchrone Kommunikation' => 10,
+						'Asynchrone Kommunikation' => 11,
+						'Kooperation' => 12,
+						'Präsentation' => 13,
+						'LMS' => 14,
+						'Aufzeichnung' => 15,
+						'Literaturverwaltung' => 16,
+						'Macintosh' => 1,
+						'Unix / Linux' => 2,
+						'Sonstige' => 3,
+					)
+				),
+				'pros' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'cons' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'examples' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'format' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'producer' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'price' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'operating-system' => array(
+					'update'        => true,
+					'insert'        => true,
+					'fieldFunction' => 'ImportfieldFunc_simpleOptionMulti',
+					'objectFieldname' => 'operating_system',
+					'multi'         => true,
+					'options' => array(
+						'Windows' => 0,
+						'Macintosh' => 1,
+						'Unix / Linux' => 2,
+						'Sonstige' => 3,
+					)
+				),
+				'level' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'tutorials' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'references' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'reference',
+				),
+				'option' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'options',
+				),
+			),
+			'load' => array (
+				'title' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFunction' => 'fieldFunc_textonly',
+				),
+				'operating-field' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => 'operating_field',
+				),
+				'description' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'category' => array(
+					'update'        => true,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_writeOption',
+					'objectFieldname' => '',
+					'multi'         => true,
+					'options' => array(
+						1 => 'HTML',
+						2 => 'PDF',
+						3 => 'Bild',
+						4 => 'Audio',
+						5 => 'Video',
+						6 => 'Animation',
+						7 => 'Simulation',
+						8 => 'CBT/WBT',
+						9 => 'CMS',
+						10 => 'Synchrone Kommunikation',
+						11 => 'Asynchrone Kommunikation',
+						12 => 'Kooperation',
+						13 => 'Präsentation',
+						14 => 'LMS',
+						15 => 'Aufzeichnung',
+						16 => 'Literaturverwaltung',
+					)
+				),
+				'pros' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'cons' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'examples' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'format' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'producer' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'price' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'operating-system' => array(
+					'update'        => true,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_writeOption',
+					'objectFieldname' => 'operating_system',
+					'multi'         => true,
+					'options' => array(
+						0 => 'Windows',
+						1 => 'Macintosh',
+						2 => 'Unix / Linux',
+						3 => 'Sonstige',
+					)
+				),
+				'level' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'tutorials' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'references' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => 'reference',
+				),
+				'option' => array(
+					'update'        => false,
+					'insert'        => true,
+					'objectFunction' => 'fieldFunc_textonly',
+					'objectFieldname' => 'options',
+				),
+			),
+			'loadxml' => array (
+				'uid' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'uid',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'tstamp' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => '',
+					'objectFunction' => 'XMLfieldFunc_writeDate',
+				),
+				// Ausnahme: Hier wird nicht das Object geladen sondern der Wert direkt in der Field-Func ausgelesen
+				'portrait-id' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'portrait_id',
+					'objectFunction' => 'XMLfieldFunc_getToolportraitid',
+				),
+				'contact' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'contacts',
+					'objectFunction' => 'XMLfieldFunc_writeObject',
+				),
+			),
+			'mmData' => array(
+				'contact' => array(
+					'loadDataFunction' => 'getMMObjects',
+					'loadDataParams' => '',
+					'mm_option' => true,
+					'optionTable' => ' tx_upbeteachingorg_toolportrait_contacts_mm',
+					'optionTableWhereField' => 'title',
+					'mmTable' => 'tx_upbeteachingorg_toolportrait_contacts_mm',
+					'objectFieldname' => 'contacts',
+					'castObject' => 'contact',
+				),
+			),
 		);
 
 

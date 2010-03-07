@@ -183,7 +183,8 @@ class contact extends object {
 					'multi'         => true,
 					'allowNewElements'      => true,
 				),
-				/*                                'tool-id' => array(
+				/*
+				'tool-id' => array(
 					'required' => false,
 					'validate' => 'isETODate',
 					'objectFieldname' => 'tools',

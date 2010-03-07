@@ -20,38 +20,31 @@ class event extends object {
 	var $staticOptions = array();
 
 	var $displayTemplate = array(
-
-
-			'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_event.tmpl',
-			'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_event.tmpl',
-			'xml' => 'EXT:upb_eteachingorg/pi1/tmpl/xml_event.tmpl',
-
-
-
+		'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_event.tmpl',
+		'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_event.tmpl',
+		'xml' => 'EXT:upb_eteachingorg/pi1/tmpl/xml_event.tmpl',
 	);
 
 	public function config() {
 		GLOBAL $BE_USER;
+
 		/*
-
 	 	$fields = array();
-                $fields['pid'] = $this->getETOPid();
-                $fields['tstamp'] = time();
-                $fields['crdate'] = time();
-                $fields['cruser_id'] = $BE_USER->user['uid'];
-                $fields['deleted'] = 0;
-                $fields['hidden'] = 0;
+		$fields['pid'] = $this->getETOPid();
+		$fields['tstamp'] = time();
+		$fields['crdate'] = time();
+		$fields['cruser_id'] = $BE_USER->user['uid'];
+		$fields['deleted'] = 0;
+		$fields['hidden'] = 0;
 
-                $fields['objectid'] = $valueArray['objectid'];
-                $fields['summary'] = $valueArray['summary'];
-                $fields['description'] = $valueArray['description'];
-                $fields['location'] = $valueArray['location'];
-                $fields['url'] = $valueArray['url'];
-                $fields['dtstart'] = $valueArray['dtstart'];
-                $fields['dtend'] = $valueArray['dtend'];
-
+		$fields['objectid'] = $valueArray['objectid'];
+		$fields['summary'] = $valueArray['summary'];
+		$fields['description'] = $valueArray['description'];
+		$fields['location'] = $valueArray['location'];
+		$fields['url'] = $valueArray['url'];
+		$fields['dtstart'] = $valueArray['dtstart'];
+		$fields['dtend'] = $valueArray['dtend'];
 		*/
-
 
 		/*
 
@@ -68,331 +61,307 @@ class event extends object {
 			objectfield		field not in feed
 						all required: needs to be set
 						no validation at the moment
-
 		*/
 
 		$this->fields = array(
-
-				'import' => array (
-
-						'pid' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_getETOPid',
-								'objectFieldname' => '',
-
-						),
-						'syncid' => array(
-								'update'        => false,
-								'insert'        => true,
-								'fieldFunction' => 'ImportfieldFunc_getSyncId',
-								'objectFieldname' => '',
-
-						),
-						'changed' => array(
-								'update'	=> true,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
-								'objectFieldname' => 'tstamp',
-								'isAttribute'	=> true,
-						),
-						'crdate' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
-								'objectFieldname' => 'crdate',
-						),
-						'cruser_id' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => $BE_USER->user['uid'],
-								'objectFieldname' => '',
-						),
-						'deleted' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => 0,
-								'objectFieldname' => '',
-						),
-						'hidden' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => 0,
-						),
-						'uid' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'objectid',
-								'isAttribute'	=> true,
-						),
-						'summary' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'description' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'location' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'url' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => '',
-						),
-						'dtstart' => array(
-								'update'	=> true,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
-								'objectFieldname' => '',
-						),
-
-						'dtend' => array(
-								'update'	=> true,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
-								'objectFieldname' => '',
-						),
-
+			'import' => array (
+				'pid' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_getETOPid',
+					'objectFieldname' => '',
 				),
-
-				'insert' => array (
-
-						'pid' => array(
-								'objectfield' => true,
-								'objectFunction' => 'getETOPid',
-						),
-						'tstamp' => array(
-								'objectfield' => true,
-								'objectFunction' => 'getCurrentTimestamp',
-						),
-						'crdate' => array(
-								'objectfield' => true,
-								'objectFunction' => 'getCurrentTimestamp',
-						),
-						'cruser_id' => array(
-								'objectfield' => true,
-								'objectFunction' => 'setValue',
-								'objectFunctionParam' => $BE_USER->user['uid'],
-						),
-						'deleted' => array(
-								'objectfield' => true,
-								'objectFunction' => 'setValue',
-								'objectFunctionParam' => 0,
-						),
-						'hidden' => array(
-								'objectfield' => true,
-								'objectFunction' => 'setValue',
-								'objectFunctionParam' => 0,
-						),
-						'uid' => array(
-								'required' => true,
-								'validate' => 'objectid',
-								'objectFieldname' => 'objectid',
-								'objectFunction' => 'pass',
-						),
-						'summary' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'summary',
-								'objectFunction' => 'textonly',
-						),
-						'description' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'description',
-								'objectFunction' => 'textonly',
-						),
-						'location' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'location',
-								'objectFunction' => 'textonly',
-						),
-						'url' => array(
-								'required' => true,
-								'validate' => 'url',
-								'objectFieldname' => 'url',
-								'objectFunction' => 'textonly',
-						),
-						'dtstart' => array(
-								'required' => true,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtstart',
-								'objectFunction' => 'convertETODateToTimestamp',
-						),
-						'dtend' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtend',
-								'objectFunction' => 'convertETODateToTimestamp',
-						),
-
+				'syncid' => array(
+					'update'        => false,
+					'insert'        => true,
+					'fieldFunction' => 'ImportfieldFunc_getSyncId',
+					'objectFieldname' => '',
 				),
-				'update' => array (
-						'summary' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'summary',
-								'objectFunction' => 'textonly',
-						),
-						'description' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'description',
-								'objectFunction' => 'textonly',
-						),
-						'location' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'location',
-								'objectFunction' => 'textonly',
-						),
-						'url' => array(
-								'required' => false,
-								'validate' => 'url',
-								'objectFieldname' => 'url',
-								'objectFunction' => 'textonly',
-						),
-						'dtstart' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtstart',
-								'objectFunction' => 'convertETODateToTimestamp',
-						),
-						'dtend' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtend',
-								'objectFunction' => 'convertETODateToTimestamp',
-						),
-
+				'changed' => array(
+					'update'	=> true,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
+					'objectFieldname' => 'tstamp',
+					'isAttribute'	=> true,
 				),
-				'load' => array(
-
-						'summary' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'summary',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'description' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'description',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'location' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'location',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'url' => array(
-								'required' => false,
-								'validate' => 'url',
-								'objectFieldname' => 'url',
-								'objectFunction' => 'fieldFunc_writeLink',
-						),
-						'dtstart' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtstart',
-								'objectFunction' => 'fieldFunc_writeDate',
-						),
-						'dtend' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtend',
-								'objectFunction' => 'fieldFunc_writeDate',
-						),
-						'date' => array(
-								'objectFunction' => 'fieldFunc_writeExtendedDate',
-								'objectFunctionParams' => array('dtstart','dtend'),
-						),
-
-						'morelink'  => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'morelink',
-								'objectFunction' => 'fieldFunc_writeMoreLink',
-						),
-
-
-
+				'crdate' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
+					'objectFieldname' => 'crdate',
 				),
-				'loadxml' => array(
-
-						'uid' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'objectid',
-								'objectFunction' => 'XMLfieldFunc_writeUid',
-						),
-
-						'tstamp' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'tstamp',
-								'objectFunction' => 'XMLfieldFunc_writeDate',
-						),
-
-						'summary' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'summary',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-						'description' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'description',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-						'location' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'location',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-						'url' => array(
-								'required' => false,
-								'validate' => 'url',
-								'objectFieldname' => 'url',
-								'objectFunction' => 'XMLfieldFunc_writeLink',
-						),
-						'dtstart' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtstart',
-								'objectFunction' => 'XMLfieldFunc_writeDate',
-						),
-						'dtend' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'dtend',
-								'objectFunction' => 'XMLfieldFunc_writeDate',
-						),
-
+				'cruser_id' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => $BE_USER->user['uid'],
+					'objectFieldname' => '',
 				),
-
-
+				'deleted' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => 0,
+					'objectFieldname' => '',
+				),
+				'hidden' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => 0,
+				),
+				'uid' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'objectid',
+					'isAttribute'	=> true,
+				),
+				'summary' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'description' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'location' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'url' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => '',
+				),
+				'dtstart' => array(
+					'update'	=> true,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
+					'objectFieldname' => '',
+				),
+				'dtend' => array(
+					'update'	=> true,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
+					'objectFieldname' => '',
+				),
+			),
+			'insert' => array (
+				'pid' => array(
+					'objectfield' => true,
+					'objectFunction' => 'getETOPid',
+				),
+				'tstamp' => array(
+					'objectfield' => true,
+					'objectFunction' => 'getCurrentTimestamp',
+				),
+				'crdate' => array(
+					'objectfield' => true,
+					'objectFunction' => 'getCurrentTimestamp',
+				),
+				'cruser_id' => array(
+					'objectfield' => true,
+					'objectFunction' => 'setValue',
+					'objectFunctionParam' => $BE_USER->user['uid'],
+				),
+				'deleted' => array(
+					'objectfield' => true,
+					'objectFunction' => 'setValue',
+					'objectFunctionParam' => 0,
+				),
+				'hidden' => array(
+					'objectfield' => true,
+					'objectFunction' => 'setValue',
+					'objectFunctionParam' => 0,
+				),
+				'uid' => array(
+					'required' => true,
+					'validate' => 'objectid',
+					'objectFieldname' => 'objectid',
+					'objectFunction' => 'pass',
+				),
+				'summary' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'summary',
+					'objectFunction' => 'textonly',
+				),
+				'description' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'description',
+					'objectFunction' => 'textonly',
+				),
+				'location' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'location',
+					'objectFunction' => 'textonly',
+				),
+				'url' => array(
+					'required' => true,
+					'validate' => 'url',
+					'objectFieldname' => 'url',
+					'objectFunction' => 'textonly',
+				),
+				'dtstart' => array(
+					'required' => true,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtstart',
+					'objectFunction' => 'convertETODateToTimestamp',
+				),
+				'dtend' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtend',
+					'objectFunction' => 'convertETODateToTimestamp',
+				),
+			),
+			'update' => array (
+				'summary' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'summary',
+					'objectFunction' => 'textonly',
+				),
+				'description' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'description',
+					'objectFunction' => 'textonly',
+				),
+				'location' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'location',
+					'objectFunction' => 'textonly',
+				),
+				'url' => array(
+					'required' => false,
+					'validate' => 'url',
+					'objectFieldname' => 'url',
+					'objectFunction' => 'textonly',
+				),
+				'dtstart' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtstart',
+					'objectFunction' => 'convertETODateToTimestamp',
+				),
+				'dtend' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtend',
+					'objectFunction' => 'convertETODateToTimestamp',
+				),
+			),
+			'load' => array(
+				'summary' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'summary',
+					'objectFunction' => 'fieldFunc_textonly',
+				),
+				'description' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'description',
+					'objectFunction' => 'fieldFunc_textonly',
+				),
+				'location' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'location',
+					'objectFunction' => 'fieldFunc_textonly',
+				),
+				'url' => array(
+					'required' => false,
+					'validate' => 'url',
+					'objectFieldname' => 'url',
+					'objectFunction' => 'fieldFunc_writeLink',
+				),
+				'dtstart' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtstart',
+					'objectFunction' => 'fieldFunc_writeDate',
+				),
+				'dtend' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtend',
+					'objectFunction' => 'fieldFunc_writeDate',
+				),
+				'date' => array(
+					'objectFunction' => 'fieldFunc_writeExtendedDate',
+					'objectFunctionParams' => array('dtstart','dtend'),
+				),
+				'morelink'  => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'morelink',
+					'objectFunction' => 'fieldFunc_writeMoreLink',
+				),
+			),
+			'loadxml' => array(
+				'uid' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'objectid',
+					'objectFunction' => 'XMLfieldFunc_writeUid',
+				),
+				'tstamp' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'tstamp',
+					'objectFunction' => 'XMLfieldFunc_writeDate',
+				),
+				'summary' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'summary',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'description' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'description',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'location' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'location',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'url' => array(
+					'required' => false,
+					'validate' => 'url',
+					'objectFieldname' => 'url',
+					'objectFunction' => 'XMLfieldFunc_writeLink',
+				),
+				'dtstart' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtstart',
+					'objectFunction' => 'XMLfieldFunc_writeDate',
+				),
+				'dtend' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'dtend',
+					'objectFunction' => 'XMLfieldFunc_writeDate',
+				),
+			),
 		);
-
-
 	}
 
 	/**
