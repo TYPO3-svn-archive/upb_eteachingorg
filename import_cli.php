@@ -11,7 +11,7 @@ define('TYPO3_cliMode', TRUE);
 // This will work as long as the script is called by it's absolute path!
 define("PATH_thisScript", $_ENV['_'] ? $_ENV['_'] : $_SERVER['_']);
 
-require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.fieldFunction.php');
+require_once(dirname(PATH_thisScript).t3lib_extMgm::extPath($_EXTKEY).'/lib/class.tx_upbeteachingorg.fieldFunction.php');
 require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.event.php');
 require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.project.php');
 require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.contact.php');
@@ -43,10 +43,7 @@ require_once(dirname(PATH_thisScript).'/lib/class.tx_upbeteachingorg.university.
 
 class importEtoFeed{
 
-
-
-		function importEtoFeed($feedUrl,$conf,$syncId){
-
+	function importEtoFeed($feedUrl,$conf,$syncId){
 			$this->feedUrl = $feedUrl;
 			$this->pid = intval($conf['etoPid']);
 			$this->ownPid = intval($conf['ownPid']);
@@ -57,7 +54,6 @@ class importEtoFeed{
 			$objectlist = array('project','event');
 			$this->writeObjects($data->{eteaching-export});
 			$this->writeRelations($data->{eteaching-export});
-
 		}
 
 	/**
@@ -83,7 +79,6 @@ class importEtoFeed{
 			default:
 				$level = 1;
 		}
-
 		return $level;
 	}
 

@@ -69,7 +69,7 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 
 		$extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['upb_eteachingorg']);
 
-		$this->debug = 0;
+		$this->debug = 1;
 
 		$this->piConf = array();
 		$this->piConf['maxListElements'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'maxListElements');
@@ -82,7 +82,7 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 
 		$sourcePagesArray = explode(',',$this->cObj->data['pages']);
 		$this->piConf['sourceMode'] = intval($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'source'));
-		$this->piConf['debug'] = (1==2) ? 5 : (3==4)? 8 : 9; // nicht immer 9 ??
+		$this->piConf['debug'] = 9;
 		$this->piConf['ownUniversityShortKey'] = 'upb';
 
 		$this->detailPageConf['contact']    = intval($this->conf['detailPages.']['contact']);
@@ -93,22 +93,28 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 		$this->detailPageConf['project']    = intval($this->conf['detailPages.']['project']);
 		$this->detailPageConf['university'] = intval($this->conf['detailPages.']['university']);
 
-		if (intval($extConf['ownPid']) == 0 || intval($extConf['etoPid']) == 0) {
+		if (intval($extConf['ownPid']) == 0
+				|| intval($extConf['etoPid']) == 0) {
 			return $this->pi_wrapInBaseClass('Fehler: Konfiguration im Extension Manager &uuml;berpr&uuml;fen!');
 		}
-		var_dump($this->piConf['mode']);
+
+		t3lib_div::devLog('mode:', $this->extKey, 0, array( 'mode' => $this->piConf['mode']));
+
 		$this->currentVars = array();
 		switch($this->piConf['mode']) {
-			case 'Liste': $this->currentVars['mode'] = 'list';
+			case 'Liste':
+				$this->currentVars['mode'] = 'list';
 				break;
-			case 'Detail': $this->currentVars['mode'] = 'detail';
+			case 'Detail':
+				$this->currentVars['mode'] = 'detail';
 				break;
-			case 'xml': $this->currentVars['mode'] = 'xml';
+			case 'xml':
+				$this->currentVars['mode'] = 'xml';
 				break;
 			//return '<h1>Fehler</h1><p>Keine g&uuml;ltige Display-Variable in Flexform (T3BE) &uuml;bergeben!</p>';
 		}
 
-		switch($this->piConf['what_to_display']) {
+		switch ($this->piConf['what_to_display']) {
 			case 'contact':
 				$this->currentVars['object'] = 'contact';
 				break;
@@ -137,12 +143,12 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 			//return '<h1>Fehler</h1><p>Keine g&uuml;ltige Display-Variable in Flexform (T3BE) &uuml;bergeben!</p>';
 		}
 
+		t3lib_div::devLog("mode", $this->extKey, 0, array('uid' => $this->piVars['uid'], 'what_to_display' => $this->piConf['what_to_display']));
 		switch($this->currentVars['mode']) {
 			case 'list':
-				var_dump($this->piConf['what_to_display']);
 				$objectname = $this->currentVars['object'];
-				$object = new $objectname();
-				$content = $object->getThisObjectCode($this->piConf);
+				$object     = new $objectname();
+				$content    = $object->getThisObjectCode($this->piConf);
 				unset($object);
 				return $content;
 				break;
@@ -150,11 +156,10 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 			case 'detail':
 				$objectname = $this->currentVars['object'];
 				$uid = $this->piVars['uid'];
-				var_dump($uid);
-				var_dump($this->piConf['what_to_display']);
+
 				try {
 					$object = new $objectname('uuid',$uid,1,1);
-				}catch (Exception $ex) {
+				} catch (Exception $ex) {
 					return '<h1>Fehler</h1><p>Keine g&uuml;ltige ID &uuml;bergeben!</p>';
 				}
 
@@ -173,7 +178,6 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 				$uid = intval($extConf['ownUniversityId']);
 
 				if($uid != 0 ) {
-
 					$uni = new university('uid',$uid);
 					$tmpl = $uni->getObjectTemplate('xml');
 					$uni->setProcessMode('loadxml',$tmpl);
@@ -181,23 +185,14 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 					$markerArray = $uni->getMarkerArray();
 					$objXMLCode = $this->cObj->getSubpart($tmpl, "###TEMPLATE_LIST###");
 					$content = $this->cObj->substituteMarkerArray($objXMLCode,$markerArray,'',0);
-				}else {
-
+				} else {
 					$content = "Fehler in der Konfiguration: ID der eigenen Uni angeben";
-
 				}
 				break;
 		}
 
 		return $content;
 	}
-
-	function debug($var,$text) {
-		if($this->debug) {
-			t3lib_div::debug($var,$text);
-		}
-	}
-
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/pi1/class.tx_upbeteachingorg_pi1.php']) {

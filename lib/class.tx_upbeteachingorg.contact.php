@@ -15,9 +15,9 @@ class contact extends object {
 	var $objectTable = 'tx_upbeteachingorg_contact';
 
 	var $displayTemplate = array(
-			'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_contact.tmpl',
-			'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_contact.tmpl',
-			'xml' => 'EXT:upb_eteachingorg/pi1/tmpl/xml_contact.tmpl',
+		'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_contact.tmpl',
+		'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_contact.tmpl',
+		'xml' => 'EXT:upb_eteachingorg/pi1/tmpl/xml_contact.tmpl',
 	);
 
 	public function config() {
@@ -47,152 +47,142 @@ class contact extends object {
 		*/
 
 		$this->staticOptions = array(
-
-				'project-state' => array(
-
-						'unbekannt' => '0',
-						'aktuell' => '1',
-						'im aufbau' => '2',
-						'nicht mehr gepflegt' => '3',
-
-				),
-				'category' => array(
-						'lernumgebung' => '0',
-						'lernmaterial' => '1',
-						'lernmaterial(-sammlung)' => '1',
-						'software' => '2',
-						'lehr-/lernszenario' => '3',
-				),
+			'project-state' => array(
+				'unbekannt' => '0',
+				'aktuell' => '1',
+				'im aufbau' => '2',
+				'nicht mehr gepflegt' => '3',
+			),
+			'category' => array(
+				'lernumgebung' => '0',
+				'lernmaterial' => '1',
+				'lernmaterial(-sammlung)' => '1',
+				'software' => '2',
+				'lehr-/lernszenario' => '3',
+			),
 		);
 
 
 		$this->fields = array(
-
-				'import' => array (
-
-						'pid' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_getETOPid',
-								'objectFieldname' => '',
-
-						),
-						'syncid' => array(
-								'update'        => false,
-								'insert'        => true,
-								'fieldFunction' => 'ImportfieldFunc_getSyncId',
-								'objectFieldname' => '',
-
-						),
-						'changed' => array(
-								'update'	=> true,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
-								'objectFieldname' => 'tstamp',
-								'isAttribute'	=> true,
-						),
-						'crdate' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
-								'objectFieldname' => 'crdate',
-						),
-						'cruser_id' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => $BE_USER->user['uid'],
-								'objectFieldname' => '',
-						),
-						'deleted' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => 0,
-								'objectFieldname' => '',
-						),
-						'hidden' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_setValue',
-								'fieldFunctionParam' => 0,
-						),
-						'uid' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'objectid',
-								'isAttribute'	=> true,
-						),
-
-
-						'academic-degree' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'honorific_suffix',
-						),
-						'given-name' => array(
-
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'givenname',
-						),
-						'family-name' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'familyname',
-						),
-						'email' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'email',
-						),
-						'fon' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'phone',
-						),
-						'url' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'url',
-						),
-						'photo' => array(
-								'update'	=> false,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_textonly',
-								'objectFieldname' => 'photourl',
-						),
-						'role' => array(
-								'update'	=> true,
-								'insert'	=> true,
-								'fieldFunction' => 'ImportfieldFunc_countMMOption',
-								'objectFieldname' => 'role',
-								'multi'		=> true,
-								'allowNewElements'	=> true,
-						),
-						'tool-id' => array(
-								'update'        => true,
-								'insert'        => true,
-								'fieldFunction' => 'ImportfieldFunc_countMMOption',
-								'objectFieldname' => 'tools',
-								'multi'         => true,
-								'allowNewElements'      => true,
-						),
-						'tool-portrait-id' => array(
-								'update'        => true,
-								'insert'        => true,
-								'fieldFunction' => 'ImportfieldFunc_countMMOption',
-								'objectFieldname' => 'portraits',
-								'multi'         => true,
-								'allowNewElements'      => true,
-						),
+			'import' => array (
+				'pid' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_getETOPid',
+					'objectFieldname' => '',
+				),
+				'syncid' => array(
+					'update'        => false,
+					'insert'        => true,
+					'fieldFunction' => 'ImportfieldFunc_getSyncId',
+					'objectFieldname' => '',
+				),
+				'changed' => array(
+					'update'	=> true,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
+					'objectFieldname' => 'tstamp',
+					'isAttribute'	=> true,
+				),
+				'crdate' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_convertETODateToTimestamp',
+					'objectFieldname' => 'crdate',
+				),
+				'cruser_id' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => $BE_USER->user['uid'],
+					'objectFieldname' => '',
+				),
+				'deleted' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => 0,
+					'objectFieldname' => '',
+				),
+				'hidden' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_setValue',
+					'fieldFunctionParam' => 0,
+				),
+				'uid' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'objectid',
+					'isAttribute'	=> true,
+				),
+				'academic-degree' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'honorific_suffix',
+				),
+				'given-name' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'givenname',
+				),
+				'family-name' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'familyname',
+				),
+				'email' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'email',
+				),
+					'fon' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'phone',
+				),
+					'url' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'url',
+				),
+				'photo' => array(
+					'update'	=> false,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_textonly',
+					'objectFieldname' => 'photourl',
+				),
+				'role' => array(
+					'update'	=> true,
+					'insert'	=> true,
+					'fieldFunction' => 'ImportfieldFunc_countMMOption',
+					'objectFieldname' => 'role',
+					'multi'		=> true,
+					'allowNewElements'	=> true,
+				),
+				'tool-id' => array(
+					'update'        => true,
+					'insert'        => true,
+					'fieldFunction' => 'ImportfieldFunc_countMMOption',
+					'objectFieldname' => 'tools',
+					'multi'         => true,
+					'allowNewElements'      => true,
+				),
+				'tool-portrait-id' => array(
+					'update'        => true,
+					'insert'        => true,
+					'fieldFunction' => 'ImportfieldFunc_countMMOption',
+					'objectFieldname' => 'portraits',
+					'multi'         => true,
+					'allowNewElements'      => true,
+				),
 				/*                                'tool-id' => array(
 					'required' => false,
 					'validate' => 'isETODate',
@@ -206,200 +196,188 @@ class contact extends object {
 					'valueField' => 'objectid',
 					'objectFunction' => 'XMLfieldFunc_writeMMOption',
 				), */
-
-
-
-
-
-
+			),
+			'load' => array (
+				'academic-degree' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'honorific_suffix',
+					'objectFunction' => 'fieldFunc_textonly',
 				),
-
-				'load' => array (
-						'academic-degree' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'honorific_suffix',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'given-name' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'givenname',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'family-name' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'familyname',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'email' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'email',
-								'objectFunction' => 'fieldFunc_writeMail',
-						),
-						'fon' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'phone',
-								'objectFunction' => 'fieldFunc_textonly',
-						),
-						'url' => array(
-								'required' => true,
-								'validate' => 'url',
-								'objectFieldname' => '',
-								'objectFunction' => 'fieldFunc_writeLink',
-						),
-						'photo' => array(
-								'required' => true,
-								'validate' => 'url',
-								'objectFieldname' => 'photourl',
-								'objectFunction' => 'fieldFunc_writeImage',
-						),
-						'role' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'role',
-								'objectFunction' => 'fieldFunc_writeMMOption',
-						),
-						'tool-id' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'tools',
-								'objectFunction' => 'fieldFunc_writeObjectLight',
-						),
-						'tool-portrait-id' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'portraits',
-								'objectParams' => array(
-										'light' => true,
-								),
-								'valueField' => 'objectid',
-								'objectFunction' => 'fieldFunc_writeToolPortraitLink',
-						),
-						'morelink'  => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'morelink',
-								'objectFunction' => 'fieldFunc_writeMoreLink',
-						),
-
+				'given-name' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'givenname',
+					'objectFunction' => 'fieldFunc_textonly',
 				),
-				'loadxml' => array (
-						'uid' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => 'objectid',
-								'objectFunction' => 'XMLfieldFunc_writeUid',
-						),
-
-						'tstamp' => array(
-								'required' => false,
-								'validate' => 'text',
-								'objectFieldname' => '',
-								'objectFunction' => 'XMLfieldFunc_writeDate',
-						),
-
-						'academic-degree' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'honorific_suffix',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-						'given-name' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'givenname',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-						'family-name' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'familyname',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-						'email' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'email',
-								'objectFunction' => 'XMLfieldFunc_writeMail',
-						),
-						'fon' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'phone',
-								'objectFunction' => 'XMLfieldFunc_textonly',
-						),
-						'url' => array(
-								'required' => true,
-								'validate' => 'url',
-								'objectFieldname' => '',
-								'objectFunction' => 'XMLfieldFunc_writeLink',
-						),
-						'photo' => array(
-								'required' => true,
-								'validate' => 'url',
-								'objectFieldname' => 'photourl',
-								'objectFunction' => 'XMLfieldFunc_writeLink',
-						),
-						'role' => array(
-								'required' => true,
-								'validate' => 'text',
-								'objectFieldname' => 'role',
-								'objectFunction' => 'XMLfieldFunc_writeMMOption',
-						),
-						'tool-id' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'tools',
-								'objectFunction' => 'XMLfieldFunc_writeObjectLight',
-						),
-						'tool-portrait-id' => array(
-								'required' => false,
-								'validate' => 'isETODate',
-								'objectFieldname' => 'portraits',
-								'objectParams' => array(
-										'light' => true,
-								),
-								'objectFunction' => 'XMLfieldFunc_writeObjectPortraitId',
-						),
+				'family-name' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'familyname',
+					'objectFunction' => 'fieldFunc_textonly',
 				),
-				'mmData' => array(
-
-						'role' => array(
-								'loadDataFunction' => 'getMMOptionData',
-								'loadDataParams' => '',
-								'mm_option' => true,
-								'optionTable' => 'tx_upbeteachingorg_role',
-								'optionTableWhereField' => 'title',
-								'mmTable' => 'tx_upbeteachingorg_contact_roles_mm',
-								'objectFieldname' => 'role',
-						),
-						'tool-id' => array(
-								'loadDataFunction' => 'getMMObjectsLight',
-								'loadDataParams' => '',
-								'mm_option' => true,
-								'optionTable' => 'tx_upbeteachingorg_tool',
-								'optionTableWhereField' => 'title',
-								'mmTable' => 'tx_upbeteachingorg_contact_tools_mm',
-								'objectFieldname' => 'tools',
-								'castObject' => 'tool',
-								'mm_object' => true,
-						),
-						'tool-portrait-id' => array(
-								'loadDataFunction' => 'getMMObjects',
-								'loadDataParams' => '',
-								'mm_object' => true,
-								'optionTable' => 'tx_upbeteachingorg_toolportraiteto',
-								'optionTableWhereField' => 'title',
-								'mmTable' => 'tx_upbeteachingorg_contact_portraits_mm',
-								'objectFieldname' => 'portraits',
-								'castObject' => 'toolportraiteto',
-						),
+				'email' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'email',
+					'objectFunction' => 'fieldFunc_writeMail',
 				),
-
+				'fon' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'phone',
+					'objectFunction' => 'fieldFunc_textonly',
+				),
+				'url' => array(
+					'required' => true,
+					'validate' => 'url',
+					'objectFieldname' => '',
+					'objectFunction' => 'fieldFunc_writeLink',
+				),
+				'photo' => array(
+					'required' => true,
+					'validate' => 'url',
+					'objectFieldname' => 'photourl',
+					'objectFunction' => 'fieldFunc_writeImage',
+				),
+				'role' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'role',
+					'objectFunction' => 'fieldFunc_writeMMOption',
+				),
+				'tool-id' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'tools',
+					'objectFunction' => 'fieldFunc_writeObjectLight',
+				),
+				'tool-portrait-id' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'portraits',
+					'objectParams' => array(
+						'light' => true,
+					),
+					'valueField' => 'objectid',
+					'objectFunction' => 'fieldFunc_writeToolPortraitLink',
+				),
+				'morelink'  => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'morelink',
+					'objectFunction' => 'fieldFunc_writeMoreLink',
+				),
+			),
+			'loadxml' => array (
+				'uid' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => 'objectid',
+					'objectFunction' => 'XMLfieldFunc_writeUid',
+				),
+				'tstamp' => array(
+					'required' => false,
+					'validate' => 'text',
+					'objectFieldname' => '',
+					'objectFunction' => 'XMLfieldFunc_writeDate',
+				),
+				'academic-degree' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'honorific_suffix',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'given-name' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'givenname',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'family-name' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'familyname',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'email' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'email',
+					'objectFunction' => 'XMLfieldFunc_writeMail',
+				),
+				'fon' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'phone',
+					'objectFunction' => 'XMLfieldFunc_textonly',
+				),
+				'url' => array(
+					'required' => true,
+					'validate' => 'url',
+					'objectFieldname' => '',
+					'objectFunction' => 'XMLfieldFunc_writeLink',
+				),
+				'photo' => array(
+					'required' => true,
+					'validate' => 'url',
+					'objectFieldname' => 'photourl',
+					'objectFunction' => 'XMLfieldFunc_writeLink',
+				),
+				'role' => array(
+					'required' => true,
+					'validate' => 'text',
+					'objectFieldname' => 'role',
+					'objectFunction' => 'XMLfieldFunc_writeMMOption',
+				),
+				'tool-id' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'tools',
+					'objectFunction' => 'XMLfieldFunc_writeObjectLight',
+				),
+				'tool-portrait-id' => array(
+					'required' => false,
+					'validate' => 'isETODate',
+					'objectFieldname' => 'portraits',
+					'objectParams' => array(
+						'light' => true,
+					),
+					'objectFunction' => 'XMLfieldFunc_writeObjectPortraitId',
+				),
+			),
+			'mmData' => array(
+				'role' => array(
+					'loadDataFunction' => 'getMMOptionData',
+					'loadDataParams' => '',
+					'mm_option' => true,
+					'optionTable' => 'tx_upbeteachingorg_role',
+					'optionTableWhereField' => 'title',
+					'mmTable' => 'tx_upbeteachingorg_contact_roles_mm',
+					'objectFieldname' => 'role',
+				),
+				'tool-id' => array(
+					'loadDataFunction' => 'getMMObjectsLight',
+					'loadDataParams' => '',
+					'mm_option' => true,
+					'optionTable' => 'tx_upbeteachingorg_tool',
+					'optionTableWhereField' => 'title',
+					'mmTable' => 'tx_upbeteachingorg_contact_tools_mm',
+					'objectFieldname' => 'tools',
+					'castObject' => 'tool',
+					'mm_object' => true,
+				),
+				'tool-portrait-id' => array(
+					'loadDataFunction' => 'getMMObjects',
+					'loadDataParams' => '',
+					'mm_object' => true,
+					'optionTable' => 'tx_upbeteachingorg_toolportraiteto',
+					'optionTableWhereField' => 'title',
+					'mmTable' => 'tx_upbeteachingorg_contact_portraits_mm',
+					'objectFieldname' => 'portraits',
+					'castObject' => 'toolportraiteto',
+				),
+			),
 		);
 	}
 

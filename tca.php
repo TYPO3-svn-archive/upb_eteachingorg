@@ -3,42 +3,42 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 $conf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['upb_eteachingorg']);
 
-$TCA['tx_upbeteachingorg_university'] = array (
+$TCA['tx_upbeteachingorg_university'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_university']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,objectid,name,news,info,url,elearningurl,newsfeedurl,contacts,tools,toolportraits'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_university']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'objectid' => array (
+		'objectid' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.objectid',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '80',
 				'readOnly' => '1',
 			)
 		),
-		'name' => array (
+		'name' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.name',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'news' => array (
+		'news' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.news',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
@@ -55,10 +55,10 @@ $TCA['tx_upbeteachingorg_university'] = array (
 				),
 			)
 		),
-		'info' => array (
+		'info' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.info',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
@@ -75,10 +75,10 @@ $TCA['tx_upbeteachingorg_university'] = array (
 				),
 			)
 		),
-		'url' => array (
+		'url' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.url',
-			'config' => array (
+			'config' => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -96,10 +96,10 @@ $TCA['tx_upbeteachingorg_university'] = array (
 				)
 			)
 		),
-		'elearningurl' => array (
+		'elearningurl' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.elearningurl',
-			'config' => array (
+			'config' => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -117,10 +117,10 @@ $TCA['tx_upbeteachingorg_university'] = array (
 				)
 			)
 		),
-		'newsfeedurl' => array (
+		'newsfeedurl' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.newsfeedurl',
-			'config' => array (
+			'config' => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -138,10 +138,10 @@ $TCA['tx_upbeteachingorg_university'] = array (
 				)
 			)
 		),
-		'contacts' => array (
+		'contacts' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.contacts',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_contact',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_contact.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_contact.familyname',
@@ -167,10 +167,10 @@ $TCA['tx_upbeteachingorg_university'] = array (
 			)
 		),
 
-		'tools' => array (
+		'tools' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.tools',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_tool',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_tool.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_tool.title',
@@ -195,101 +195,101 @@ $TCA['tx_upbeteachingorg_university'] = array (
 				),
 			)
 		),
-		'toolportraits' => array (
+		'toolportraits' => array(
 			'exclude' => 0,
-			'label' => 'Werkzeugsteckbrief von E-Teaching.org',
-			'config' => array (
-				'type' => 'select',
-				'foreign_table' => 'tx_upbeteachingorg_toolportraiteto',
+			'label'   => 'Werkzeugsteckbrief von E-Teaching.org',
+			'config'  => array(
+				'type'                => 'select',
+				'foreign_table'       => 'tx_upbeteachingorg_toolportraiteto',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_toolportraiteto.pid='.$conf['etoPid'].' ORDER BY tx_upbeteachingorg_toolportraiteto.title',
-				'size' => 15,
-				'minitems' => 0,
-				'maxitems' => 50,
-				"MM" => "tx_upbeteachingorg_university_toolportraits_mm",
+				'size'                => 15,
+				'minitems'            => 0,
+				'maxitems'            => 50,
+				"MM"                  => "tx_upbeteachingorg_university_toolportraits_mm",
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, objectid, name, news;;;richtext[]:rte_transform[mode=ts], info;;;richtext[]:rte_transform[mode=ts], url, elearningurl, newsfeedurl, contacts, tools, toolportraits')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_contact'] = array (
+$TCA['tx_upbeteachingorg_contact'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_contact']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,objectid,honorific_suffix,givenname,familyname,email,phone,url,photourl,generalcontact,role,tools,portraits'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_contact']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'objectid' => array (
+		'objectid' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.objectid',
-			'config' => array (
-				'type' => 'input',
-				'size' => '80',
+			'config' => array(
+				'type'     => 'input',
+				'size'     => '80',
 				'readOnly' => '1',
 			)
 		),
-		'honorific_suffix' => array (
+		'honorific_suffix' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.honorific_suffix',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.honorific_suffix',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'givenname' => array (
+		'givenname' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.givenname',
-			'config' => array (
-				'type' => 'input',
-				'size' => '30',
-				'eval' => 'required',
-			)
-		),
-		'familyname' => array (
-			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.familyname',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.givenname',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'email' => array (
+		'familyname' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.email',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.familyname',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'phone' => array (
+		'email' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.phone',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.email',
+			'config'  => array(
+				'type' => 'input',
+				'size' => '30',
+				'eval' => 'required',
+			)
+		),
+		'phone' => array(
+			'exclude' => 0,
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.phone',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'url' => array (
+		'url' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.url',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.url',
+			'config'  => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -307,10 +307,10 @@ $TCA['tx_upbeteachingorg_contact'] = array (
 				)
 			)
 		),
-		'photourl' => array (
+		'photourl' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.photourl',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.photourl',
+			'config'  => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -328,18 +328,18 @@ $TCA['tx_upbeteachingorg_contact'] = array (
 				)
 			)
 		),
-		'role' => array (
+		'role' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.role',
-			'config' => array (
-				'type' => 'select',
-				'foreign_table' => 'tx_upbeteachingorg_role',
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.role',
+			'config'  => array(
+				'type'                => 'select',
+				'foreign_table'       => 'tx_upbeteachingorg_role',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_role.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_role.uid',
-				'size' => 15,
-				'minitems' => 0,
-				'maxitems' => 50,
-				"MM" => "tx_upbeteachingorg_contact_roles_mm",
-				'wizards' => array(
+				'size'                => 15,
+				'minitems'            => 0,
+				'maxitems'            => 50,
+				"MM"                  => "tx_upbeteachingorg_contact_roles_mm",
+				'wizards'             => array(
 					'_PADDING'  => 2,
 					'_VERTICAL' => 1,
 					'add' => array(
@@ -357,21 +357,21 @@ $TCA['tx_upbeteachingorg_contact'] = array (
 			)
 		),
 
-		'tools' => array (
+		'tools' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.tools',
-			'config' => array (
-				'type' => 'select',
-				'foreign_table' => 'tx_upbeteachingorg_tool',
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_contact.tools',
+			'config'  => array(
+				'type'                => 'select',
+				'foreign_table'       => 'tx_upbeteachingorg_tool',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_tool.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_tool.title',
-				'size' => 15,
-				'minitems' => 0,
-				'maxitems' => 50,
-				"MM" => "tx_upbeteachingorg_contact_tools_mm",
+				'size'                => 15,
+				'minitems'            => 0,
+				'maxitems'            => 50,
+				"MM"                  => "tx_upbeteachingorg_contact_tools_mm",
 				'wizards' => array(
 					'_PADDING'  => 2,
 					'_VERTICAL' => 1,
-					'add' => array(
+					'add'       => array(
 						'type'   => 'script',
 						'title'  => 'Create new record',
 						'icon'   => 'add.gif',
@@ -387,21 +387,21 @@ $TCA['tx_upbeteachingorg_contact'] = array (
 		),
 
 
-		'portraits' => array (
+		'portraits' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportrait.protrait_id',
-			'config' => array (
-				'type' => 'group',
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportrait.protrait_id',
+			'config'  => array(
+				'type'          => 'group',
 				'internal_type' => 'db',
-				'allowed' => 'tx_upbeteachingorg_toolportraiteto',
-				'size' => 15,
-				'minitems' => 0,
-				'maxitems' => 50,
-				"MM" => "tx_upbeteachingorg_contact_portraits_mm",
-				'wizards' => array(
+				'allowed'       => 'tx_upbeteachingorg_toolportraiteto',
+				'size'          => 15,
+				'minitems'      => 0,
+				'maxitems'      => 50,
+				"MM"            => "tx_upbeteachingorg_contact_portraits_mm",
+				'wizards'       => array(
 					'_PADDING'  => 2,
 					'_VERTICAL' => 1,
-					'add' => array(
+					'add'       => array(
 						'type'   => 'script',
 						'title'  => 'Create new record',
 						'icon'   => 'add.gif',
@@ -416,73 +416,73 @@ $TCA['tx_upbeteachingorg_contact'] = array (
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, objectid, honorific_suffix, givenname, familyname, email, phone, url, photourl, generalcontact, role,tools,portraits')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_training'] = array (
+$TCA['tx_upbeteachingorg_training'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_training']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,objectid,summary,description,location,url,dtstart,dtend,due,category,targetgroup,price,certificate,content,contacts'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_training']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'objectid' => array (
+		'objectid' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.objectid',
-			'config' => array (
-				'type' => 'input',
-				'size' => '80',
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.objectid',
+			'config'  => array(
+				'type'     => 'input',
+				'size'     => '80',
 				'readOnly' => '1',
 			)
 		),
-		'summary' => array (
+		'summary' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.summary',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.summary',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '48',
-				'max' => '100',
+				'max'  => '100',
 				'eval' => 'required',
 			)
 		),
-		'description' => array (
+		'description' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.description',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.description',
+			'config'  => array(
 				'type' => 'text',
 				'cols' => '48',
 				'rows' => '10',
 				'eval' => 'required',
 			)
 		),
-		'location' => array (
+		'location' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.location',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.location',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'url' => array (
+		'url' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.url',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.url',
+			'config'  => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -500,10 +500,10 @@ $TCA['tx_upbeteachingorg_training'] = array (
 				)
 			)
 		),
-		'dtstart' => array (
+		'dtstart' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.dtstart',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.dtstart',
+			'config'  => array(
 				'type'     => 'input',
 				'size'     => '8',
 				'max'      => '20',
@@ -512,10 +512,10 @@ $TCA['tx_upbeteachingorg_training'] = array (
 				'default'  => '0'
 			)
 		),
-		'dtend' => array (
+		'dtend' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.dtend',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.dtend',
+			'config'  => array(
 				'type'     => 'input',
 				'size'     => '8',
 				'max'      => '20',
@@ -524,10 +524,10 @@ $TCA['tx_upbeteachingorg_training'] = array (
 				'default'  => '0'
 			)
 		),
-		'due' => array (
+		'due' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.due',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.due',
+			'config'  => array(
 				'type'     => 'input',
 				'size'     => '8',
 				'max'      => '20',
@@ -536,79 +536,79 @@ $TCA['tx_upbeteachingorg_training'] = array (
 				'default'  => '0'
 			)
 		),
-		'category' => array (
+		'category' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.category',
-			'config' => array (
-				'type' => 'select',
-				'items' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.category',
+			'config'  => array(
+				'type'  => 'select',
+				'items' => array(
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.category.I.0', '1'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.category.I.1', '2'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.category.I.2', '3'),
 				),
-				'size' => 3,
+				'size'     => 3,
 				'maxitems' => 1,
 				'minitems' => 1,
 			)
 		),
-		'targetgroup' => array (
+		'targetgroup' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.targetgroup',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.targetgroup',
+			'config'  => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 				'eval' => 'required',
 			)
 		),
-		'price' => array (
+		'price' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.price',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.price',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'certificate' => array (
+		'certificate' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.certificate',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.certificate',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'content' => array (
+		'content' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.content',
-			'config' => array (
-				'type' => 'select',
-				'items' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.content',
+			'config'  => array(
+				'type'  => 'select',
+				'items' => array(
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.content.I.0', '0'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.content.I.1', '1'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.content.I.2', '2'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.content.I.3', '3'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.content.I.4', '4'),
 				),
-				'size' => 5,
+				'size'     => 5,
 				'maxitems' => 1,
 				'minitems' => 1,
 			)
 		),
-		'contacts' => array (
+		'contacts' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.contacts',
-			'config' => array (
-				'type' => 'select',
-				'foreign_table' => 'tx_upbeteachingorg_contact',
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_training.contacts',
+			'config'  => array(
+				'type'                => 'select',
+				'foreign_table'       => 'tx_upbeteachingorg_contact',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_contact.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_contact.familyname',
-				'size' => 15,
-				'minitems' => 0,
-				'maxitems' => 50,
-				"MM" => "tx_upbeteachingorg_training_contacts_mm",
-				'wizards' => array(
+				'size'                => 15,
+				'minitems'            => 0,
+				'maxitems'            => 50,
+				"MM"                  => "tx_upbeteachingorg_training_contacts_mm",
+				'wizards'             => array(
 					'_PADDING'  => 2,
 					'_VERTICAL' => 1,
-					'add' => array(
+					'add'       => array(
 						'type'   => 'script',
 						'title'  => 'Create new record',
 						'icon'   => 'add.gif',
@@ -623,72 +623,72 @@ $TCA['tx_upbeteachingorg_training'] = array (
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, objectid, summary, description, location, url, dtstart, dtend, due, category, targetgroup, price, certificate, content, contacts')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_event'] = array (
+$TCA['tx_upbeteachingorg_event'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_event']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,objectid,summary,description,location,url,dtstart,dtend'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_event']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'objectid' => array (
+		'objectid' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.objectid',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.objectid',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '80',
 				'readOnly' => '1',
 			)
 		),
-		'summary' => array (
+		'summary' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.summary',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.summary',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'description' => array (
+		'description' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.description',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.description',
+			'config'  => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 				'eval' => 'required',
 			)
 		),
-		'location' => array (
+		'location' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.location',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.location',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'url' => array (
+		'url' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.url',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.url',
+			'config'  => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -706,87 +706,87 @@ $TCA['tx_upbeteachingorg_event'] = array (
 				)
 			)
 		),
-		'dtstart' => array (
+		'dtstart' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.dtstart',
-			'config' => array (
-				'type'     => 'input',
-				'size'     => '16',
-				'max'      => '20',
-				'eval'     => 'required,datetime',
-				'default'  => mktime(date("H"),date("i"),0,date("m"),date("d"),date("Y"))
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.dtstart',
+			'config'  => array(
+				'type'    => 'input',
+				'size'    => '16',
+				'max'     => '20',
+				'eval'    => 'required,datetime',
+				'default' => mktime(date("H"),date("i"),0,date("m"),date("d"),date("Y"))
 			)
 		),
 
-		'dtend' => array (
+		'dtend' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.dtend',
-			'config' => array (
-				'type'     => 'input',
-				'size'     => '16',
-				'max'      => '20',
-				'eval'     => 'required,datetime',
-				'default'  =>  mktime(date("H"),date("i"),0,date("m"),date("d"),date("Y"))
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_event.dtend',
+			'config'  => array(
+				'type'    => 'input',
+				'size'    => '16',
+				'max'     => '20',
+				'eval'    => 'required,datetime',
+				'default' =>  mktime(date("H"),date("i"),0,date("m"),date("d"),date("Y"))
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, objectid, summary, description, location, url, dtstart, dtend')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_tool'] = array (
+$TCA['tx_upbeteachingorg_tool'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_tool']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,objectid,title,description,url,categories,contacts'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_tool']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'objectid' => array (
+		'objectid' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.objectid',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.objectid',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '80',
 				'readOnly' => '1',
 			)
 		),
-		'title' => array (
+		'title' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.title',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.title',
+			'config'  => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'description' => array (
+		'description' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.description',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.description',
+			'config'  => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 				'eval' => 'required',
 			)
 		),
-		'url' => array (
+		'url' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.url',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.url',
+			'config'  => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -804,17 +804,17 @@ $TCA['tx_upbeteachingorg_tool'] = array (
 				)
 			)
 		),
-		'categories' => array (
+		'categories' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.categories',
-			'config' => array (
-				'type' => 'select',
-				'foreign_table' => 'tx_upbeteachingorg_toolcategories',
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.categories',
+			'config'  => array(
+				'type'                => 'select',
+				'foreign_table'       => 'tx_upbeteachingorg_toolcategories',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_toolcategories.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_toolcategories.uid',
-				'size' => 10,
-				'minitems' => 0,
-				'maxitems' => 100,
-				"MM" => "tx_upbeteachingorg_tool_categories_mm",
+				'size'                => 10,
+				'minitems'            => 0,
+				'maxitems'            => 100,
+				"MM"                  => "tx_upbeteachingorg_tool_categories_mm",
 				'wizards' => array(
 					'_PADDING'  => 2,
 					'_VERTICAL' => 1,
@@ -832,10 +832,10 @@ $TCA['tx_upbeteachingorg_tool'] = array (
 				),
 			)
 		),
-		'contacts' => array (
+		'contacts' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.contacts',
-			'config' => array (
+			'label'   => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.contacts',
+			'config'  => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_contact',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_contact.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_contact.familyname',
@@ -861,69 +861,69 @@ $TCA['tx_upbeteachingorg_tool'] = array (
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, objectid, title;;;;2-2-2, description;;;;3-3-3, url, categories, contacts')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_toolcategories'] = array (
+$TCA['tx_upbeteachingorg_toolcategories'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_toolcategories']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,title'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_toolcategories']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'title' => array (
+		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolcategories.title',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, title;;;;2-2-2')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_servicecategory'] = array (
+$TCA['tx_upbeteachingorg_servicecategory'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_servicecategory']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,title'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_servicecategory']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'title' => array (
+		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_servicecategory.title',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '48',
 				'max' => '100',
@@ -931,63 +931,63 @@ $TCA['tx_upbeteachingorg_servicecategory'] = array (
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, title;;;;2-2-2')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_service'] = array (
+$TCA['tx_upbeteachingorg_service'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_service']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,objectid,summary,description,url,tags,serviceCategories,contacts,tool,toolportrait'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_service']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'objectid' => array (
+		'objectid' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.objectid',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '80',
 				'readOnly' => '1',
 			)
 		),
-		'summary' => array (
+		'summary' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.summary',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'description' => array (
+		'description' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.description',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 				'eval' => 'required',
 			)
 		),
-		'url' => array (
+		'url' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.url',
-			'config' => array (
+			'config' => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -1005,19 +1005,19 @@ $TCA['tx_upbeteachingorg_service'] = array (
 				)
 			)
 		),
-		'tags' => array (
+		'tags' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.tags',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'serviceCategories' => array (
+		'serviceCategories' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.categories',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_servicecategory',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_servicecategory.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_servicecategory.uid',
@@ -1042,10 +1042,10 @@ $TCA['tx_upbeteachingorg_service'] = array (
 				),
 			)
 		),
-		'contacts' => array (
+		'contacts' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.contacts',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_contact',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_contact.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_contact.familyname',
@@ -1071,10 +1071,10 @@ $TCA['tx_upbeteachingorg_service'] = array (
 			)
 		),
 
-		'tool' => array (
+		'tool' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.tool',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_tool',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_tool.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_tool.title',
@@ -1099,10 +1099,10 @@ $TCA['tx_upbeteachingorg_service'] = array (
 				),
 			)
 		),
-		'toolportrait' => array (
+		'toolportrait' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_service.toolportrait',
-			'config' => array (
+			'config' => array(
 				'type' => 'group',
 				'internal_type' => 'db',
 				'allowed' => 'tx_upbeteachingorg_toolportraiteto',
@@ -1113,73 +1113,73 @@ $TCA['tx_upbeteachingorg_service'] = array (
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, objectid, summary, description, url, tags, serviceCategories, contacts, tool, toolportrait')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_project'] = array (
+$TCA['tx_upbeteachingorg_project'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_project']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,objectid,title,summary,description,url,state,dtstart,dtend,type,resource,tags,department,partners,partneruniversities,contacts,category'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_project']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'objectid' => array (
+		'objectid' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.objectid',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '80',
 				'readOnly' => '1',
 			)
 		),
-		'title' => array (
+		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.title',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'summary' => array (
+		'summary' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.summary',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 				'eval' => 'required',
 			)
 		),
-		'description' => array (
+		'description' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.description',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '40',
 				'rows' => '15',
 				'eval' => 'required',
 			)
 		),
-		'url' => array (
+		'url' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.url',
-			'config' => array (
+			'config' => array(
 				'type'     => 'input',
 				'size'     => '15',
 				'max'      => '255',
@@ -1197,12 +1197,12 @@ $TCA['tx_upbeteachingorg_project'] = array (
 				)
 			)
 		),
-		'state' => array (
+		'state' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.state',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
-				'items' => array (
+				'items' => array(
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.state.I.0', '0'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.state.I.1', '1'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.state.I.2', '2'),
@@ -1213,10 +1213,10 @@ $TCA['tx_upbeteachingorg_project'] = array (
 				'eval' => 'required',
 			)
 		),
-		'dtstart' => array (
+		'dtstart' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.dtstart',
-			'config' => array (
+			'config' => array(
 				'type'     => 'input',
 				'size'     => '8',
 				'max'      => '20',
@@ -1225,10 +1225,10 @@ $TCA['tx_upbeteachingorg_project'] = array (
 				'default'  => '0'
 			)
 		),
-		'dtend' => array (
+		'dtend' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.dtend',
-			'config' => array (
+			'config' => array(
 				'type'     => 'input',
 				'size'     => '8',
 				'max'      => '20',
@@ -1237,35 +1237,35 @@ $TCA['tx_upbeteachingorg_project'] = array (
 				'default'  => '0'
 			)
 		),
-		'type' => array (
+		'type' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.type',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'resource' => array (
+		'resource' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.resource',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'tags' => array (
+		'tags' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.tags',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'department' => array (
+		'department' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.department',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_projectdepartment',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_projectdepartment.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_projectdepartment.uid',
@@ -1290,10 +1290,10 @@ $TCA['tx_upbeteachingorg_project'] = array (
 				),
 			)
 		),
-		'partners' => array (
+		'partners' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.partners',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_projectpartner',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_projectpartner.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_projectpartner.uid',
@@ -1318,10 +1318,10 @@ $TCA['tx_upbeteachingorg_project'] = array (
 				),
 			)
 		),
-/*		'partneruniversities' => array (
+/*		'partneruniversities' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.partneruniversities',
-			'config' => array (
+			'config' => array(
 				'type' => 'group',
 				'internal_type' => 'db',
 				'allowed' => 'tx_upbeteachingorg_university',
@@ -1332,10 +1332,10 @@ $TCA['tx_upbeteachingorg_project'] = array (
 			)
 		),
 */
-		'contacts' => array (
+		'contacts' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.contacts',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_contact',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_contact.pid=###CURRENT_PID### ORDER BY tx_upbeteachingorg_contact.uid',
@@ -1362,12 +1362,12 @@ $TCA['tx_upbeteachingorg_project'] = array (
 		),
 
 
-		'category' => array (
+		'category' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.category',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
-				'items' => array (
+				'items' => array(
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.category.I.0', '0'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.category.I.1', '1'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_project.category.I.2', '2'),
@@ -1379,174 +1379,174 @@ $TCA['tx_upbeteachingorg_project'] = array (
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, objectid, title;;;;2-2-2, summary, description;;;;3-3-3, url, state, dtstart, dtend, type, resource, tags, department, partners, contacts, category')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_projectdepartment'] = array (
+$TCA['tx_upbeteachingorg_projectdepartment'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_projectdepartment']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,title'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_projectdepartment']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'title' => array (
+		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_projectdepartment.title',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, title;;;;2-2-2')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
 
-$TCA['tx_upbeteachingorg_projectpartner'] = array (
+$TCA['tx_upbeteachingorg_projectpartner'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_projectpartner']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,title'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_projectpartner']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'title' => array (
+		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_projectpartner.title',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, title;;;;2-2-2')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
-$TCA['tx_upbeteachingorg_role'] = array (
+$TCA['tx_upbeteachingorg_role'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_role']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,title'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_role']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'title' => array (
+		'title' => array(
 			'exclude' => 0,
 			'label' => 'Rolle',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, title;;;;2-2-2')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
 
-$TCA['tx_upbeteachingorg_toolportraiteto'] = array (
+$TCA['tx_upbeteachingorg_toolportraiteto'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_toolportraiteto']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,objectid,title,description,operating_field,category,pros,cons,examples,format,producer,price,operating_system,level,tutorials,reference,options'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_toolportraiteto']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'objectid' => array (
+		'objectid' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.objectid',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '80',
 				'readOnly' => '0',
 				'eval' => 'required',
 			)
 		),
-		'title' => array (
+		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.title',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'operating_field' => array (
+		'operating_field' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.operating_field',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 				'eval' => 'required',
 			)
 		),
-		'description' => array (
+		'description' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_tool.description',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 				'eval' => 'required',
 			)
 		),
-		'category' => array (
+		'category' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.category',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
-				'items' => array (
+				'items' => array(
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.category.I.1', '1'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.category.I.2', '2'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.category.I.3', '3'),
@@ -1569,66 +1569,66 @@ $TCA['tx_upbeteachingorg_toolportraiteto'] = array (
 				'eval' => 'required',
 			)
 		),
-		'pros' => array (
+		'pros' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.pros',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 				'eval' => 'required',
 			)
 		),
-		'cons' => array (
+		'cons' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.cons',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 				'eval' => 'required',
 			)
 		),
-		'examples' => array (
+		'examples' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.examples',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 			)
 		),
-		'format' => array (
+		'format' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.format',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 			)
 		),
-		'producer' => array (
+		'producer' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.producer',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'price' => array (
+		'price' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.price',
-			'config' => array (
+			'config' => array(
 				'type' => 'input',
 				'size' => '30',
 			)
 		),
-		'operating_system' => array (
+		'operating_system' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.operating_system',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
-				'items' => array (
+				'items' => array(
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.operating_system.I.0', '0'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.operating_system.I.1', '1'),
 					array('LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.operating_system.I.2', '2'),
@@ -1638,70 +1638,70 @@ $TCA['tx_upbeteachingorg_toolportraiteto'] = array (
 				'maxitems' => 4,
 			)
 		),
-		'level' => array (
+		'level' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.level',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 			)
 		),
-		'tutorials' => array (
+		'tutorials' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.tutorials',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 			)
 		),
-		'reference' => array (
+		'reference' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.references',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 			)
 		),
-		'options' => array (
+		'options' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportraiteto.option',
-			'config' => array (
+			'config' => array(
 				'type' => 'text',
 				'cols' => '30',
 				'rows' => '5',
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, objectid, title;;;;2-2-2, description;;;;3-3-3, operating_field, category, pros, cons, examples, format, producer, price, operating_system, level, tutorials, reference, options')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );
 
-$TCA['tx_upbeteachingorg_toolportrait'] = array (
+$TCA['tx_upbeteachingorg_toolportrait'] = array(
 	'ctrl' => $TCA['tx_upbeteachingorg_toolportrait']['ctrl'],
-	'interface' => array (
+	'interface' => array(
 		'showRecordFieldList' => 'hidden,portrait_id,contacts'
 	),
 	'feInterface' => $TCA['tx_upbeteachingorg_toolportrait']['feInterface'],
-	'columns' => array (
-		'hidden' => array (
+	'columns' => array(
+		'hidden' => array(
 			'exclude' => 1,
 			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-			'config'  => array (
+			'config'  => array(
 				'type'    => 'check',
 				'default' => '0'
 			)
 		),
-		'portrait_id' => array (
+		'portrait_id' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_toolportrait.protrait_id',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'internal_type' => 'db',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_toolportraiteto.pid='.$conf['etoPid'].' ORDER BY tx_upbeteachingorg_toolportraiteto.uid',
@@ -1714,10 +1714,10 @@ $TCA['tx_upbeteachingorg_toolportrait'] = array (
 			)
 
 		),
-		'contacts' => array (
+		'contacts' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:upb_eteachingorg/locallang_db.xml:tx_upbeteachingorg_university.contacts',
-			'config' => array (
+			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_upbeteachingorg_contact',
 				'foreign_table_where' => 'AND tx_upbeteachingorg_contact.pid=###STORAGE_PID### ORDER BY tx_upbeteachingorg_contact.uid',
@@ -1743,10 +1743,10 @@ $TCA['tx_upbeteachingorg_toolportrait'] = array (
 			)
 		),
 	),
-	'types' => array (
+	'types' => array(
 		'0' => array('showitem' => 'hidden;;1;;1-1-1, portrait_id, contacts')
 	),
-	'palettes' => array (
+	'palettes' => array(
 		'1' => array('showitem' => '')
 	)
 );

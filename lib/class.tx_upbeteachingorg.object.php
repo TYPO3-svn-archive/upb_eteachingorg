@@ -21,17 +21,17 @@
  */
 
 
-abstract class object{
-	var $data = array();
+abstract class object {
+	var $data       = array();
 	var $importData = array();
 	var $id;
 
-	var $processedFieldData = array();
-	var $processedXMLData = array();
+	var $processedFieldData  = array();
+	var $processedXMLData    = array();
 	var $processedImportData = array();
 
 	var $processMode = 'load';
-	var $template = '';
+	var $template    = '';
 	var $level;
 	var $pid;
 
@@ -41,7 +41,7 @@ abstract class object{
 	abstract public function getObjectOptionList();
 
 	function __construct($mode='new',$value='',$level=0,$forceLight=0){
-		$this->extConf =  unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['upb_eteachingorg']);
+		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['upb_eteachingorg']);
 
 		switch($mode) {
 			case 'new':
@@ -147,55 +147,50 @@ abstract class object{
 	 */
 	public function loadByUuid($uuid) {
 		$select_fields = '*';
-		$from_table = $this->objectTable;
-		$objectId = $GLOBALS['TYPO3_DB']->fullQuoteStr($uuid,$from_table);
-		$where_clause = " objectid = $objectId AND deleted != 1 AND hidden != 1";
-		$res =   $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+		$from_table    = $this->objectTable;
+		$objectId      = $GLOBALS['TYPO3_DB']->fullQuoteStr($uuid,$from_table);
+		$where_clause  = " objectid = $objectId AND deleted != 1 AND hidden != 1";
+		$res           = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+		$count         = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
+		$row2          = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 
-		$count = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
-
-		$row2 = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
-
-		if($count == 1) {
+		if ($count == 1) {
 			$this->data = $row2;
-		}elseif($count > 1) {
+		} elseif ($count > 1) {
 			throw new Exception('Object with dublicated UUid in Database',200);
-		}elseif($count == 0) {
+		} elseif ($count == 0) {
 			throw new Exception('No object with '.$uuid.' uuid in database',100);
 		}
 	}
 
 	/**
-	 * [Describe function...]
+	 * loads an object with a specific unique ID.
 	 *
-	 * @param	[type]		$uid: ...
-	 * @return	[type]		...
+	 * @param	[type]		$uid: unique ID of object
 	 */
 	protected function loadByUid($uid) {
 		$select_fields = '*';
-		$from_table = $this->objectTable;
-		$objectUid = $GLOBALS['TYPO3_DB']->fullQuoteStr($uid,$from_table);
-		$where_clause = " uid = $objectUid AND deleted != 1 AND hidden != 1";
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+		$from_table    = $this->objectTable;
+		$objectUid     = $GLOBALS['TYPO3_DB']->fullQuoteStr($uid,$from_table);
+		$where_clause  = " uid = $objectUid AND deleted != 1 AND hidden != 1";
+		$res           = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+		$count         = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
+		$row2          = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 
-		$count = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
-
-		$row2 = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
-
-		if($count == 1) {
+		if ($count == 1) {
 			$this->data = $row2;
-		}elseif($count > 1) {
+		} elseif ($count > 1) {
 			throw new Exception('Object '.$from_table.' with dublicated Uid in Database',200);
-		}elseif($count == 0) {
+		} elseif ($count == 0) {
 			throw new Exception('No object '.$from_table.' with uid '.$uid.'in database',100);
 		}
 	}
 
-	/*
-
-		foreach conf field with loadData processLoadingData
-
-	*/
+	/**
+	 * foreach conf field with loadData processLoadingData
+	 *
+	 * @param	int		$forceLight: ...
+	 */
 	public function processLoadingData($forceLight=0) {
 
 		$conf = $this->fields['mmData'];
@@ -235,26 +230,26 @@ abstract class object{
 	 */
 	public function processFields() {
 		$confType = $this->getProcessMode();
-		$conf = $this->fields[$confType];
+		$conf     = $this->fields[$confType];
 
-		foreach($conf as $key => $field) {
+		foreach ($conf as $key => $field) {
 			if (method_exists  ('fieldFunction',$field['objectFunction'] ) || method_exists  ($this,$field['objectDirectFunction'] )) {
 
-				$params = array();
-				$params['obj'] = $this;
+				$params              = array();
+				$params['obj']       = $this;
 				$params['fieldname'] = $key;
 
-				if($field['objectFunction'] !='') {
+				if ($field['objectFunction'] !='') {
 					$returnValue = call_user_func_array(array('fieldFunction',$field['objectFunction']),$params);
-				}elseif($field['objectDirectFunction']) {
+				} elseif ($field['objectDirectFunction']) {
 					$returnValue = call_user_func_array(array($this,$field['objectDirectFunction']),$params);
 				}
 
 				$internalFieldName = $this->getInternalFieldname($key);
 
-				if($confType == 'load') {
+				if ($confType == 'load') {
 					$this->processedFieldData[$internalFieldName] = $returnValue;
-				}elseif($confType == 'loadxml') {
+				} elseif ($confType == 'loadxml') {
 					$this->processedXMLData[$internalFieldName] = $returnValue;
 				}
 			}
@@ -300,7 +295,6 @@ abstract class object{
 	 *
 	 * @param	[type]		$mode: ...
 	 * @param	[type]		$template: ...
-	 * @return	[type]		...
 	 */
 	public function setProcessMode($mode,$template) {
 		switch($mode) {
@@ -314,9 +308,9 @@ abstract class object{
 				$objMode = 'load';
 		}
 
-	$this->processMode = $objMode;
-	$this->template = $template;
-}
+		$this->processMode = $objMode;
+		$this->template    = $template;
+	}
 
 	/**
 	 * [Describe function...]
@@ -331,7 +325,7 @@ abstract class object{
 	 * [Describe function...]
 	 *
 	 * @param	[type]		$fieldname: ...
-	 * @return	[type]		...
+	 * @return	String		...
 	 */
 	public function getInternalFieldname($fieldname) {
 		$mode = $this->getProcessMode();
@@ -359,42 +353,32 @@ abstract class object{
 
 		$objectUid = $obj->getFieldValue('uid');
 
-		if (intval($objectUid) != 0) {
-
-			$select = $conf['optionTable'].'.*';
-			$local_table = $obj->objectTable;
-			$mm_table = $conf['mmTable'];
+		if (intval($objectUid) == 0) {
+			return 0;
+		} else {
+			$select        = $conf['optionTable'].'.*';
+			$local_table   = $obj->objectTable;
+			$mm_table      = $conf['mmTable'];
 			$foreign_table = $conf['optionTable'];
-			$where = ' AND '.$local_table.'.uid = '.$objectUid;
-			$groupBy = ' uid';
-			$orderBy = ' uid';
-			$limit = 1000;
+			$where         = ' AND '.$local_table.'.uid = '.$objectUid;
+			$groupBy       = ' uid';
+			$orderBy       = ' uid';
+			$limit         = 1000;
 
-
-			$res = $GLOBALS['TYPO3_DB']->exec_SELECT_mm_query($select,$local_table,$mm_table,$foreign_table, $where);
-
+			$res     = $GLOBALS['TYPO3_DB']->exec_SELECT_mm_query($select,$local_table,$mm_table,$foreign_table, $where);
 			$numRows = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 
 			$returnData = array();
 
-
 			if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) >= 1) {
-				while($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
-
-					$returnData[] = $data;
-
-
-				}
-
-				return $returnData;
-			}else {
 				return 0;
+			} else {
+				while ($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
+					$returnData[] = $data;
+				}
+				return $returnData;
 			}
-		}else {
-			return 0;
 		}
-
-
 	}
 
 	/**
@@ -410,36 +394,37 @@ abstract class object{
 		$conf = $obj->fields['mmData'][$fieldname];
 		$objectUid = $obj->getFieldValue('uid');
 
-		if (intval($objectUid) != 0) {
-
-			$select = 'uid_foreign,tablenames';
-			$table = $conf['mmTable'];
-			$where = ' uid_local = '.$objectUid;
+		if (intval($objectUid) == 0) {
+			return 0;
+		} else {
+			$select  = 'uid_foreign,tablenames';
+			$table   = $conf['mmTable'];
+			$where   = ' uid_local = '.$objectUid;
 			$groupBy = ' ';
 			$orderBy = ' ';
-			$limit = 1000;
+			$limit   = 1000;
 
-			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select,$table, $where);
-
+			$res     = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select,$table, $where);
 			$numRows = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 
 			$returnData = array();
+			$tmpCode    = array();
 
-			$tmpCode = array();
-
-			if($conf['multicast'] == false) {
+			if ($conf['multicast'] == false) {
 				$tmp = new $conf['castObject'];
 				$tmpCode[$conf['castObject']] = $tmp->getObjectTemplate('xml');
 			} else {
-				foreach($conf['templatePreload'] as $key => $objectPre) {
+				foreach ($conf['templatePreload'] as $key => $objectPre) {
 					$tmp = new $objectPre;
 					$tmpCode[$objectPre] = $tmp->getObjectTemplate('xml');
 				}
 			}
 
-			if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) >= 1) {
-				while($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
-					if($conf['multicast'] == false) {
+			if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) == 0) {
+				return 0;
+			} else {
+				while ($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
+					if ($conf['multicast'] == false) {
 						$newObjectName = $conf['castObject'];
 					} else {
 						$newObjectName = $conf[$data['tablenames']];
@@ -454,11 +439,7 @@ abstract class object{
 					$returnData[] = $tmpObject;
 				}
 				return $returnData;
-			} else {
-				return 0;
 			}
-		}else {
-			return 0;
 		}
 	}
 
@@ -476,17 +457,17 @@ abstract class object{
 		$conf = $obj->fields['mmData'][$fieldname];
 		$objectUid = $obj->getFieldValue('uid');
 
-		if (intval($objectUid) != 0) {
-
-			$select = 'uid_foreign,tablenames';
-			$table = $conf['mmTable'];
-			$where = ' uid_local = '.$objectUid;
+		if (intval($objectUid) == 0) {
+			return 0;
+		} else {
+			$select  = 'uid_foreign,tablenames';
+			$table   = $conf['mmTable'];
+			$where   = ' uid_local = '.$objectUid;
 			$groupBy = ' ';
 			$orderBy = ' ';
-			$limit = 1000;
+			$limit   = 1000;
 
-			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select,$table, $where);
-
+			$res     = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select,$table, $where);
 			$numRows = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 
 			$returnData = array();
@@ -495,36 +476,32 @@ abstract class object{
 				$tmp = new $conf['castObject'];
 				$tmpCode[$conf['castObject']] = $tmp->getObjectTemplate('xml');
 			} else {
-
 				foreach($conf['templatePreload'] as $key => $objectPre) {
 					$tmp = new $objectPre;
 					$tmpCode[$objectPre] = $tmp->getObjectTemplate('xml');
 				}
 			}
 
-			if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) >= 1) {
-				while($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
-
-					if($conf['multicast'] == false) {
+			if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) == 0) {
+				return 0;
+			} else {
+				while ($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
+					if ($conf['multicast'] == false) {
 						$newObjectName = $conf['castObject'];
-					}else {
+					} else {
 						$newObjectName = $conf[$data['tablenames']];
 					}
 
 					$level = $obj->level +1;
 
-					if($level < 3) {
+					if ($level < 3) {
 						$tmpObject = new $newObjectName('uid',$data['uid_foreign'],$level);
 						$tmpObject->level = $obj->level +1;
 						$returnData[] = $tmpObject;
 					}
 				}
 				return $returnData;
-			}else {
-				return 0;
 			}
-		}else {
-			return 0;
 		}
 	}
 
@@ -535,18 +512,14 @@ abstract class object{
 	 * @return	[type]		...
 	 */
 	function getObjectTemplate($type) {
-
 		$filePath = '';
-
 		switch($type) {
 			case 'list' :
 				$filePath = $this->displayTemplate['list'];
 				break;
-
 			case 'detail' :
 				$filePath = $this->displayTemplate['detail'];
 				break;
-
 			case 'xml' :
 				$filePath = $this->displayTemplate['xml'];
 		}
@@ -562,9 +535,9 @@ abstract class object{
 	 * @return	[type]		...
 	 */
 	function getThisObjectCode($piConf) {
-		$objectname = get_class($this);
+		$objectname    = get_class($this);
 		$select_fields = "uid";
-		$from_table =  $this->objectTable;
+		$from_table    =  $this->objectTable;
 
 		switch($piConf['sourceMode']) {
 			case 1:
@@ -580,9 +553,9 @@ abstract class object{
 
 		$where_clause .= ' AND deleted=0 AND hidden = 0';
 		$resultArray = array();
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
-		$deb = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
 
+		$res     = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
+		$deb     = $GLOBALS['TYPO3_DB']->SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
 		$numRows = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 
 		$returnData = array();
@@ -602,7 +575,7 @@ abstract class object{
 				$content .= $code;
 				unset($object);
 			}
-		return $content;
+			return $content;
 		}
 	}
 
@@ -615,11 +588,10 @@ abstract class object{
 		$conf = $this->fields['import'];
 		$returnData = array();
 
-		foreach($conf as $key => $field) {
+		foreach ($conf as $key => $field) {
 			if (method_exists  ('fieldFunction',$field['fieldFunction'] )) {
-
-				$params = array();
-				$params['obj'] = $this;
+				$params              = array();
+				$params['obj']       = $this;
 				$params['fieldname'] = $key;
 
 				if($field['fieldFunction'] !='') {
@@ -628,7 +600,6 @@ abstract class object{
 
 				$internalFieldName = ($field['objectFieldname']) ? $field['objectFieldname'] : $key  ;
 				$this->processedImportData[$internalFieldName] = $returnValue;
-
 			}
 		}
 	}
@@ -643,39 +614,39 @@ abstract class object{
 	function addMMOption($field,$value) {
 		GLOBAL $BE_USER;
 
-		$conf = $this->fields['mmData'][$field];
+		$conf    = $this->fields['mmData'][$field];
 		$objConf = $this->fields['import'][$field];
 
 		// GET OPTION UID IN DB
 		$select_fields = "uid";
 
-		$from_table =  $conf['optionTable'];
+		$from_table   =  $conf['optionTable'];
 		$valueEscaped = $GLOBALS['TYPO3_DB']->fullQuoteStr($value, $from_table);
 		$where_clause = ' pid = '.$this->getFieldValue('pid').' AND deleted=0 AND '.$conf['optionTableWhereField'].' = '.$valueEscaped;
-		$resultArray = array();
+		$resultArray  = array();
+
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields,$from_table,$where_clause,$groupBy='',$orderBy='',$limit='');
 		$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 
 		if(!is_array($row)) {
 			if($objConf['allowNewElements'] || $this->extConf['forceAllowNewOptions']) {
-
-				$field_array = array();
-				$field_array['pid'] = $this->getFieldValue('pid');
-				$field_array['tstamp'] = time();
-				$field_array['crdate'] = time();
+				$field_array              = array();
+				$field_array['pid']       = $this->getFieldValue('pid');
+				$field_array['tstamp']    = time();
+				$field_array['crdate']    = time();
 				$field_array['cruser_id'] = $BE_USER->user['uid'];
-				$field_array['deleted'] = 0;
-				$field_array['hidden'] = 0;
-				$field_array['title'] = $value;
+				$field_array['deleted']   = 0;
+				$field_array['hidden']    = 0;
+				$field_array['title']     = $value;
+
 				$GLOBALS['TYPO3_DB']->exec_INSERTquery($conf['optionTable'],$field_array);
 				$uid = $GLOBALS['TYPO3_DB']->sql_insert_id();
 			}
-		}else {
+		} else {
 			$uid = $row['uid'];
 		}
 
-		if(intval($uid) != 0) {
-
+		if (intval($uid) != 0) {
 			// Create Relation entry
 			$fieldArray = array();
 			$fieldArray['uid_local'] = $this->getFieldValue('uid');
@@ -697,7 +668,7 @@ abstract class object{
 		$objectDBUid = $this->getFieldValue('uid');
 		$table = $conf['mmTable'];
 
-		if($objectDBUid != 0) {
+		if ($objectDBUid != 0) {
 			$where = " uid_local = $objectDBUid ";
 			$GLOBALS['TYPO3_DB']->exec_DELETEquery($table,$where);
 		}
@@ -714,27 +685,25 @@ abstract class object{
 		GLOBAL $BE_USER;
 		$objName = get_class($this);
 
-		if($mode == 'insert') {
+		if ($mode == 'insert') {
 			$GLOBALS['TYPO3_DB']->exec_INSERTquery($this->objectTable,$fields_values);
 			$debug = $GLOBALS['TYPO3_DB']->INSERTquery($this->objectTable,$fields_values);
 			$error = $GLOBALS['TYPO3_DB']->sql_error();
-			if($error=='')
+			if ($error=='') {
 				$this->loadByUuid($fields_values['objectid']);
-			else
+			} else {
 				print_r($debug);
-		}else {
-			//Update
-
+			}
+		} else { // $mode == 'update'
 			$where = " objectid = '".$this->data['objectid']."' AND deleted=0";
 			$GLOBALS['TYPO3_DB']->exec_UPDATEquery($this->objectTable,$where,$fields_values);
 
 			$error = $GLOBALS['TYPO3_DB']->sql_error();
-			if($error==''){
+			if ($error=='') {
 				$this->loadByUuid($this->data['objectid']);
 			}
 		}
 	}
-
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/upb_eteachingorg/pi1/class.tx_upbeteachingorg_pi1.php'])    {

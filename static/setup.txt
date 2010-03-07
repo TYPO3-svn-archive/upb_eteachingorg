@@ -1,0 +1,12 @@
+plugin.tx_upbeteachingorg_pi1.detailPages {
+	contact      = 17
+	project      = 18
+	tool         = 9
+	university   = 20
+	service      = 10
+	tool-profile = 19
+	training     = 21
+}
+
+plugin.tx_upbeteachingorg.test = TEXT
+plugin.tx_upbeteachingorg.test.value = Hallo

@@ -1,0 +1,20 @@
+# cat=UBP_eteaching.org; type=int; label= Feed encoding: Encoding of incomming feed
+tx_upbeteachingorg_pi1.detailPage.contact = 17
+
+# cat=UBP_eteaching.org; type=int; label= Feed encoding: Encoding of incomming feed
+tx_upbeteachingorg_pi1.detailPage.project = 18
+
+# cat=UBP_eteaching.org; type=int; label= Feed encoding: Encoding of incomming feed
+tx_upbeteachingorg_pi1.detailPage.tool = 9
+
+# cat=UBP_eteaching.org; type=int; label= Feed encoding: Encoding of incomming feed
+tx_upbeteachingorg_pi1.detailPage.university = 20
+
+# cat=UBP_eteaching.org; type=int; label= Feed encoding: Encoding of incomming feed
+tx_upbeteachingorg_pi1.detailPage.service = 10
+
+# cat=UBP_eteaching.org; type=int; label= Feed encoding: Encoding of incomming feed
+tx_upbeteachingorg_pi1.detailPage.tool-profile = 19
+
+# cat=UBP_eteaching.org; type=int; label= Feed encoding: Encoding of incomming feed
+tx_upbeteachingorg_pi1.detailPage.training = 21
