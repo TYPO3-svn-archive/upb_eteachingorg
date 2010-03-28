@@ -262,10 +262,8 @@ class toolportrait extends object {
 		if($mode == 'insert') {
 			//Insert
 			$debug = $GLOBALS['TYPO3_DB']->INSERTquery($this->objectTable,$fields_values['fields']);
-			echo $debug;
+			debug($debug,'toolportrait.setData - insert');
 			$GLOBALS['TYPO3_DB']->exec_INSERTquery($this->objectTable,$fields_values['fields']);
-
-
 			$debug = $GLOBALS['TYPO3_DB']->sql_error();
 
 		}else {

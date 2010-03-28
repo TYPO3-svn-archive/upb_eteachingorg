@@ -14,11 +14,8 @@ require_once('class.tx_upbeteachingorg.object.php');
  */
 class event extends object {
 
-
 	var $objectTable = 'tx_upbeteachingorg_event';
-
 	var $staticOptions = array();
-
 	var $displayTemplate = array(
 		'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_event.tmpl',
 		'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_event.tmpl',

@@ -41,8 +41,9 @@ require_once(dirname(PATH_thisScript).'/typo3conf/ext/upb_eteachingorg/lib/class
 /**
  * Plugin 'E-Teaching.org' for the 'upb_eteachingorg' extension.
  *
- * @author    Heiko Noethen <noethen@uni-paderborn.de>
- * @package    TYPO3
+ * @author        Heiko Noethen <noethen@uni-paderborn.de>
+ * @author        Nicolas Nieswandt <nieswandt@tfh-bochum.de>
+ * @package       TYPO3
  * @subpackage    tx_upbeteachingorg
  */
 class tx_upbeteachingorg_pi1 extends tslib_pibase {
@@ -58,6 +59,8 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 	 * @return   The content  that is displayed on the website
 	 */
 	function main($content, $conf) {
+		t3lib_div::devLog("main", $this->extKey, 0, array('uid' => $this->piVars['uid'], 'what_to_display' => $this->piConf['what_to_display'], 'conf' => $conf ));
+
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
 		$this->pi_initPIflexForm();
@@ -65,7 +68,7 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 		$this->pi_USER_INT_obj = 1;    // Configuring so caching is not expected. This value means that no cHash params are ever set. We do this, because it's a USER_INT object!
 
 		$GLOBALS['EXT_CONF'] = $conf;
-		$GLOBALS['COBJ'] = t3lib_div::makeInstance('tslib_cObj');
+		$GLOBALS['COBJ']     = t3lib_div::makeInstance('tslib_cObj');
 
 		$extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['upb_eteachingorg']);
 
@@ -74,10 +77,20 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 		$this->piConf = array();
 		$this->piConf['maxListElements'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'maxListElements');
 		$this->piConf['what_to_display'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'what_to_display');
-		$this->piConf['mode'] = ($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'mode') != '') ? $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'mode') : ($this->conf['displayXML'] ? 'xml' : '');
+
+		$mode = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'mode');
+		debug($mode, 'mode set in FF');
+		if ($mode != '') {
+			$this->piConf['mode'] = $mode;
+		} else {
+			$this->piConf['mode'] = $this->conf['displayXML'] ? 'xml' : '';
+		}
+		debug($mode, 'mode set by pi1');
+
 		$this->piConf['displayPageBrowser'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'displayPageBrowser');
-		$this->piConf['PIDitemDisplay'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'PIDitemDisplay');
-		$this->piConf['listSortBy'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'listSortBy');
+		$this->piConf['PIDitemDisplay']     = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'PIDitemDisplay');
+		$this->piConf['listSortBy']         = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'listSortBy');
+
 		$this->piConf['tablePrefix'] = 'tx_upbeteachingorg_';
 
 		$sourcePagesArray = explode(',',$this->cObj->data['pages']);
@@ -97,8 +110,6 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 				|| intval($extConf['etoPid']) == 0) {
 			return $this->pi_wrapInBaseClass('Fehler: Konfiguration im Extension Manager &uuml;berpr&uuml;fen!');
 		}
-
-		t3lib_div::devLog('mode:', $this->extKey, 0, array( 'mode' => $this->piConf['mode']));
 
 		$this->currentVars = array();
 		switch($this->piConf['mode']) {
@@ -140,10 +151,9 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 				$this->currentVars['object'] = 'toolportraiteto';
 				break;
 			default:
-			//return '<h1>Fehler</h1><p>Keine g&uuml;ltige Display-Variable in Flexform (T3BE) &uuml;bergeben!</p>';
+				t3lib_div::devLog("Unkown display-type from flexform (T3BE).", $this->extKey, 3, array('what_to_display' => $this->piConf['what_to_display']));
 		}
 
-		t3lib_div::devLog("mode", $this->extKey, 0, array('uid' => $this->piVars['uid'], 'what_to_display' => $this->piConf['what_to_display']));
 		switch($this->currentVars['mode']) {
 			case 'list':
 				$objectname = $this->currentVars['object'];
@@ -160,15 +170,15 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 				try {
 					$object = new $objectname('uuid',$uid,1,1);
 				} catch (Exception $ex) {
-					return '<h1>Fehler</h1><p>Keine g&uuml;ltige ID &uuml;bergeben!</p>';
+					t3lib_div::devLog("Unkown ID", $this->extKey, 3, array('uid' => $uid));
 				}
 
 				$objectTemplate = $object->getObjectTemplate('detail');
 				$object->setProcessMode('load',$objectTemplate);
 				$object->processFields();
 				$markerArray = $object->getMarkerArray();
-				$objXMLCode = t3lib_parsehtml::getSubpart($objectTemplate, "###TEMPLATE_LIST###");
-				$code = t3lib_parsehtml::substituteMarkerArray($objXMLCode,$markerArray,'',0);
+				$objXMLCode  = t3lib_parsehtml::getSubpart($objectTemplate, "###TEMPLATE_LIST###");
+				$code        = t3lib_parsehtml::substituteMarkerArray($objXMLCode,$markerArray,'',0);
 				$content .= $code;
 				unset($object);
 				return $content;
@@ -177,7 +187,7 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 			case 'xml':
 				$uid = intval($extConf['ownUniversityId']);
 
-				if($uid != 0 ) {
+				if ($uid != 0 ) {
 					$uni = new university('uid',$uid);
 					$tmpl = $uni->getObjectTemplate('xml');
 					$uni->setProcessMode('loadxml',$tmpl);
@@ -186,7 +196,7 @@ class tx_upbeteachingorg_pi1 extends tslib_pibase {
 					$objXMLCode = $this->cObj->getSubpart($tmpl, "###TEMPLATE_LIST###");
 					$content = $this->cObj->substituteMarkerArray($objXMLCode,$markerArray,'',0);
 				} else {
-					$content = "Fehler in der Konfiguration: ID der eigenen Uni angeben";
+					t3lib_div::devLog("Passed ID of own university.", $this->extKey, 3, array('uid' => $uid));
 				}
 				break;
 		}

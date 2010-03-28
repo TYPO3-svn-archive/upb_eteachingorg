@@ -1,0 +1,164 @@
+Dont make a carriage return after the template marker. XML has to start in first line and first col!
+<!-- ###TEMPLATE_LIST_UNIVERSITY### begin --><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eteaching-import SYSTEM "http://www.e-teaching.org/etresources/feed/dtd/eteaching-import.dtd" >
+<eteaching-import>
+
+	<university-data uid="###OBJECTID###" university-key="###UNIVERSITY-KEY###" changed="###TSTAMP###">
+		<university-information><![CDATA[###INFO###]]></university-information>
+		<university-news><![CDATA[###NEWS###]]></university-news>
+		<url><![CDATA[###URL###]]></url>
+		<e-learning-url><![CDATA[###ELEARNINGURL###]]></e-learning-url>
+		<news-feed-url><![CDATA[###NEWSFEEDURL###]]></news-feed-url>
+
+		###PROJECTS###
+		###EVENTS###
+		###TRAININGS###
+		###SERVICES###
+		###TOOLS###
+		###TOOL-PORTRAITS###
+
+		<hs-contacts>
+			###HS-CONTACT###
+		</hs-contacts>
+		<hs-tools>
+			###TOOLIDS###
+			###TOOLPORTRAITIDS###
+		</hs-tools>
+	</university-data>
+</eteaching-import>
+<!-- ###TEMPLATE_LIST_UNIVERSITY### end -->
+
+<!-- ###TEMPLATE_LIST_TRAINING### begin -->
+<training uid="###OBJECTID###" changed="###TSTAMP###">
+	<summary><![CDATA[###SUMMARY###]]></summary>
+	<description><![CDATA[###DESCRIPTION###]]></description>
+	<location><![CDATA[###LOCATION###]]></location>
+	<url><![CDATA[###URL###]]></url>
+	<dtstart>###DTSTART###</dtstart>
+	<dtend>###DTEND###</dtend>
+	<due>###DUE###</due>
+	<category><![CDATA[###CATEGORY###]]></category>
+	<target-group><![CDATA[###TARGETGROUP###]]></target-group>
+	<price><![CDATA[###PRICE###]]></price>
+	<certificate><![CDATA[###CERTIFICATE###]]></certificate>
+###CONTENT###
+###CONTACTS###
+</training>
+<!-- ###TEMPLATE_LIST_TRAINING### end -->
+
+<!-- ###TEMPLATE_CONTENT_TRAINING### begin -->
+	<content><![CDATA[###CONTENT###]]></content>
+<!-- ###TEMPLATE_CONTENT_TRAINING### end -->
+
+<!-- ###TEMPLATE_LIST_TOOLPORTRAIT### begin -->
+      <tool-portrait>
+        <portrait-id>###PORTRAIT_ID###</portrait-id>
+        ###CONTACTS###
+      </tool-portrait>
+<!-- ###TEMPLATE_LIST_TOOLPORTRAIT### end -->
+
+<!-- ###TEMPLATE_LIST_TOOL### begin -->
+<tool uid="###OBJECTID###" changed="###TSTAMP###">
+      <title><![CDATA[###TITLE###]]></title>
+      <description><![CDATA[###DESCRIPTION###]]></description>
+      <url><![CDATA[###URL###]]></url>
+      ###CATEGORIES###
+###CONTACTS###
+</tool>
+<!-- ###TEMPLATE_LIST_TOOL### end -->
+
+<!-- ###TEMPLATE_CATEGORY_TOOL### begin -->
+<category><![CDATA[###CATEGORY###]]></category>
+<!-- ###TEMPLATE_CATEGORY_TOOL### end -->
+
+<!-- ###TEMPLATE_LIST_SERVICE### begin -->
+<service uid="###OBJECTID###" changed="###TSTAMP###">
+	<summary><![CDATA[###SUMMARY###]]></summary>
+	<description><![CDATA[###DESCRIPTION###]]></description>
+	<url><![CDATA[###URL###]]></url>
+	<item-tags><![CDATA[###TAGS###]]></item-tags>
+###CATEGORIES###
+	###CONTACTS###
+###TOOL###
+###TOOLPORTRAIT###
+</service>
+<!-- ###TEMPLATE_LIST_SERVICE### end -->
+
+
+<!-- ###TEMPLATE_CATEGORY_SERVICE### begin -->
+	<category><![CDATA[###CATEGORY###]]></category>
+<!-- ###TEMPLATE_CATEGORY_SERVICE### end -->
+
+<!-- ###TEMPLATE_LIST_PROJECT### begin -->
+<project uid="###OBJECTID###" changed="###TSTAMP###">
+	<title><![CDATA[###TITLE###]]></title>
+	<summary><![CDATA[###SUMMARY###]]></summary>
+	<description><![CDATA[###DESCRIPTION###]]></description>
+	<url><![CDATA[###URL###]]></url>
+	<project-state><![CDATA[###STATE###]]></project-state>
+	<dtstart>###DTSTART###</dtstart>
+	<dtend>###DTEND###</dtend>
+	<project-responsibility><![CDATA[###TYPE###]]></project-responsibility>
+	<project-resources><![CDATA[###RESOURCE###]]></project-resources>
+	<item-tags><![CDATA[###TAGS###]]></item-tags>
+###PARTNERS###
+###CONTACTS###
+###CATEGORY###
+###DEPARTMENT###
+</project>
+<!-- ###TEMPLATE_LIST_PROJECT### end -->
+
+
+<!-- ###TEMPLATE_PROJECT-PARTNER_PROJECT### begin -->
+	<project-partner><![CDATA[###PROJECT-PARTNER###]]></project-partner>
+<!-- ###TEMPLATE_PROJECT-PARTNER_PROJECT### end -->
+
+<!-- ###TEMPLATE_CATEGORY_PROJECT### begin -->
+	<category><![CDATA[###CATEGORY###]]></category>
+<!-- ###TEMPLATE_CATEGORY_PROJECT### end -->
+
+<!-- ###TEMPLATE_SUB-UNIT_PROJECT### begin -->
+	<sub-unit><![CDATA[###SUB-UNIT###]]></sub-unit>
+<!-- ###TEMPLATE_SUB-UNIT_PROJECT### end -->
+
+<!-- ###TEMPLATE_LIST_EVENT### begin -->
+<event uid="###OBJECTID###" changed="###TSTAMP###">
+    <summary><![CDATA[###SUMMARY###]]></summary>
+    <description><![CDATA[###DESCRIPTION###]]></description>
+    <location><![CDATA[###LOCATION###]]></location>
+    <url><![CDATA[###URL###]]></url>
+    <dtstart>###DTSTART###</dtstart>
+    <dtend>###DTEND###</dtend>
+</event>
+<!-- ###TEMPLATE_LIST_EVENT### end -->
+
+<!-- ###TEMPLATE_LIST_CONTACT### begin -->
+###INDENT###<contact uid="###OBJECTID###" changed="###TSTAMP###">
+	###INDENT###<academic-degree><![CDATA[###HONORIFIC_SUFFIX###]]></academic-degree>
+	###INDENT###<given-name><![CDATA[###GIVENNAME###]]></given-name>
+	###INDENT###<family-name><![CDATA[###FAMILYNAME###]]></family-name>
+	###INDENT###<email><![CDATA[###EMAIL###]]></email>
+	###INDENT###<fon><![CDATA[###PHONE###]]></fon>
+	###INDENT###<url><![CDATA[###URL###]]></url>
+	###INDENT###<photo><![CDATA[###PHOTOURL###]]></photo>
+	###PORTRAITS###
+	###TOOLS###
+	###ROLE###
+###INDENT###</contact>
+<!-- ###TEMPLATE_LIST_CONTACT### end -->
+
+<!-- ###TEMPLATE_TOOL_CONTACT### begin -->
+	###INDENT###<tool-id><![CDATA[###TOOL###]]></tool-id>
+<!-- ###TEMPLATE_TOOL_CONTACT### end -->
+<!-- ###TEMPLATE_ROLE_CONTACT### begin -->
+###INDENT###<role><![CDATA[###ROLE###]]></role>
+<!-- ###TEMPLATE_ROLE_CONTACT### end -->
+<!-- ###TEMPLATE_PORTRAITS_CONTACT### begin -->
+	###INDENT###<portrait-id><![CDATA[###PORTRAIT###]]></portrait-id>
+<!-- ###TEMPLATE_PORTRAITS_CONTACT### end -->
+<!-- ###TEMPLATE_PORTRAIT_CONTACT### begin -->
+        ###INDENT###<portrait-id><![CDATA[###TOOL-PORTRAIT-ID###]]></portrait-id>
+<!-- ###TEMPLATE_PORTRAIT_CONTACT### end -->
+<!-- ###TEMPLATE_TOOL-PORTRAIT-ID_CONTACT### begin -->
+        ###INDENT###<portrait-id><![CDATA[###TOOL-PORTRAIT-ID###]]></portrait-id>
+<!-- ###TEMPLATE_TOOL-PORTRAIT-ID_CONTACT### end -->

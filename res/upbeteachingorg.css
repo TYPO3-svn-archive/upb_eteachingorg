@@ -1,0 +1,443 @@
+/*
+ *  List contacts
+ */
+.contactname {
+font: 16px arial, sans-serif;
+}
+
+.contactimage {
+display: block;
+height: 100px;
+overflow: hidden;
+float: left;
+border: 1px solid black;
+margin-top: 2px;
+margin-bottom: 10px;
+margin-right: 5px;
+}
+
+.contactrole {
+font: italic 14px arial, sans-serif;
+margin-bottom: 2px;
+}
+
+.contactemail {
+margin-bottom: 2px;
+font: 12px arial, sans-serif;
+}
+
+.contactphone {
+margin-bottom: 2px;
+font: 12px arial, sans-serif;
+}
+
+.contactmorelink {
+margin-bottom: 2px;
+font: 12px arial, sans-serif;
+}
+
+.floatstop {
+clear:both;
+}
+
+.contacthr {
+border: none;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+}
+
+
+/*
+ *  List events
+ */
+ .eventsummary {
+margin-left: 3px;
+margin-bottom: 5px;
+font: bold 18px arial, sans-serif;
+width: 90%;
+}
+
+.eventdescription {
+margin-left: 5px;
+margin-bottom: 5px;
+font: 12px arial, sans-serif;
+width: 90%;
+text-align: justify;
+}
+
+.eventdtstart {
+margin-left: 5px;
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+}
+
+.eventlocation {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+}
+
+.eventurl {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+}
+
+.eventdtend {
+margin-left: 5px;
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+}
+
+.eventhr {
+border: none;
+margin-top: 5px;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+}
+
+/*
+ *  List pojects
+ */
+
+.projecttitle {
+margin-left: 5px;
+margin-bottom: 5px;
+float: left;
+width: 90%;
+font: bold 18px arial, sans-serif;
+}
+
+.projectsummary {
+margin-left: 5px;
+text-align: justify;
+float: left;
+width: 90%;
+font: 12px arial, sans-serif;
+}
+
+.projecttags {
+margin-left: 5px;
+float: left;
+width: 90%;
+font: 12px arial, sans-serif;
+}
+
+.projectdtstart {
+margin-left: 5px;
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projectdtend {
+margin-left: 5px;
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projectstate {
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projectcontacts {
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projecturl {
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.projectcategory {
+border: 1px solid white;
+float: left;
+width: 30%;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+margin-bottom: 10px;
+}
+
+.projecthr {
+border: none;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+}
+
+/*
+ *  List services
+ */
+ .servicesummary {
+margin-left: 3px;
+margin-bottom: 5px;
+font: bold 18px arial, sans-serif;
+width: 90%;
+}
+
+.servicedescription {
+margin-left: 5px;
+margin-bottom: 5px;
+font: 12px arial, sans-serif;
+width: 90%;
+}
+
+.serviceurl {
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float: left;
+width: 30%
+}
+
+.servicetags {
+margin-left: 5px;
+font: 12px arial, sans-serif;
+width: 90%
+}
+
+.servicecontacts {
+margin-left: 5px;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+width: 30%;
+float: left;
+}
+
+.servicecategory {
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+width: 30%;
+float: left;
+}
+
+.servicetools {
+border: 1px solid white;
+background-color: #d4dfeb;
+margin-left: 5px;
+font: 12px arial, sans-serif;
+width: 30%;
+float: left;
+}
+
+.servicetoolportraits {
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+width: 30%;
+float: left;
+}
+
+.servicehr {
+border: none;
+margin-top: 5px;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+}
+
+/*
+ *  List tools
+ */
+ .tooltitle {
+margin-left: 3px;
+margin-bottom: 5px;
+width: 90%;
+font: bold 18px arial, sans-serif;
+}
+
+.tooldescription {
+margin-left: 5px;
+margin-bottom: 5px;
+width: 90%;
+font: 12px arial, sans-serif;
+text-align: justify;
+}
+
+.toolurl {
+margin-left: 5px;
+width: 30%;
+float: left;
+border: 1px solid white;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.toolcontacts {
+width: 30%;
+float: left;
+border: 1px solid white;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.toolcategory {
+width: 30%;
+float: left;
+border: 1px solid white;
+font: 12px arial, sans-serif;
+background-color: #d4dfeb;
+}
+
+.toolhr {
+border: none;
+margin-top: 5px;
+margin-bottom: 10px;
+margin-left: 1px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+}
+
+/*
+ *  List trainings
+ */
+ .trainingstitel {
+width: 90%;
+margin-left: 3px;
+margin-bottom: 5px;
+font: bold 18px arial, sans-serif;
+}
+
+.trainingsdescription {
+width: 90%;
+margin-left: 5px;
+margin-bottom: 5px;
+font: 12px arial, sans-serif;
+text-align: justify;
+}
+
+.trainingsurl {
+width: 90%;
+margin-left: 5px;
+font: 12px arial, sans-serif;
+}
+
+.trainingslocation {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingsdt {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+margin-left: 5px;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingscertificate {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingsdue {
+background-color: #d4dfeb;
+width: 30%;
+border: 1px solid white;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingscontact {
+background-color: #d4dfeb;
+border: 1px solid white;
+width: 30%;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingscategory {
+background-color: #d4dfeb;
+border: 1px solid white;
+width: 30%;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingstargetgroup {
+background-color: #d4dfeb;
+border: 1px solid white;
+margin-left: 5px;
+width: 30%;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingsprice {
+width: 30%;
+border: 1px solid white;
+background-color: #d4dfeb;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingscontent {
+background-color: #d4dfeb;
+border: 1px solid white;
+width: 30%;
+font: 12px arial, sans-serif;
+float:left;
+}
+
+.trainingshr {
+border: none;
+margin-top: 10px;
+margin-bottom: 10px;
+height: 1px;
+color: black;
+background-color: black;
+float:left;
+width: 91%;
+}

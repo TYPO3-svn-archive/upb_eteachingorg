@@ -11,11 +11,10 @@
 class fieldFunction {
 
 	function fieldFunc_textonly($obj,$fieldname) {
-		t3lib_div::devLog('Hello Nico','upb_eteachingorg',0);
-		t3lib_div::debug($fieldname,"FOE");
+		debug($fieldname,"FOE");
 		$internal = $obj->getInternalFieldname($fieldname);
-		t3lib_div::debug($internal,"INTERNAL");
-		t3lib_div::debug($obj->data,"TEYXTONLY DATA");
+		debug($internal,"INTERNAL");
+		debug($obj->data,"TEYXTONLY DATA");
 		return $obj->getFieldValue($obj->getInternalFieldname($fieldname));
 	}
 
@@ -52,10 +51,10 @@ class fieldFunction {
 	 * @return	[type]		...
 	 */
 	function ImportfieldFunc_textonly($obj,$fieldname) {
-		t3lib_div::debug($fieldname,"FOE");
+		debug($fieldname,"FOE");
 		$internal = $obj->getInternalFieldname($fieldname);
-		t3lib_div::debug($internal,"INTERNAL");
-		t3lib_div::debug($obj->data,"TEYXTONLY DATA");
+		debug($internal,"INTERNAL");
+		debug($obj->data,"TEYXTONLY DATA");
 		$extConf = $obj->extConf;
 
 		if ($extConf['encodingFeeds'] != $extConf['encodingTypo3']) {
@@ -349,7 +348,7 @@ class fieldFunction {
 			default:
 				$content = 'Unbekannt';
 		}
-		t3lib_div::debug($content,"CONTENT IN PROJ STATE");
+		debug($content,"CONTENT IN PROJ STATE");
 		return $content;
 	}
 
@@ -362,9 +361,9 @@ class fieldFunction {
 	 */
 	function fieldFunc_writeOption($obj,$fieldname) {
 		$selectedArr = explode(',',$obj->getFieldValue($obj->getInternalFieldname($fieldname)));
-		t3lib_div::debug($conf,"SELECT ARR IN WRITE OPT");
+		debug($conf,"SELECT ARR IN WRITE OPT");
 		$conf = fieldFunction::getFieldConf($obj,$fieldname);
-		t3lib_div::debug($conf,"CONF IN FIELD WRITE OPT");
+		debug($conf,"CONF IN FIELD WRITE OPT");
 		$categories = $conf['options'];
 		$count = count($selectedArr);
 
@@ -391,7 +390,7 @@ class fieldFunction {
 
 		$selected = intval($obj->getFieldValue($obj->getInternalFieldname($fieldname)));
 
-        t3lib_div::debug($selectedArr,"SELECT ARR IN WRITE OPT");
+        debug($selectedArr,"SELECT ARR IN WRITE OPT");
 		$options = $conf['options'];
 		return $options[$selected];
 	}
@@ -407,15 +406,15 @@ class fieldFunction {
 		$conf = fieldFunction::getFieldConf($obj,$fieldname);
 		$template =  $obj->getTemplate();
 		$fieldnameUpper = strtoupper($fieldname);
-        t3lib_div::debug($template," WRITE MM OPT N XML FUNC PRO CAT - FIRST");
+        debug($template," WRITE MM OPT N XML FUNC PRO CAT - FIRST");
 		$code = t3lib_parsehtml::getSubpart($template, '###TEMPLATE_'.$fieldnameUpper.'###');
-		t3lib_div::debug($code,"COOCOCOO2222 334 43");
+		debug($code,"COOCOCOO2222 334 43");
 		$code = ereg_replace("[\n]", "", $code);
 //                $code = $code."\n";
-        t3lib_div::debug($code,"CODE IN XML FUNC PRO CAT");
+        debug($code,"CODE IN XML FUNC PRO CAT");
 		$content = '';
 		$selectedArr = explode(',',$obj->getFieldValue($obj->getInternalFieldname($fieldname)));
-		t3lib_div::debug($selectedArr,"SELECT ARR IN WRITE OPT 22334");
+		debug($selectedArr,"SELECT ARR IN WRITE OPT 22334");
 		$categories = $conf['options'];
 		$count = count($selectedArr);
 		$markerName = '###'.strtoupper($fieldname).'###';
@@ -443,17 +442,17 @@ class fieldFunction {
 		$conf = fieldFunction::getFieldConf($obj,$fieldname);
 		$dataName = 'loaded_'.$conf['objectFieldname'];
 		$template =  $obj->getTemplate();
-		t3lib_div::debug($dataName,"DATA NAME");
-		t3lib_div::debug($template," WRITE MM OPT TEMPLATE777");
+		debug($dataName,"DATA NAME");
+		debug($template," WRITE MM OPT TEMPLATE777");
 		$code = t3lib_parsehtml::getSubpart($template, '###TEMPLATE_'.strToUpper($fieldname).'###');
-		t3lib_div::debug($code,"COOCOCOO");
+		debug($code,"COOCOCOO");
 		$code = ereg_replace("[\n]", "", $code);
 //                $code = $code."\n";
-        t3lib_div::debug($code,"CODE IN XML WRITE MM OPTION");
+        debug($code,"CODE IN XML WRITE MM OPTION");
 		$content = '';
 		$options = $obj->data[$dataName];
-		t3lib_div::debug($options,"OPTIONS555");
-		t3lib_div::debug($dataName,"DATANAME");
+		debug($options,"OPTIONS555");
+		debug($dataName,"DATANAME");
 		$content = '';
 
 		if(!is_array($options)) {
@@ -472,7 +471,7 @@ class fieldFunction {
 			}
 		}
 
-		t3lib_div::debug($content,"CONTENTWRITEMMOPTION");
+		debug($content,"CONTENTWRITEMMOPTION");
 		return $content;
 	}
 
@@ -503,12 +502,12 @@ class fieldFunction {
 
 		if(is_array($objects)) {
 			foreach($objects as $key => $object) {
-		        t3lib_div::debug($object,"NEEED");
+		        debug($object,"NEEED");
 				$tmpl = $object->getTemplate();
-				t3lib_div::debug($tmpl,"TEMPL");
+				debug($tmpl,"TEMPL");
 				$object->setProcessMode('loadxml',$tmpl);
 				$object->processFields();
-		        t3lib_div::debug($object,"OBJECT AFTER PROCESSING");
+		        debug($object,"OBJECT AFTER PROCESSING");
 				$markerArray = $object->getMarkerArray();
 				$markerArray['###INDENT###'] = "\t";
 				$objXMLCode = t3lib_parsehtml::getSubpart($tmpl, "###TEMPLATE_LIST###");
@@ -532,9 +531,9 @@ class fieldFunction {
 		$objectFieldname = 'loadedLight_'.$conf['objectFieldname'];
 		$objects = $obj->data[$objectFieldname];
 
-		t3lib_div::debug($objectFieldname,"WRITE OBJECT LIGHT");
-		t3lib_div::debug($obj->data,"WRITE OBJECT LIGHT OBJ");
-		t3lib_div::debug($objects,"WRITE OBJECT LIGHT OBJs");
+		debug($objectFieldname,"WRITE OBJECT LIGHT");
+		debug($obj->data,"WRITE OBJECT LIGHT OBJ");
+		debug($objects,"WRITE OBJECT LIGHT OBJs");
 		$content = '';
 		if(is_array($objects)) {
 			foreach($objects as $key => $object) {
@@ -570,15 +569,15 @@ class fieldFunction {
 
 		if(is_array($objects)) {
 			foreach($objects as $key => $object) {
-                t3lib_div::debug($object,"NEEED");
+                debug($object,"NEEED");
 				$tmpl = $object->getTemplate();
-                t3lib_div::debug($tmpl,"TEMPL");
+                debug($tmpl,"TEMPL");
 				$object->setProcessMode('loadxml',$tmpl);
 				$object->processFields();
-                t3lib_div::debug($object,"OBJECT AFTER PROCESSING");
+                debug($object,"OBJECT AFTER PROCESSING");
 				$markerArray = $object->getMarkerArray();
 				$markerArray['###INDENT###'] = "\t";
-                t3lib_div::debug($markerArray,"MAKRER");
+                debug($markerArray,"MAKRER");
 				$content .= '		<'.$fieldname.'>'.$markerArray['###PORTRAIT_ID###'].'</'.$fieldname.'>'."\n";
 			}
 		}
@@ -632,8 +631,8 @@ class fieldFunction {
 		$dataName = 'loaded_'.$conf['objectFieldname'];
 		$content = '';
 		$options = $obj->data[$dataName];
-		t3lib_div::debug($options,"OPTIONS555");
-		t3lib_div::debug($dataName,"DATANAME");
+		debug($options,"OPTIONS555");
+		debug($dataName,"DATANAME");
 		$content = '';
 
 		if (!is_array($options)) {
@@ -650,7 +649,7 @@ class fieldFunction {
 			}
 		}
 
-        t3lib_div::debug($content,"CONTENTWRITEMMOPTION");
+        debug($content,"CONTENTWRITEMMOPTION");
 		return $content;
 	}
 
@@ -663,8 +662,8 @@ class fieldFunction {
 	 */
 	function fieldFunc_writeObject($obj,$fieldname) {
 		$conf = $obj->fields[$obj->getProcessMode()][$fieldname];
-		t3lib_div::debug($GLOBALS['EXT_CONF'],"GLOBAL CONF IN WRITEOBJ");
-		t3lib_div::debug($conf,"CONF IN WRITEOBJ");
+		debug($GLOBALS['EXT_CONF'],"GLOBAL CONF IN WRITEOBJ");
+		debug($conf,"CONF IN WRITEOBJ");
 
 		if ($conf['objectParams']['light']) {
 			$objectFieldname = 'loadedLight_'.$conf['objectFieldname'];
@@ -672,16 +671,16 @@ class fieldFunction {
 			$objectFieldname = 'loaded_'.$conf['objectFieldname'];
 		}
 
-		t3lib_div::debug($obj->data,"DATA IN WRITEOBJ");
+		debug($obj->data,"DATA IN WRITEOBJ");
 		$objects = $obj->data[$objectFieldname];
-		t3lib_div::debug($objects,"OBJECT IN WRITEOBJ");
+		debug($objects,"OBJECT IN WRITEOBJ");
 		$content = '';
 
 		if (is_array($objects)) {
 			foreach ($objects as $key => $object) {
 				$objName = get_class($object);
 				$detailPageId = intval($GLOBALS['EXT_CONF']['detailPages.'][$objName]);
-				t3lib_div::debug($object,"NEEED 555333");
+				debug($object,"NEEED 555333");
 				$title = '';
 				if ($conf['objectParams']['title']['function'] == 'concat' && is_array($conf['objectParams']['title']['fields'])) {
 					foreach($conf['objectParams']['title']['fields'] as $key => $value) {
@@ -692,7 +691,7 @@ class fieldFunction {
 				}
 
 				$title = $contact['honorific_suffix'].' '.$contact['givenname'].' '.$contact['familyname'];
-				t3lib_div::debug($title,"TITLE IN WRITE CONTACTS");
+				debug($title,"TITLE IN WRITE CONTACTS");
 				$urlParameters = array("tx_upbeteachingorg_pi1[uid]" => $object->data['objectid']);
 				if ($detailPageId) {
 					$link = $GLOBALS['COBJ']->getTypoLink($title,$detailPageId,$urlParameters);
@@ -702,7 +701,7 @@ class fieldFunction {
 			}
 		}
 		unset($obj);
-		t3lib_div::debug($content,"CONTENT CONTACT");
+		debug($content,"CONTENT CONTACT");
 		return $content;
 	}
 
@@ -717,9 +716,9 @@ class fieldFunction {
 		$conf = $obj->fields[$obj->getProcessMode()][$fieldname];
 		$objectFieldname = 'loadedLight_'.$conf['objectFieldname'];
 		$objects = $obj->data[$objectFieldname];
-		t3lib_div::debug($objectFieldname,"WRITE OBJECT LIGHT");
-		t3lib_div::debug($obj->data,"WRITE OBJECT LIGHT OBJ");
-		t3lib_div::debug($objects,"WRITE OBJECT LIGHT OBJs");
+		debug($objectFieldname,"WRITE OBJECT LIGHT");
+		debug($obj->data,"WRITE OBJECT LIGHT OBJ");
+		debug($objects,"WRITE OBJECT LIGHT OBJs");
 		$content = '';
 		if (is_array($objects)) {
 			foreach ($objects as $key => $object) {
@@ -760,7 +759,7 @@ class fieldFunction {
 		$conf = fieldFunction::getFieldConf($obj,$fieldname);
 		$content = '';
 		$selected = intval($obj->getFieldValue($obj->getInternalFieldname($fieldname)));
-		t3lib_div::debug($selectedArr,"SELECT ARR IN WRITE OPT");
+		debug($selectedArr,"SELECT ARR IN WRITE OPT");
 		$options = $conf['options'];
 		return $options[$selected];
 	}
@@ -785,8 +784,8 @@ class fieldFunction {
 		$content = '';
 		$options = $obj->data[$dataName];
 
-		t3lib_div::debug($dataName,"OPTIONS555");
-		t3lib_div::debug($options,"OOO444 DATANAME");
+		debug($dataName,"OPTIONS555");
+		debug($options,"OOO444 DATANAME");
 
 
 		$content = '';
@@ -808,7 +807,7 @@ class fieldFunction {
 			}
 		}
 
-        t3lib_div::debug($content,"CONTENTWRITEMMOPTION");
+        debug($content,"CONTENTWRITEMMOPTION");
 		return $content;
 	}
 

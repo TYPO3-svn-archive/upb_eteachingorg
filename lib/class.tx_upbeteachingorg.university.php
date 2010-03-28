@@ -14,9 +14,9 @@ class university extends object {
 
 	var $objectTable = 'tx_upbeteachingorg_university';
 	var $displayTemplate = array(
-			'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_university.tmpl',
-			'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_university.tmpl',
-			'xml' => 'EXT:upb_eteachingorg/pi1/tmpl/xml_university.tmpl',
+		'list' => 'EXT:upb_eteachingorg/pi1/tmpl/list_university.tmpl',
+		'detail' => 'EXT:upb_eteachingorg/pi1/tmpl/detail_university.tmpl',
+		'xml' => 'EXT:upb_eteachingorg/pi1/tmpl/xml_university.tmpl',
 	);
 
 
@@ -409,9 +409,7 @@ class university extends object {
 
 		if ($GLOBALS['TYPO3_DB']->sql_num_rows($res) >= 1) {
 			while($data = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
-
 				$oId = $data['uid'];
-
 				$object = new $objectname('uid',$oId);
 				$object->setProcessMode('loadxml',$objectTemplate);
 				$object->processFields();
@@ -422,16 +420,11 @@ class university extends object {
 
 				$content .= $code;
 				unset($object);
-
 			}
-
 			return $content;
-
-		}else {
-
+		} else {
 			return "";
 		}
-
 	}
 
 	/**
@@ -449,7 +442,6 @@ class university extends object {
 	 * @return	[type]		...
 	 */
 	public function getObjectOptionList() {
-
 	}
 
 	/**

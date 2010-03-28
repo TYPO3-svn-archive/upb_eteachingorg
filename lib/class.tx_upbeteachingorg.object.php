@@ -571,7 +571,7 @@ abstract class object {
 				$markerArray = $object->getMarkerArray();
 
 				$objXMLCode = t3lib_parsehtml::getSubpart($objectTemplate, "###TEMPLATE_LIST###");
-				$code = t3lib_parsehtml::substituteMarkerArray($objXMLCode,$markerArray,'',0);
+				$code       = t3lib_parsehtml::substituteMarkerArray($objXMLCode,$markerArray,'',0);
 				$content .= $code;
 				unset($object);
 			}
@@ -692,7 +692,7 @@ abstract class object {
 			if ($error=='') {
 				$this->loadByUuid($fields_values['objectid']);
 			} else {
-				print_r($debug);
+				debug($debug,'object.setData() - insert');
 			}
 		} else { // $mode == 'update'
 			$where = " objectid = '".$this->data['objectid']."' AND deleted=0";
